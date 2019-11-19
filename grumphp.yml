@@ -1,0 +1,39 @@
+parameters:
+  extensions:
+    - GrumphpDrupalCheck\ExtensionLoader
+  ascii:
+    failed: vendor/vijaycs85/drupal-quality-checker/resources/ascii/grumpy.txt
+    succeeded: vendor/vijaycs85/drupal-quality-checker/resources/ascii/happy.txt
+  git_dir: .
+  bin_dir: vendor/bin
+  tasks:
+    phplint: ~
+    yamllint: ~
+    composer: ~
+    jsonlint: ~
+    drupalcheck: ~
+    phpcpd:
+      directory: ./docroot/**/custom
+      triggered_by:
+        - php
+        - inc
+        - module
+        - install
+        - profile
+        - theme
+    phpcs:
+      encoding: utf-8
+      triggered_by:
+        - php
+        - inc
+        - module
+        - install
+        - profile
+        - theme
+        - feature
+        - info
+        - txt
+        - md
+        - js
+        - test
+      standard: Drupal,DrupalPractice

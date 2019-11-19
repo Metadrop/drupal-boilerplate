@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project name="phing" default="all">
+  <fileset dir="web" id="targetfiles">
+
+    <include name="modules/custom/**/*.php" />
+    <include name="modules/custom/**/*.module" />
+    <include name="modules/custom/**/*.inc" />
+    <include name="modules/custom/**/*.info.yml" />
+
+    <include name="themes/custom/**/*.php" />
+    <include name="themes/custom/**/*.inc" />
+    <include name="themes/custom/**/*.info.yml" />
+
+  </fileset>
+
+  <target name="all" depends="codereview,build" description=""/>
+
+  <target name="build" depends="composer" description=""/>
+  <target name="codereview" depends="phpcs,phpmd,phpcpd,phploc,drupal-check" description=""/>
+
+  <target name="phpcs" description="Run phpcs">
+
+    <phpcodesniffer standard="Drupal" format="checkstyle" allowedFileExtensions="php,module,inc,install,test,profile,theme,info.yml" encoding="utf-8">
+      <fileset refid="targetfiles" />
+      <formatter type="checkstyle" outfile="reports/codereview/checkstyle-drupal.xml" />
+      <config name="installed_paths" value="vendor/drupal/coder/coder_sniffer"/>
+    </phpcodesniffer>
+
+    <phpcodesniffer standard="DrupalPractice" format="checkstyle" allowedFileExtensions="php,module,inc,install,test,profile,theme,info.yml" encoding="utf-8">
+      <fileset refid="targetfiles" />
+      <formatter type="checkstyle" outfile="reports/codereview/checkstyle-drupalpractice.xml" />
+      <config name="installed_paths" value="vendor/drupal/coder/coder_sniffer"/>
+    </phpcodesniffer>
+
+  </target>
+
+  <target name="phpmd" description="Run phpmd">
+
+    <phpmd allowedFileExtensions="php,inc,module,install,profile">
+      <fileset refid="targetfiles" />
+      <formatter type="xml" outfile="reports/codereview/pmd.xml" />
+    </phpmd>
+
+  </target>
+
+  <target name="phpcpd" description="Run phpcpd">
+    <phpcpd>
+      <fileset refid="targetfiles" />
+      <formatter type="pmd" outfile="reports/codereview/cpd.xml"/>
+    </phpcpd>
+  </target>
+
+  <target name="phploc" description="Measures the size of the project and count it's tests">
+    <phploc countTests="true" reportType="txt" reportName="loc" reportDirectory="reports/codereview">
+      <fileset refid="targetfiles" />
+    </phploc>
+  </target>
+
+  <target name="composer" description="Installing composer dependencies">
+   <exec executable="composer" >
+    <arg value="install" />
+    <arg value="--dev" />
+    <arg value="--prefer-dist" />
+    <arg value="--no-progress" />
+    <!-- <arg value="\-\-ignore-platform-reqs" />-->
+   </exec>
+  </target>
+
+  <target name="drupal-check" description="check if code is deprecated">
+   <exec executable="./vendor/bin/drupal-check" output="reports/codereview/checkstyle-drupal-check.xml">
+    <arg value="web/modules/custom" />
+    <arg value="--format=checkstyle" />
+   </exec>
+   <exec executable="sed" >
+    <arg value="-i" />
+    <arg value="/^$/d" />
+    <arg value="reports/codereview/checkstyle-drupal-check.xml" />
+   </exec>
+  </target>
+
+</project>

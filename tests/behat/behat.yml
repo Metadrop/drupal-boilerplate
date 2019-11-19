@@ -1,0 +1,105 @@
+# File managed by Ansible. Changes will be lost
+default:
+  autoload:
+    '': '%paths.base%/bootstrap/'
+  formatters:
+    pretty:
+      verbose: false
+      paths: false
+      snippets: true
+    junit:
+      output_path: "%paths.base%/../../reports/behat/junit/"
+  suites:
+    default:
+      paths:
+        - %paths.base%/features/
+      filters:
+        tags: "~@exclude"
+      contexts:
+        - FeatureContext
+        - NuvoleWeb\Drupal\DrupalExtension\Context\CKEditorContext
+        - NuvoleWeb\Drupal\DrupalExtension\Context\PositionContext
+        - NuvoleWeb\Drupal\DrupalExtension\Context\ResponsiveContext:
+            devices:
+              laptop: 1200x800
+              desktop: 2560x1440
+              mobile_portrait: 370x650
+              mobile_landscape: 650x370
+              tablet_portrait: 800x1024
+              tablet_landscape: 1024x768
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Metadrop\Behat\Context\CacheContext
+        - Metadrop\Behat\Context\ContentAuthoredContext
+        - Metadrop\Behat\Context\CronContext
+        - Metadrop\Behat\Context\DebugContext:
+            parameters:
+              'report_on_error': true
+              'error_reporting_path': "/var/www/html/docroot/sites/default/files/behat/errors"
+              'error_reporting_url': "https://metadropnet.docker.localhost:8000/sites/default/files/behat/errors"
+              'screenshots_url': "https://metadropnet.docker.localhost:8000/sites/default/files/behat/screenshots"
+              'screenshots_path':  "/var/www/html/docroot/sites/default/files/behat/screenshots"
+              'page_contents_path': "/var/www/html/docroot/sites/default/files/behat/pages"
+        - Metadrop\Behat\Context\FileContext
+        - Metadrop\Behat\Context\FormContext
+        - Metadrop\Behat\Context\EntityContext
+        - Metadrop\Behat\Context\NodeAccessContext
+        - Metadrop\Behat\Context\ParagraphsContext
+        - Metadrop\Behat\Context\UIContext:
+            parameters:
+              scroll_offset: -100
+        - Metadrop\Behat\Context\UrlContext
+        - Metadrop\Behat\Context\UsersContext
+        - Metadrop\Behat\Context\WaitingContext
+
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      sessions:
+        default:
+          goutte:
+            guzzle_parameters:
+              verify: false
+      browser_name: 'chrome'
+      base_url: 'https://nginx'
+      show_cmd: lynx %s
+      files_path: "%paths.base%/files"
+      javascript_session: selenium2
+      selenium2:
+        # wd_host: http://127.0.0.1:4444/wd/hub
+        wd_host: http://hub:4444/wd/hub
+        capabilities:
+          browser: "chrome"
+    NuvoleWeb\Drupal\DrupalExtension:
+      services: "/var/www/html/vendor/metadrop/behat-contexts/services.yml"
+      blackbox: ~
+      api_driver: "drupal"
+      drupal:
+        # Change this to the absolute path to Drupal install.
+        drupal_root: "/var/www/html/web"
+      region_map:
+        content: ".region-content"
+        content bottom: ".region-content-bottom"
+        footer: "footer"
+        header: ".region-header"
+        header extra: ".region-header-extra"
+        highlighted: ".region-highlighted"
+        sidebar responsive: ".region-sidebar-responsive"
+        sidebar: ".region-sidebar-left"
+        fixed: ".region-fixed"
+        content top: ".region-content-top"
+        table revision: '.node-revision-table'
+        breadcrumb: '.breadcrumb'
+      selectors:
+        message_selector: '.messages'
+        success_message_selector: '.messages--success'
+        error_message_selector: '.messages--error'
+        warning_message_selector: '.messages--warning'
+      text:
+        password_field: "edit-pass"
+        username_field: "edit-name"
+        log_in: "edit-submit"
+        log_out: "Cerrar sesión"
+        node_submit_label: "Save and publish"

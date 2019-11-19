@@ -1,0 +1,67 @@
+version: "3.6"
+
+services:
+
+  php:
+    environment:
+      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      SSH_AUTH_SOCK: /ssh-agent
+    volumes:
+      - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
+
+#  nginx:
+#    volumes:
+#      - codebase:/var/www/html
+
+#volumes:
+#  codebase:
+
+  traefik:
+    # https://stackoverflow.com/questions/48851190/docker-compose-override-a-ports-property-instead-of-merging-it
+    ports:
+     - '8000:80'
+     - '8444:443'
+#      - '8080:8080' # Dashboard
+
+  mkdocs:
+    container_name: "${PROJECT_NAME}_mkdocs"
+    image: metadrop/docker-mkdocs
+    volumes:
+      - ./docs:/docs
+    working_dir: /docs
+    labels:
+      - 'traefik.backend=${PROJECT_NAME}_mkdocs'
+      - 'traefik.port=8080'
+      - 'traefik.frontend.rule=Host:docs.${PROJECT_BASE_URL}'
+
+  adminer:
+    container_name: "${PROJECT_NAME}_adminer"
+    image: wodby/adminer:$ADMINER_TAG
+    environment:
+# For PostgreSQL:
+#      ADMINER_DEFAULT_DB_DRIVER: pgsql
+      ADMINER_DEFAULT_DB_HOST: $DB_HOST
+      ADMINER_DEFAULT_DB_NAME: $DB_NAME
+    labels:
+      - 'traefik.backend=${PROJECT_NAME}_adminer'
+      - 'traefik.port=9000'
+      - 'traefik.frontend.rule=Host:adminer.${PROJECT_BASE_URL}'
+
+  portainer:
+    image: portainer/portainer
+    container_name: "${PROJECT_NAME}_portainer"
+    command: --no-auth -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - 'traefik.backend=${PROJECT_NAME}_portainer'
+      - 'traefik.port=9000'
+      - 'traefik.frontend.rule=Host:portainer.${PROJECT_BASE_URL}'
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: "${PROJECT_NAME}_mailhog"
+    labels:
+      - 'traefik.backend=mailhog'
+      - 'traefik.port=8025'
+      - 'traefik.frontend.rule=Host:mailhog.${PROJECT_BASE_URL}'

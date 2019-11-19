@@ -1,0 +1,23 @@
+docker:
+  uri: 'example.docker.localhost:8000'
+  docker:
+      service: php
+      exec:
+        options: --user wodby
+  root: '/var/www/html'
+  user: 'vagrant'
+
+pro:
+  uri: 'example.com'
+  root: ''
+  host: 'example.com'
+  user: ''
+  command:
+    sql:
+      sync:
+        options:
+          structure-tables-list: 'cache*,session,watchdog'
+    dump:
+      sync:
+        options:
+          structure-tables-list: 'cache*,session,watchdog'

@@ -1,0 +1,13 @@
+site_name: MetadropWeb Develop handbook
+theme: readthedocs
+dev_addr: '0.0.0.0:8080'
+nav:
+  - Home: index.md
+  - Local: local.md
+  - Deployment: deploy.md
+  - Tests: tests.md
+  - Environments: environments.md
+  - Entities: entities.md
+  - Others:
+    - MkDocs: others/mkdocs.md
+    - Composer Drupal project: others/composer-drupal-project.md
