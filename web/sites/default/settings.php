@@ -753,8 +753,6 @@ $settings['file_scan_ignore_directories'] = [
  if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
    include $app_root . '/' . $site_path . '/settings.local.php';
  }
-// Private Files
-$settings['file_private_path'] = 'sites/default/private';
 
 // Staging direcrtoy. Here it goes the configuration from dev to stg/pro.
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/default';
