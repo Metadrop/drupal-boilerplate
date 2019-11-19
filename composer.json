@@ -84,7 +84,6 @@
         "metadrop/grumphp-drupal-check": "^0.1",
         "mglaman/drupal-check": "^1.0",
         "mikey179/vfsstream": "~1.2",
-        "nuvoleweb/drupal-behat": "dev-fb-screenshotcontext-improvements",
         "pdepend/pdepend": "^2.5",
         "phing/phing": "^2.16",
         "phploc/phploc": "^4.0",
