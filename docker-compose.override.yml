@@ -30,9 +30,8 @@ services:
       - ./docs:/docs
     working_dir: /docs
     labels:
-      - 'traefik.backend=${PROJECT_NAME}_mkdocs'
-      - 'traefik.port=8080'
-      - 'traefik.frontend.rule=Host:docs.${PROJECT_BASE_URL}'
+      - "traefik.http.services.${PROJECT_NAME}_mkdocs.loadbalancer.server.port=8080"
+      - "traefik.http.routers.${PROJECT_NAME}_mkdocs.rule=Host(`mkdocs.${PROJECT_BASE_URL}`)"
 
   adminer:
     container_name: "${PROJECT_NAME}_adminer"
@@ -43,25 +42,11 @@ services:
       ADMINER_DEFAULT_DB_HOST: $DB_HOST
       ADMINER_DEFAULT_DB_NAME: $DB_NAME
     labels:
-      - 'traefik.backend=${PROJECT_NAME}_adminer'
-      - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:adminer.${PROJECT_BASE_URL}'
-
-  portainer:
-    image: portainer/portainer
-    container_name: "${PROJECT_NAME}_portainer"
-    command: --no-auth -H unix:///var/run/docker.sock
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - 'traefik.backend=${PROJECT_NAME}_portainer'
-      - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:portainer.${PROJECT_BASE_URL}'
+      - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
   mailhog:
     image: mailhog/mailhog
     container_name: "${PROJECT_NAME}_mailhog"
     labels:
-      - 'traefik.backend=mailhog'
-      - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.${PROJECT_BASE_URL}'
+      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
