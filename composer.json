@@ -51,7 +51,6 @@
         "drupal/ctools": "^3.0",
         "drupal/environment_indicator": "^3.2",
         "drupal/eu_cookie_compliance": "^1.2",
-        "drupal/field_group_background_image": "^1.1",
         "drupal/google_tag": "^1.0",
         "drupal/honeypot": "^1.27",
         "drupal/metatag": "^1.3",
