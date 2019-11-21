@@ -4,11 +4,11 @@ Feature:
   So that I can enjoy BDD!
 
   @behat
-  Scenario: Homepage
+  Scenario: Pagina principal
     Given I go to "/"
     Then the response status code should be 200
 
   @behat @javascript
-  Scenario: Homepage with JavaScript
+  Scenario: Pagina principal con JS
     Given I go to "/"
     Then I should see "Home"
