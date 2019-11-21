@@ -70,6 +70,7 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "bex/behat-step-time-logger": "^2.0",
         "drupal/coder": "^8.2",
         "drupal/console": "^1.0.2",
         "drupal/devel": "^2.1",
@@ -79,7 +80,7 @@
         "drupal/stage_file_proxy": "^1.0",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "metadrop/behat-contexts": "dev-dev",
+        "metadrop/behat-contexts": "dev-master",
         "metadrop/grumphp-drupal-check": "^0.1",
         "mglaman/drupal-check": "^1.0",
         "mikey179/vfsstream": "~1.2",
