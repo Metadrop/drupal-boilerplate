@@ -190,6 +190,9 @@ then
 
   create_database
 
+  # Drop current database.
+  $DOCKER_EXEC_PHP drush @${LOCAL_ALIAS} sql-drop -y
+
   # Do we need to download a remote dump?
   # Best if we do this before droping current database.
   if [ ${REFRESH_LOCAL_DUMP} = true ] || [ ! -f $LOCAL_FILE ]
@@ -206,9 +209,6 @@ then
       exit -1
     fi
   else
-    # Drop current database.
-    $DOCKER_EXEC_PHP drush @${LOCAL_ALIAS} sql-drop -y
-
     echo "Loading database from local file:  ${LOCAL_FILE}"
     cat ${LOCAL_FILE} | $DOCKER_EXEC_TTY_PHP  drush @${LOCAL_ALIAS} sql-cli
   fi
