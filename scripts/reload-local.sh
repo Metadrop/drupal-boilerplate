@@ -1,4 +1,20 @@
 #!/bin/bash
+#######################################
+#  Reloads local environment for a fresh start.
+#
+#  It is recomended to run this script when starting a new branch.
+#  It should be run outside of docker.
+#  It currently perform:
+#  - composer install
+#  - database sync
+#  - database sanitization
+#  - drush updatedb
+#  _ drush config-import
+#  - CSS and JS transpilation
+#  - cache rebuild
+#  - display a one time user login link
+#######################################
+
 set -e
 
 # Set defautl constants.

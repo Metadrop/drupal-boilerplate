@@ -1,4 +1,20 @@
 #!/bin/bash
+#######################################
+#  Copy a content config entity to a
+#  given module, along with its view
+#  modes, form displays, fields and
+#  field storages.
+#
+#  Receive 3 required parameters:
+#  - Entity type: paragraphs,
+#  block_content, node or taxonomy
+#  - Entity bundle
+#  - Module name: where to copy the
+#  configuration. The module should
+#  exist.
+#
+#######################################
+
 set -e
 
 ENTITY_TYPE=$1
