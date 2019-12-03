@@ -53,7 +53,9 @@ mkdir -p $MODULE_DIR
 # function to copy the config entities and remove the filename
 function copy_config {
   cp config/default/$1 $MODULE_DIR
-  sed -i /uuid:/d $MODULE_DIR/$1
+  sed -i /^uuid:/d $MODULE_DIR/$1
+  sed -i /^_core:/d $MODULE_DIR/$1
+  sed -i /^\ \ default_config_hash:/d $MODULE_DIR/$1
 }
 
 copy_config $ENTITY.yml
