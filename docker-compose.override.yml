@@ -31,7 +31,7 @@ services:
     working_dir: /docs
     labels:
       - "traefik.http.services.${PROJECT_NAME}_mkdocs.loadbalancer.server.port=8080"
-      - "traefik.http.routers.${PROJECT_NAME}_mkdocs.rule=Host(`mkdocs.${PROJECT_BASE_URL}`)"
+      - "traefik.http.routers.${PROJECT_NAME}_mkdocs.rule=Host(`docs.${PROJECT_BASE_URL}`)"
 
   adminer:
     container_name: "${PROJECT_NAME}_adminer"
