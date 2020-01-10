@@ -137,9 +137,6 @@
         "patches": {
             "drupal/draggableviews": {
                 "Duplicate entities when 2 different entity types have the same entity_id - https://www.drupal.org/node/2796313": "https://www.drupal.org/files/issues/duplicate_entities_when-2796313-7.patch"
-            },
-            "drupal/core": {
-                "Entity Links fields does not have translation support - https://www.drupal.org/project/drupal/issues/2877994": "https://www.drupal.org/files/issues/2019-05-29/2877994-140.patch"
             }
         },
         "composer-exit-on-patch-failure": true
