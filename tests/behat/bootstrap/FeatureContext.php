@@ -135,4 +135,13 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
     $this->assertCacheClear();
   }
 
+  /**
+   * Before scenario sets the viewport to desktop on javascript tests.
+   *
+   * @BeforeScenario @javascript
+   */
+  public function beforeSetViewportEditor() {
+    $this->responsiveContext->assertDeviceScreenResize('desktop');
+  }
+
 }
