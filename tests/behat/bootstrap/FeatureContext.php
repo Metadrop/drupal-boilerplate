@@ -25,6 +25,13 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    */
   protected $minkContext;
 
+  /**
+   * Responsive context.
+   *
+   * @var \NuvoleWeb\Drupal\DrupalExtension\Context\ResponsiveContext
+   */
+  protected $responsiveContext;
+
   static protected $permissions = [
     /*"grant" => [
       "edit any article content" => [RoleInterface::ANONYMOUS_ID],
@@ -80,6 +87,7 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
   public function gatherContexts(BeforeScenarioScope $scope) {
     $environment = $scope->getEnvironment();
     $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
+    $this->responsiveContext = $environment->getContext('NuvoleWeb\Drupal\DrupalExtension\Context\ResponsiveContext');
   }
 
   /**
@@ -91,15 +99,6 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    */
   public function __construct($parameters = NULL) {
     $this->customParameters = !empty($parameters) ? $parameters : array();
-  }
-
-  /**
-   * Sets the window's size.
-   *
-   * @BeforeScenario @javascript
-   */
-  public function beforeSetDefaultWindowSize() {
-    $this->getSession()->resizeWindow(1200, 800, 'current');
   }
 
   /**
