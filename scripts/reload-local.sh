@@ -19,7 +19,7 @@ set -e
 
 # Set defautl constants.
 ########################
-DEFAULT_SITE="lyreco"
+DEFAULT_SITE="metadrop"
 DEFAULT_REMOTE_ENVIRONMENT="stg"
 VALID_ENVIRONMENTS=("dev" "stg")
 
