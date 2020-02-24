@@ -10,6 +10,9 @@
 # Ignore sensitive information
 /web/sites/*/settings.local.php
 
+# Ignore local drush settings
+/web/sites/*/local.drush.yml
+
 # Ignore Drupal's file directory
 /web/sites/*/files/
 

@@ -4,3 +4,28 @@
 # Docs at https://github.com/drush-ops/drush/blob/master/examples/example.drush.yml
 #
 # Edit or remove this file as needed.
+drush:
+  paths:
+    # Load a drush.yml configuration file from the current working directory.
+    config:
+      - web/sites/defaut/local.drush.yml
+command:
+  sql:
+    dump:
+      options:
+        # Uncomment to omit cache and similar tables (including during a sql:sync).
+        structure-tables-key: common
+    sanitize:
+      options:
+        sanitize-password: password
+sql:
+  # List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
+  # commands when the "--structure-tables-key=common" option is provided.
+  # You may add specific tables to the existing array or add a new element.
+  structure-tables:
+    common:
+      - cache
+      - 'cache_*'
+      - history
+      - 'sessions'
+      - 'watchdog'
