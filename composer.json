@@ -73,7 +73,7 @@
         "drupal/styleguide": "^1.0@alpha",
         "drupal/token": "^1.0",
         "drupal/ui_patterns_field_formatters": "dev-master",
-        "drupal/ui_patterns_settings": "^1.0@beta",
+        "drupal/ui_patterns_settings": "^1.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^5.0@beta",
         "drush/drush": "~8.0|^9.0.0-beta8",
@@ -148,10 +148,6 @@
         "patches": {
             "drupal/draggableviews": {
                 "2796313 - Duplicate entities when 2 different entity types have the same entity_id.": "https://www.drupal.org/files/issues/duplicate_entities_when-2796313-7.patch"
-            },
-            "drupal/ui_patterns_settings": {
-                "3093284 - Settings not present in patterns layouts": "https://www.drupal.org/files/issues/2019-11-08/ui_patterns_settings-settings_in_layout_patterns-3093284-2.patch",
-                "3104437 - Do token replacement in non-entity contexts": "https://www.drupal.org/files/issues/2020-01-05/ui_patterns_settings-token_replacement_with_no_entity_in_context-3104437-2.patch"
             }
         },
         "composer-exit-on-patch-failure": true
