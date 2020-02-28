@@ -10,7 +10,7 @@ To create a new project based on this boilerplate, the recommended method is usi
 composer create-project metadrop/drupal-boilerplate:master-dev my-project
 ```
 
-The complete the setup following these steps:
+Then, complete the setup following these steps:
 
 1. Check `.env` file for PROJECT_BASE_URL variable.
 2. Check `docker-compose.override.yml` file. Look for the services.traefik.ports value. There you have the port mapping in the form `<your local machine port>:<container port>`. Remember as WEBSERVER_PORT the local machine port that seems to point to a webserver port on the container ports side.
