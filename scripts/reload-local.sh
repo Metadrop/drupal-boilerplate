@@ -29,14 +29,15 @@ SITE=$DEFAULT_SITE
 
 PROJECT_ROOT="./"
 
-# Scripts/executables.
+DOCKER_PROJECT_ROOT=`egrep DOCKER_PROJECT_ROOT ${PROJECT_ROOT}/.env | sed s/DOCKER_PROJECT_ROOT=//`
+
+# Scripts/executables.compilation
 DOCKER_EXEC_PHP="docker-compose exec php"
 DOCKER_EXEC_TTY_PHP="docker-compose exec -T php"
 DOCKER_EXEC_NPM="docker-compose exec node"
 COMPOSER_EXEC="composer"
 RM_EXEC="rm"
-
-
+NPM_RUN_COMMAND=`egrep NPM_RUN_COMMAND ${PROJECT_ROOT}/.env | sed s/NPM_RUN_COMMAND=//`
 
 # Default flags values.
 NO_ACTION=false
@@ -239,7 +240,9 @@ then
 
   $DOCKER_EXEC_PHP drush @${LOCAL_ALIAS} cim sync -y
 
-  make fronted ${NPM_RUN_COMMAND}
+  $DOCKER_EXEC_NPM sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh ${NPM_RUN_COMMAND}
+
+  $DOCKER_EXEC_PHP drush @${LOCAL_ALIAS} cr
 
   # Show one-time login link.
   $DOCKER_EXEC_PHP drush @${LOCAL_ALIAS} uli
