@@ -8,7 +8,7 @@ BEHAT ?= "vendor/bin/behat"
 BEHAT_YML ?= "tests/behat/behat.yml"
 
 test:
-	cd ./test/$(DRUPAL_VER) && PHP_VER=$(PHP_VER) ./run
+	docker-compose exec php phpunit
 
 behat:
 	docker-compose exec -u www-data -T php ${BEHAT} --config ${BEHAT_YML} --colors $(params)
