@@ -19,6 +19,9 @@ ngrok:
 ngrok-stop:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml rm -fsv ngrok
 
+frontend:
+	docker-compose exec node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
+
 ## mdrop :	Start mdrop theme with gulp.
 mdrop:
 	@docker-compose exec node sh scripts/mdrop-start.sh $(filter-out $@,$(MAKECMDGOALS))
