@@ -4,7 +4,6 @@ services:
 
   php:
     environment:
-      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       SSH_AUTH_SOCK: /ssh-agent
     volumes:
       - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
@@ -50,12 +49,6 @@ services:
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
-  mailhog:
-    image: mailhog/mailhog
-    container_name: "${PROJECT_NAME}_mailhog"
-    labels:
-      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
-      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 #volumes:
 ## Docker-sync for macOS users
 #  docker-sync:
