@@ -100,7 +100,7 @@ Here are the bundled libraries:
 
 ### Unit testing with phpunit
 Test Driven Development focus on testing your code to ensure it does what is expected across refactors. This kind of 
-tests are known as Unit tests, and in PHP it can be done with (phpunit)[https://phpunit.de/].
+tests are known as Unit tests, and in PHP it can be done with [phpunit](https://phpunit.de/).
 
 PHPUnit is a framework to perform unit tests on your php projects. The boilerplate is bundled with phpunit preconfigured 
 so you can focus on write your unit tests. 
