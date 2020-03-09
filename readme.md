@@ -10,26 +10,26 @@ The stack is configured as follows:
 
 | Container       | Versions               | Default version | Service name    | Image                              | Enabled by default |
 | --------------  | ---------------------- | --------------- | --------------- | ---------------------------------- | ------------------ |
-| [Nginx]         | 1.17, 1.16             | 1.17            | `nginx`         | [wodby/nginx]                      | ✓                  |
-| [Apache]        | 2.4                    | 2.4             | `apache`        | [wodby/apache]                     |                    |
-| [PHP]           | 7.4, 7.3, 7.2          | 7.3`            | `php`           | [wodby/drupal-php]                 | ✓                  |
-| [MariaDB]       | 10.4, 10.3, 10.2, 10.1 | 10.4            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
-| [PostgreSQL]    | 12, 11, 10, 9.x        | 11              |` postgres`      | [wodby/postgres]                   |                    |
-| [Redis]         | 5, 4                   | 4               |` redis`         | [wodby/redis]                      |                    |
-| [Memcached]     | 1                      | 1               |` memcached`     | [wodby/memcached]                  |                    |
-| [Varnish]       | 6.0, 4.1               | 6.0             |` varnish`       | [wodby/varnish]                    |                    |
-| [Node.js]       | 12, 10, 8              | 12              |` node`          | [wodby/node]                       | ✓                  |
-| [Drupal node]   | 1.0                    | 1.0             | `drupal-node`   | [wodby/drupal-node]                |                    |
-| [Solr]          | 8, 7, 6, 5             | 8               | `solr`          | [wodby/solr]                       |                    |
-| [Elasticsearch] | 7, 6                   | 7               | `elasticsearch` | [wodby/elasticsearch]              |                    |
-| [Kibana]        | 7, 6                   | 7               |` kibana`        | [wodby/kibana]                     |                    |
-| [OpenSMTPD]     | 6.0                    | 6.0             | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
-| [Mailhog]       | latest                 | latest          | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
-| [AthenaPDF]     | 2.10.0                 | 2.10.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
-| [Rsyslog]       | latest                 | latest          | `rsyslog`       | [wodby/rsyslog]                    |                    |
-| [Blackfire]     | latest                 | latest          | `blackfire`     | [blackfire/blackfire]              |                    |
-| [Webgrind]      | 1                      | 1               | `webgrind`      | [wodby/webgrind]                   |                    |
-| [Xhprof viewer] | latest                 | latest          | `xhprof`        | [wodby/xhprof]                     |                    |
+| Nginx           | 1.17, 1.16             | 1.17            | `nginx`         | [wodby/nginx]                      | ✓                  |
+| Apache          | 2.4                    | 2.4             | `apache`        | [wodby/apache]                     |                    |
+| PHP             | 7.4, 7.3, 7.2          | 7.3`            | `php`           | [wodby/drupal-php]                 | ✓                  |
+| MariaDB         | 10.4, 10.3, 10.2, 10.1 | 10.4            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
+| PostgreSQL      | 12, 11, 10, 9.x        | 11              |` postgres`      | [wodby/postgres]                   |                    |
+| Redis           | 5, 4                   | 4               |` redis`         | [wodby/redis]                      |                    |
+| Memcached       | 1                      | 1               |` memcached`     | [wodby/memcached]                  |                    |
+| Varnish         | 6.0, 4.1               | 6.0             |` varnish`       | [wodby/varnish]                    |                    |
+| Node.js         | 12, 10, 8              | 12              |` node`          | [wodby/node]                       | ✓                  |
+| Drupal node     | 1.0                    | 1.0             | `drupal-node`   | [wodby/drupal-node]                |                    |
+| Solr            | 8, 7, 6, 5             | 8               | `solr`          | [wodby/solr]                       |                    |
+| Elasticsearch   | 7, 6                   | 7               | `elasticsearch` | [wodby/elasticsearch]              |                    |
+| Kibana          | 7, 6                   | 7               |` kibana`        | [wodby/kibana]                     |                    |
+| OpenSMTPD       | 6.0                    | 6.0             | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
+| Mailhog         | latest                 | latest          | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
+| AthenaPDF       | 2.10.0                 | 2.10.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
+| Rsyslog         | latest                 | latest          | `rsyslog`       | [wodby/rsyslog]                    |                    |
+| Blackfire       | latest                 | latest          | `blackfire`     | [blackfire/blackfire]              |                    |
+| Webgrind        | 1                      | 1               | `webgrind`      | [wodby/webgrind]                   |                    |
+| Xhprof viewer   | latest                 | latest          | `xhprof`        | [wodby/xhprof]                     |                    |
 | Adminer         | 4.6                    | 4.6             | `adminer`       | [wodby/adminer]                    | ✓                  |
 | phpMyAdmin      | latest                 | latest          | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
 | Selenium chrome | 3.141                  | 3.141           | `chrome`        | [selenium/node-chrome]             | ✓                  |
