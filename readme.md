@@ -90,7 +90,7 @@ Grumphp is already configured (so you don't need to worry about that) making the
 Behavior Driven Development is supported on a natural language thanks to [Behat](https://docs.behat.org/en/latest/).
 The boilerplate is delivered with Behat preconfigured, so you just need to start writing your tests. Some example tests 
 are also provided. Aditionally to behat, some libraries are included improving the drupal support, adding several behat
-testing steps for the common scenarios such as logging as a user with a particular role, creating testing content, finding
+testing steps for the most common use cases such as logging as a user with a particular role, creating testing content, finding
 expressions withing content regions, etc.
 
 Here are the bundled libraries:
