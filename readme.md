@@ -114,8 +114,8 @@ Til today, we provide the following scripts:
  to ensure your changes won't break production during the deployment.
 - **frontend-build.sh**: Compile your sass and js-es6 files inside docker so you don't need to have node or gulp
  installed on your machine. Forget about version issues.
-- **copy-content-config-entity-to-module.sh**: For given content entity (content type, paragraph, custom block type...)
-will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of 
+- **copy-content-config-entity-to-module.sh**: For a given content entity (content type, paragraph, custom block type...)
+it will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of 
 your choice.
 
 ### Buffet of selected modules
