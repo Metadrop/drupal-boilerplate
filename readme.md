@@ -50,8 +50,8 @@ and web-root files are automatically generated via [drupal-scaffold](https://git
 
 ### Drush (Drupal Shell)
 Drush is a command line shell for Drupal, and a swiss army knife letting developers
-to do mostly everything can be done by user interface, and much more. Drush is delivered
-with a excelent code generator to speed-up the development process.
+to do mostly everything they can do by user interface, and much more. Drush is delivered
+with an excellent code generator to speed-up the development process.
 
 Get more information about drush:
 - [Drush marketing site](https://drush.org)
