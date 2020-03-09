@@ -91,7 +91,7 @@ Behavior Driven Development is supported on a natural language thanks to [Behat]
 The boilerplate is delivered with Behat preconfigured, so you just need to start writing your tests. Some example tests 
 are also provided. Aditionally to behat, some libraries are included improving the drupal support, adding several behat
 testing steps for the most common use cases such as logging as a user with a particular role, creating testing content, finding
-expressions withing content regions, etc.
+expressions within content regions, etc.
 
 Here are the bundled libraries:
 - [drupal-extension](https://www.drupal.org/project/drupalextension)
