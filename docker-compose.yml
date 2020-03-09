@@ -286,8 +286,6 @@ services:
     entrypoint: phantomjs
     command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
 
-## For Xdebug profiler
-#  files:
   mailhog:
     image: mailhog/mailhog
     container_name: "${PROJECT_NAME}_mailhog"
