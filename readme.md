@@ -118,6 +118,10 @@ Til today, we provide the following scripts:
 will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of 
 your choice.
 
+### Buffet of selected modules
+We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve 
+the needs of different areas such as SEO, security, content editing, themming or deployments across different environments.
+
 ## Installation
 
 To create a new project based on this boilerplate, the recommended method is using composer create-project:
