@@ -70,9 +70,9 @@ The text-plain markdown format have the following advantages over other systems:
 
 [Mkdocs official site](https://www.mkdocs.org/).
     
-### Grumphp and (do not) forget about codding standards.
-Because quality matters, the metadrop/drupal-boilerplate is delivered with [Grumphp](https://github.com/phpro/grumphp) 
-a tool to ensure developers follow the Drupal codding standards and best practices.
+### Grumphp and (do not) forget about coding standards.
+Because quality matters, the metadrop/drupal-boilerplate is delivered with [Grumphp](https://github.com/phpro/grumphp), 
+a tool to ensure developers follow the Drupal coding standards and best practices.
 To make your projects fit the highest quality assurance, a git-hook is automatically installed so is not possible to 
 commit any change without accomplishing those Quality requirements.
 Grumphp is already configured (so you don't need to worry about that) making the following quality checks:
