@@ -72,7 +72,7 @@
         "drupal/ui_patterns_settings": "^1.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^5.0@beta",
-        "drush/drush": "~8.0|^9.0.0-beta8"
+        "drush/drush": "^9.0|^10.0"
     },
     "require-dev": {
         "bex/behat-step-time-logger": "^2.0",
