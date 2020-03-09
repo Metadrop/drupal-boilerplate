@@ -98,12 +98,10 @@
         "mglaman/drupal-check": "^1.0",
         "mikey179/vfsstream": "~1.2",
         "pdepend/pdepend": "^2.5",
-        "phing/phing": "^2.16",
         "phploc/phploc": "^4.0",
         "phpmd/phpmd": "^2.6",
         "phpunit/phpunit": "~6.5",
         "sebastian/phpcpd": "^3.0",
-        "squizlabs/php_codesniffer": "2.x",
         "symfony/css-selector": "~2.8|~3.0",
         "symfony/phpunit-bridge": "^3.4.3",
         "vijaycs85/drupal-quality-checker": "^1.0"
