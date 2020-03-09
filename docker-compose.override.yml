@@ -8,6 +8,9 @@ services:
       SSH_AUTH_SOCK: /ssh-agent
     volumes:
       - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
+## For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
+#      - ./:/var/www/html:cached # User-guided caching
+#      - docker-sync:/var/www/html # Docker-sync
 
 #  nginx:
 #    volumes:
@@ -15,6 +18,9 @@ services:
 
 #volumes:
 #  codebase:
+# For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
+#      - ./:/var/www/html:cached # User-guided caching
+#      - docker-sync:/var/www/html # Docker-sync
 
   traefik:
     # https://stackoverflow.com/questions/48851190/docker-compose-override-a-ports-property-instead-of-merging-it
@@ -50,3 +56,7 @@ services:
     labels:
       - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
       - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+#volumes:
+## Docker-sync for macOS users
+#  docker-sync:
+#    external: true
