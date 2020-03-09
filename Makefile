@@ -22,6 +22,3 @@ ngrok-stop:
 frontend:
 	docker-compose exec node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
-## mdrop :	Start mdrop theme with gulp.
-mdrop:
-	@docker-compose exec node sh scripts/mdrop-start.sh $(filter-out $@,$(MAKECMDGOALS))
