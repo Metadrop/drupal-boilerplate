@@ -34,8 +34,7 @@ The stack is configured as follows:
 | phpMyAdmin      | latest                 | latest          | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
 | Selenium chrome | 3.141                  | 3.141           | `chrome`        | [selenium/node-chrome]             | ✓                  |
 | Selenium hub    | 3.141                  | 3.141           | `hub   `        | [selenium/hub]                     | ✓                  |
-| Portainer       | latest                 | latest          | `portainer`     | [portainer/portainer]              | ✓                  |
-| Traefik         | latest                 | latest          | `traefik`       | [_/traefik]                        | ✓                  |
+| Traefik         | v2.0                   | v2.0            | `traefik`       | [_/traefik]                        | ✓                  |
 | Mkdocs          | latest                 | latest          | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
