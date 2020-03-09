@@ -103,17 +103,6 @@ services:
 #    container_name: "${PROJECT_NAME}_redis"
 #    image: wodby/redis:$REDIS_TAG
 
-#  adminer:
-#    container_name: "${PROJECT_NAME}_adminer"
-#    image: wodby/adminer:$ADMINER_TAG
-#    environment:
-## For PostgreSQL:
-##      ADMINER_DEFAULT_DB_DRIVER: pgsql
-#      ADMINER_DEFAULT_DB_HOST: $DB_HOST
-#      ADMINER_DEFAULT_DB_NAME: $DB_NAME
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
-
 #  pma:
 #    image: phpmyadmin/phpmyadmin
 #    container_name: "${PROJECT_NAME}_pma"
@@ -224,19 +213,6 @@ services:
 #      - files:/mnt/files
 #    labels:
 #      - "traefik.http.routers.${PROJECT_NAME}_xhprof.rule=Host(`xhprof.${PROJECT_BASE_URL}`)"
-
-#  chrome:
-#    image: selenium/standalone-chrome:$SELENIUM_CHROME_TAG
-#    container_name: "${PROJECT_NAME}_chrome"
-#    volumes:
-#      - /dev/shm:/dev/shm
-#    entrypoint:
-#      - chromedriver
-#      - "--no-sandbox"
-#      - "--disable-dev-shm-usage"
-#      - "--log-path=/tmp/chromedriver.log"
-#      - "--verbose"
-#      - "--whitelisted-ips="
 
   traefik:
     image: traefik:$TRAEFIK_TAG
