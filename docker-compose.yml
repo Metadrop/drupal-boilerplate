@@ -239,14 +239,14 @@ services:
 #      - "--whitelisted-ips="
 
   traefik:
-    image: traefik:v2.0
+    image: traefik:$TRAEFIK_TAG
     container_name: "${PROJECT_NAME}_traefik"
     command: --api.insecure=true --providers.docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
   hub:
-    image: selenium/hub:3.141.59-neon
+    image: selenium/hub:$HUB_TAG
     container_name: ${PROJECT_NAME}_hub
     #ports:
     #  - "4444:4444"
@@ -254,7 +254,7 @@ services:
       - ./:/var/www/html:cached # User-guided caching
 
   chrome:
-    image: selenium/node-chrome:3.141.59-neon
+    image: selenium/node-chrome:$CHROME_TAG
     container_name: "${PROJECT_NAME}_chrome"
     volumes:
       - /dev/shm:/dev/shm
