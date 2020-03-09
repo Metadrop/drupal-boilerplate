@@ -28,10 +28,6 @@ services:
 
 #  nginx:
 #    volumes:
-#      - codebase:/var/www/html
-
-#volumes:
-#  codebase:
 # For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
 #      - ./:/var/www/html:cached # User-guided caching
 #      - docker-sync:/var/www/html # Docker-sync
@@ -41,7 +37,6 @@ services:
     ports:
      - '8000:80'
      - '8444:443'
-#      - '8080:8080' # Dashboard
 
   mkdocs:
     container_name: "${PROJECT_NAME}_mkdocs"
