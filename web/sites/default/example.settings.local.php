@@ -1,15 +1,15 @@
 <?php
 
-$databases['default']['default'] = array (
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
+$databases['default']['default'] = [
+  'database' => getenv('DB_HOST'),
+  'username' => getenv('DB_USER'),
+  'password' => getenv('DB_PASSWORD'),
   'prefix' => '',
-  'host' => 'mariadb',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\' . getenv('DB_DRIVER'),
+  'driver' => getenv('DB_DRIVER'),
+];
 
 $config['config_split.config_split.local']['status'] = TRUE;
-$config['stage_file_proxy.settings']['origin'] = 'https://metadrop.net';
+$config['stage_file_proxy.settings']['origin'] = 'https://example.net';
