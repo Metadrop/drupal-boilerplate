@@ -1,0 +1,48 @@
+phpqa:
+  # default CLI options - https://github.com/EdgedesignCZ/phpqa#analyze
+  # can be overriden by CLI: phpqa --tools phpcs:1
+  analyzedDirs: web/modules/custom,web/themes/custom
+  buildDir: reports/codereview
+  ignoredDirs: vendor
+  ignoredFiles: "*.css"
+  report: false
+  execution: parallel
+  output: file
+  tools: phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0
+  # array definition and allowed errors count is supported too
+  # tools: [phploc, phpcs:0]
+  verbose: false
+
+  extensions:
+    - php
+    - module
+    - install
+    - theme
+
+phpcs:
+  standard: Drupal,DrupalPractice
+  reports:
+    file:
+      checkstyle: checkstyle-drupal.xml
+
+phpmd:
+  # alternatively you can use an array to define multiple rule sets (https://phpmd.org/documentation/index.html#using-multiple-rule-sets)
+  standard: phpmd.xml.dist
+
+phpcpd:
+  minLines: 5
+  minTokens: 70
+
+paralell-lint:
+  reports:
+    file:
+      checkstyle: checkstyle-parallel-lint.xml
+
+# !!! EXPERIMENTAL !!!
+# Beware that configuration or \Edge\QA\Tools\Tool might change (especially $SETTINGS is not stable :)
+# Use it for development of new tools, but not on production (you can add just a new tool, don't have to define all tools).
+tool:
+  phpcs: [Edge\QA\Tools\Analyzer\Phpcs, Edge\QA\Tools\Analyzer\PhpcsV3]
+  phpmd: Edge\QA\Tools\Analyzer\Phpmd
+  phpcpd: Edge\QA\Tools\Analyzer\Phpcpd
+  parallel-lint: Edge\QA\Tools\Analyzer\ParallelLint
