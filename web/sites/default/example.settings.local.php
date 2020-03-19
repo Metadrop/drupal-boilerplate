@@ -20,4 +20,4 @@ if (getenv('DB_NAME') != NULL) {
 }
 
 $config['config_split.config_split.local']['status'] = TRUE;
-$config['stage_file_proxy.settings']['origin'] = 'https://metadrop.net';
+
