@@ -68,7 +68,7 @@ The text-plain markdown format have the following advantages over other systems:
 - It's free.
 
 [Mkdocs official site](https://www.mkdocs.org/).
-    
+
 ### Grumphp and (do not) forget about coding standards.
 Because quality matters, the metadrop/drupal-boilerplate is delivered with [Grumphp](https://github.com/phpro/grumphp), 
 a tool to ensure developers follow the Drupal coding standards and best practices.
@@ -84,6 +84,18 @@ Grumphp is already configured (so you don't need to worry about that) making the
 - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer): Check if your code accomplish the following standards:
     - Drupal: The [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards).
     - DrupalPractice: Drupal best practices.
+
+### Phpqa
+
+If you want use the static analysis tools manually, 
+or you need to add it to your continuous integration system,
+there is a phpqa configuration for it.
+
+To run it, just run:
+
+```
+docker-compose exec php phpqa
+```
 
 ### Behavior Driven Development on natural language with Behat.
 Behavior Driven Development is supported on a natural language thanks to [Behat](https://docs.behat.org/en/latest/).
