@@ -5,7 +5,7 @@
  * Default configuration for local environments.
  */
 
-// Only setup database when env vars are available.
+/** Only setup database when env vars are available. */
 if (getenv('DB_NAME') != NULL) {
   $databases['default']['default'] = [
     'database' => getenv('DB_NAME'),
@@ -19,5 +19,43 @@ if (getenv('DB_NAME') != NULL) {
   ];
 }
 
+/** Config split environment. */
+//$config['config_split.config_split.ci']['status'] = TRUE;
 $config['config_split.config_split.local']['status'] = TRUE;
+//$config['config_split.config_split.dev']['status'] = TRUE;
+//$config['config_split.config_split.stg']['status'] = TRUE;
+//$config['config_split.config_split.pro']['status'] = TRUE;
 
+/** Trusted host configuration. */
+$settings['trusted_host_patterns'] = [
+  '^.+\.localhost$', # localhost access
+];
+
+/** === NO CACHE DEVELOPMENT === */
+//  /** Assertions. */
+//  assert_options(ASSERT_ACTIVE, TRUE);
+//  \Drupal\Component\Assertion\Handle::register();
+//  /** Enable local development services. */
+//  $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+//
+//  /** Show all error messages, with backtrace information. */
+//  $config['system.logging']['error_level'] = 'verbose';
+//
+//  /** Disable CSS and JS aggregation. */
+//  $config['system.performance']['css']['preprocess'] = FALSE;
+//  $config['system.performance']['js']['preprocess'] = FALSE;
+//
+//  /** Disable the render cache. */
+//  $settings['cache']['bins']['render'] = 'cache.backend.null';
+//
+//  /** Disable caching for migrations. */
+//  $settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
+//
+//  /** Disable Internal Page Cache. */
+//  $settings['cache']['bins']['page'] = 'cache.backend.null';
+//
+//  /** Disable Dynamic Page Cache. */
+//  $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+//
+//  /** Skip file system permissions hardening. */
+//  $settings['skip_permissions_hardening'] = TRUE;
