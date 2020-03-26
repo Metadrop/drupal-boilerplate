@@ -37,6 +37,12 @@ paralell-lint:
   reports:
     file:
       checkstyle: checkstyle-parallel-lint.xml
+
+drupal-check:
+  reports:
+    file:
+      checkstyle: checkstyle-drupal-check.xml
+
 # !!! EXPERIMENTAL !!!
 # Beware that configuration or \Edge\QA\Tools\Tool might change (especially $SETTINGS is not stable :)
 # Use it for development of new tools, but not on production (you can add just a new tool, don't have to define all tools).
@@ -45,3 +51,4 @@ tool:
   phpmd: Edge\QA\Tools\Analyzer\Phpmd
   phpcpd: Edge\QA\Tools\Analyzer\Phpcpd
   parallel-lint: Edge\QA\Tools\Analyzer\ParallelLint
+  drupal-check: PhpQaDrupalCheck\Tools\Analyzer\DrupalCheck
