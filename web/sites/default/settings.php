@@ -754,8 +754,8 @@ $settings['file_scan_ignore_directories'] = [
    include $app_root . '/' . $site_path . '/settings.local.php';
  }
 
-// Staging direcrtoy. Here it goes the configuration from dev to stg/pro.
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/default';
+// Staging directory. Here it goes the configuration from dev to stg/pro.
+$settings['config_sync_directory'] = '../config/default';
 
 // Configuration to be imported from pro to dev. Not usually used, but when
 // a change is made in the pro environment it's exported here and then devs can
