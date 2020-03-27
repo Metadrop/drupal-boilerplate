@@ -8,7 +8,7 @@ phpqa:
   report: false
   execution: parallel
   output: file
-  tools: phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0,drupal-check:0
+  tools: phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0
   # array definition and allowed errors count is supported too
   # tools: [phploc, phpcs:0]
   verbose: false
@@ -32,16 +32,14 @@ phpmd:
 phpcpd:
   minLines: 5
   minTokens: 70
+  names: "*.php,*.module,*.install,*.theme"
+
 
 paralell-lint:
   reports:
     file:
       checkstyle: checkstyle-parallel-lint.xml
 
-drupal-check:
-  reports:
-    file:
-      checkstyle: checkstyle-drupal-check.xml
 
 # !!! EXPERIMENTAL !!!
 # Beware that configuration or \Edge\QA\Tools\Tool might change (especially $SETTINGS is not stable :)
@@ -51,4 +49,3 @@ tool:
   phpmd: Edge\QA\Tools\Analyzer\Phpmd
   phpcpd: Edge\QA\Tools\Analyzer\Phpcpd
   parallel-lint: Edge\QA\Tools\Analyzer\ParallelLint
-  drupal-check: PhpQaDrupalCheck\Tools\Analyzer\DrupalCheck
