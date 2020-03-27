@@ -5,7 +5,7 @@
  * Default configuration for local environments.
  */
 
-/** Only setup database when env vars are available. */
+// Only setup database when env vars are available.
 if (getenv('DB_NAME') != NULL) {
   $databases['default']['default'] = [
     'database' => getenv('DB_NAME'),
