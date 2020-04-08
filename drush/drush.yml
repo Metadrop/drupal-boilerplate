@@ -8,7 +8,7 @@ drush:
   paths:
     # Load a drush.yml configuration file from the current working directory.
     config:
-      - web/sites/defaut/local.drush.yml
+      - web/sites/default/local.drush.yml
 command:
   sql:
     dump:
