@@ -134,6 +134,7 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
-        "composer-exit-on-patch-failure": true
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true
     }
 }
