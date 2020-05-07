@@ -85,7 +85,7 @@
         "metadrop/behat-contexts": "dev-master",
         "metadrop/grumphp-drupal-check": "^0.1",
         "metadrop/scripthor": "1.x-dev",
-        "mglaman/drupal-check": "^1.0.14",
+        "mglaman/drupal-check": "~1.0.14",
         "mikey179/vfsstream": "~1.2",
         "pdepend/pdepend": "^2.5",
         "phpmd/phpmd": "^2.6",
