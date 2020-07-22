@@ -12,7 +12,7 @@ default:
   suites:
     default:
       paths:
-        - %paths.base%/tests/behat/features/
+        - '%paths.base%/tests/behat/features/'
       filters:
         tags: "~@exclude"
       contexts:
