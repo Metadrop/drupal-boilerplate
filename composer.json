@@ -48,10 +48,10 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
-        "drupal/admin_toolbar": "^1.21",
+        "drupal/admin_toolbar": "^2.2",
         "drupal/config_split": "^1.3",
         "drupal/core": "~8.6",
-        "drupal/crop": "^1.3",
+        "drupal/crop": "^2.1",
         "drupal/ctools": "^3.0",
         "drupal/devel": "^2.1",
         "drupal/environment_indicator": "^3.2",
@@ -72,9 +72,11 @@
         "drupal/ui_patterns_settings": "^1.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^5.0@beta",
-        "drush/drush": "^9.0|^10.0"
+        "drush/drush": "^9.0|^10.0",
+        "edgedesign/phpqa": "^1.23"
     },
     "require-dev": {
+        "behat/mink": "~1.7.1",
         "bex/behat-step-time-logger": "^2.0",
         "edgedesign/phpqa": "^1.23",
         "drupal/coder": "^8.2",
@@ -84,7 +86,7 @@
         "metadrop/behat-contexts": "dev-master",
         "metadrop/grumphp-drupal-check": "^0.1",
         "metadrop/scripthor": "1.x-dev",
-        "mglaman/drupal-check": "^1.0",
+        "mglaman/drupal-check": "~1.0.14",
         "mikey179/vfsstream": "~1.2",
         "pdepend/pdepend": "^2.5",
         "phpmd/phpmd": "^2.6",
@@ -100,7 +102,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "discard-changes": true
     },
     "autoload": {
         "classmap": [
@@ -116,12 +119,10 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "./vendor/metadrop/scripthor/create-symlinks.sh"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "./vendor/metadrop/scripthor/create-symlinks.sh"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
@@ -133,6 +134,7 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
-        "composer-exit-on-patch-failure": true
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true
     }
 }

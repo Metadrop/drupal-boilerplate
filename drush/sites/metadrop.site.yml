@@ -5,7 +5,7 @@ docker:
       exec:
         options: --user wodby
   root: '/var/www/html'
-  user: 'vagrant'
+  user: 'wodby'
 
 pro:
   uri: 'example.com'

@@ -19,7 +19,7 @@
 
 # Ignore paths that contain user-generated content.
 /web/sites/*/files
-/web/sites/*/private
+/private-files/*
 
 web/sites/*/translations/*
 
@@ -56,7 +56,7 @@ node_modules/
 /tmp/*
 
 # Ignore docker-compose env specific settings.
-docker-compose.override.yml
+/docker-compose.override.yml
 
 # Ensure .gitkeep files are commited so folder structure get respected.
 !.gitkeep
