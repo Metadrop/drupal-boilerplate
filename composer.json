@@ -78,6 +78,7 @@
     "require-dev": {
         "behat/mink": "~1.7.1",
         "bex/behat-step-time-logger": "^2.0",
+        "edgedesign/phpqa": "^1.23",
         "drupal/coder": "^8.2",
         "drupal/drupal-extension": "^3.4",
         "jcalderonzumba/gastonjs": "~1.0.2",
