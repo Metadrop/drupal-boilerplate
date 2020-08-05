@@ -29,15 +29,20 @@ class ScriptHandler {
 
     // Required for unit testing
     foreach ($dirs as $dir) {
-      if (!$fs->exists($drupalRoot . '/'. $dir)) {
-        $fs->mkdir($drupalRoot . '/'. $dir);
-        $fs->touch($drupalRoot . '/'. $dir . '/.gitkeep');
+      $dirPath = $drupalRoot . '/'. $dir;
+      if (!$fs->exists($dirPath)) {
+        $fs->mkdir($dirPath);
+        $fs->touch($dirPath . '/.gitkeep');
       }
     }
 
+    // Calculate settings path.
+    $settingsFilepath = $drupalRoot . '/sites/default/settings.php';
+    $defaultSettingsFilepath = $drupalRoot . '/sites/default/default.settings.php';
+
     // Prepare the settings file for installation
-    if (!$fs->exists($drupalRoot . '/sites/default/settings.php') and $fs->exists($drupalRoot . '/sites/default/default.settings.php')) {
-      $fs->copy($drupalRoot . '/sites/default/default.settings.php', $drupalRoot . '/sites/default/settings.php');
+    if (!$fs->exists($settingsFilepath) and $fs->exists($defaultSettingsFilepath)) {
+      $fs->copy($defaultSettingsFilepath, $settingsFilepath);
       require_once $drupalRoot . '/core/includes/bootstrap.inc';
       require_once $drupalRoot . '/core/includes/install.inc';
       $settings['config_directories'] = [
@@ -46,15 +51,16 @@ class ScriptHandler {
           'required' => TRUE,
         ],
       ];
-      drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
-      $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
+      drupal_rewrite_settings($settings, $settingsFilepath);
+      $fs->chmod($settingsFilepath, 0666);
       $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
     }
 
     // Create the files directory with chmod 0777
-    if (!$fs->exists($drupalRoot . '/sites/default/files')) {
+    $filesDirPath = $drupalRoot . '/sites/default/files';
+    if (!$fs->exists($filesDirPath)) {
       $oldmask = umask(0);
-      $fs->mkdir($drupalRoot . '/sites/default/files', 0777);
+      $fs->mkdir($filesDirPath, 0777);
       umask($oldmask);
       $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
     }
