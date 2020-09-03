@@ -72,8 +72,7 @@
         "drupal/ui_patterns_settings": "^1.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^5.0@beta",
-        "drush/drush": "^9.0|^10.0",
-        "edgedesign/phpqa": "^1.23"
+        "drush/drush": "^9.0|^10.0"
     },
     "require-dev": {
         "behat/mink": "~1.7.1",
