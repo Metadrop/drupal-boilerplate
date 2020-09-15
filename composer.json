@@ -37,10 +37,6 @@
         {
             "type": "vcs",
             "url": "https://git.drupalcode.org/sandbox/desarrollo2.0-3097360.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/pdureau/ui_patterns_field_formatters.git"
         }
     ],
     "require": {
@@ -68,7 +64,7 @@
         "drupal/simple_sitemap": "^2.11",
         "drupal/stage_file_proxy": "^1.0",
         "drupal/styleguide": "^1.0@alpha",
-        "drupal/ui_patterns_field_formatters": "dev-master",
+        "drupal/ui_patterns_field_formatters": "^1.0",
         "drupal/ui_patterns_settings": "^1.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^5.0@beta",
