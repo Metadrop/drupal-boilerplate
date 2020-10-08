@@ -11,3 +11,5 @@ nav:
   - Others:
     - MkDocs: others/mkdocs.md
     - Composer Drupal project: others/composer-drupal-project.md
+markdown_extensions:
+  - admonition
