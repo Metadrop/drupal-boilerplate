@@ -12,7 +12,7 @@ Feature: As a Administrator
 
   @sunnyday @api @administrator @article @delete
   Scenario: Simple Article delete
-    When I go to "delete" of the last entity "node" with "article" bundle created
+    When I go to "delete" of the "node" entity with label "Behat article test"
     Then I should see "This action cannot be undone."
     Then I should see "Delete"
     When I press the "Delete" button
