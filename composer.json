@@ -73,7 +73,6 @@
     },
     "require-dev": {
         "bex/behat-step-time-logger": "^2.0",
-        "consolidation/robo": "^1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/coder": "^8.3",
         "jcalderonzumba/gastonjs": "^1.2",
