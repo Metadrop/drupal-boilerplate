@@ -153,6 +153,58 @@ your choice.
 We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve
 the needs of different areas such as SEO, security, content editing, themming or deployments across different environments.
 
+### Stylelint css
+[Stylelint](https://stylelint.io/) A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
+
+#### Installation
+* Install stylelint as dependency on your custom theme folder
+
+      npm i stylelint --save-dev
+
+* Install stylelint scss plugin
+
+      npm i stylelint-scss --save-dev
+
+* Run stylelint checker
+
+      npx stylelint 'src/**/*.scss'
+ 
+* You can run stylelint from npm  
+Add to the package.json the following script:  
+```
+  "scripts": {
+...
+    "css:lint": "npx stylelint 'src/**/*.scss'"
+...
+```
+Execute the following command
+```
+npm run css:lint
+```
+
+* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules)
+
+* If you use webpack you can add stylelint to your `webpack.mix.js`  
+Install webpack stylelint plugin:
+```
+npm i stylelint-webpack-plugin --save-dev
+```
+Add the following lines to the webpack file.
+```
+const stylelint = require('laravel-mix-stylelint');
+
+...
+
+mix
+  .stylelint({
+    configFile: path.join(__dirname, '.stylelintrc.yml'),
+    context: './src',
+    failOnError: false,
+    files: ['**/*.scss'],
+    fix: true,
+  })
+```
+
 ## Installation
 
 To create a new project based on this boilerplate, the recommended method is using composer create-project:
