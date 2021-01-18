@@ -34,12 +34,10 @@ phpcpd:
   minTokens: 70
   names: "*.php,*.module,*.install,*.theme"
 
-
 paralell-lint:
   reports:
     file:
       checkstyle: checkstyle-parallel-lint.xml
-
 
 # !!! EXPERIMENTAL !!!
 # Beware that configuration or \Edge\QA\Tools\Tool might change (especially $SETTINGS is not stable :)

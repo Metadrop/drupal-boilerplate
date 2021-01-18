@@ -12,9 +12,9 @@ The stack is configured as follows:
 | --------------  | ---------------------- | --------------- | --------------- | ---------------------------------- | ------------------ |
 | Nginx           | 1.19, 1.18             | 1.19            | `nginx`         | [wodby/nginx]                      | ✓                  |
 | Apache          | 2.4                    | 2.4             | `apache`        | [wodby/apache]                     |                    |
-| PHP             | 7.4, 7.3, 7.2          | 7.4             | `php`           | [wodby/drupal-php]                 | ✓                  |
-| MariaDB         | 10.4, 10.3, 10.2, 10.1 | 10.4            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
-| PostgreSQL      | 12, 11, 10, 9.x        | 12              |` postgres`      | [wodby/postgres]                   |                    |
+| PHP             | 8.0, 7.4, 7.3, 7.2     | 7.4             | `php`           | [wodby/drupal-php]                 | ✓                  |
+| MariaDB         | 10.5, 10.4, 10.3, 10.2 | 10.5            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
+| PostgreSQL      | 13, 12, 11, 10, 9.x    | 13              |` postgres`      | [wodby/postgres]                   |                    |
 | Redis           | 6, 5                   | 6               |` redis`         | [wodby/redis]                      |                    |
 | Memcached       | 1                      | 1               |` memcached`     | [wodby/memcached]                  |                    |
 | Varnish         | 6.0, 4.1               | 6.0             |` varnish`       | [wodby/varnish]                    |                    |
@@ -25,17 +25,19 @@ The stack is configured as follows:
 | Kibana          | 7, 6                   | 7               |` kibana`        | [wodby/kibana]                     |                    |
 | OpenSMTPD       | 6.0                    | 6.0             | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
 | Mailhog         | latest                 | latest          | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
-| AthenaPDF       | 2.10.0                 | 2.10.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
+| AthenaPDF       | 2.16.0                 | 2.16.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
 | Rsyslog         | latest                 | latest          | `rsyslog`       | [wodby/rsyslog]                    |                    |
 | Blackfire       | latest                 | latest          | `blackfire`     | [blackfire/blackfire]              |                    |
-| Webgrind        | 1.5                    | 1.5             | `webgrind`      | [wodby/webgrind]                   |                    |
+| Webgrind        | 1.8                    | 1.8             | `webgrind`      | [wodby/webgrind]                   |                    |
 | Xhprof viewer   | latest                 | latest          | `xhprof`        | [wodby/xhprof]                     |                    |
-| Adminer         | 4.15                   | 4.15            | `adminer`       | [wodby/adminer]                    | ✓                  |
+| Adminer         | 4                      | 4               | `adminer`       | [wodby/adminer]                    | ✓                  |
 | phpMyAdmin      | latest                 | latest          | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
 | Selenium chrome | 3.141                  | 3.141           | `chrome`        | [selenium/node-chrome]             | ✓                  |
 | Selenium hub    | 3.141                  | 3.141           | `hub   `        | [selenium/hub]                     | ✓                  |
 | Traefik         | v2.0                   | v2.0            | `traefik`       | [_/traefik]                        | ✓                  |
 | Mkdocs          | latest                 | latest          | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
+| Portainer       | latest                 | latest          | `portainer`     | [portainer/portainer]              | ✓                  |
+| BackstopJS      | 4.4                    | 4.4             | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
 This is done with the purpose of differencing the local environment stack from the CI environment stack.
@@ -75,6 +77,11 @@ a tool to ensure developers follow the Drupal coding standards and best practice
 To make your projects fit the highest quality assurance, a git-hook is automatically installed so is not possible to
 commit any change without accomplishing those quality requirements.
 Grumphp is already configured (so you don't need to worry about that) making the following quality checks:
+- [Git commit message](https://github.com/phpro/grumphp/blob/master/doc/tasks/git_commit_message.md):
+  - Ensures that the commit message subject line doesn't have a trailing period.
+  - Ensures that the commit message subject match with `Issue #[0-9]: Subject` format.
+  - Max subject width 130.
+
 - [phplint](https://github.com/overtrue/phplint): Detects PHP files syntax errors.
 - yamllint: Detects YAML files syntax errors.
 - composer: Perform composer.json and composer.lock validation.
@@ -129,9 +136,120 @@ Til today, we provide the following scripts:
 it will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of
 your choice.
 
+### Backstopjs
+[BackstopJS](https://github.com/garris/BackstopJS) automates visual regression testing of your responsive web UI by comparing DOM screenshots over time.
+
+* [Documentation](https://github.com/garris/BackstopJS#using-backstopjs)
+
+* Generate references:
+
+      make backstopjs-reference
+
+* Run regressions tests:
+
+      make backstopjs-test
+
 ### Buffet of selected modules
 We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve
 the needs of different areas such as SEO, security, content editing, themming or deployments across different environments.
+
+### Stylelint css
+[Stylelint](https://stylelint.io/) A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
+
+### Installation
+* Install stylelint as dependency on your custom theme folder
+
+      npm i stylelint --save-dev
+
+* Install stylelint scss plugin
+
+      npm i stylelint-scss --save-dev
+
+* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules)
+
+      # @TODO: Needs to be defined a standard base
+      # Base on stylelint-config-recommended
+      plugins:
+      - stylelint-scss
+        rules:
+      # Rules references https://stylelint.io/user-guide/rules/list
+      color-no-invalid-hex: true
+      font-family-no-duplicate-names : true
+      font-family-no-missing-generic-family-keyword: true
+      function-calc-no-invalid: true
+      # function-calc-no-unspaced-operator: true,
+      function-linear-gradient-no-nonstandard-direction: true
+      string-no-newline: true
+      unit-no-unknown: true
+      property-no-unknown: true
+      keyframe-declaration-no-important: true
+      # declaration-block-no-duplicate-properties: [
+      #   true,
+      #   {
+      #     ignore: [consecutive-duplicates-with-different-values]
+      #   }
+      # ],
+      # declaration-block-no-shorthand-property-overrides: true,
+      block-no-empty: true
+      selector-pseudo-class-no-unknown: true
+      selector-pseudo-element-no-unknown: true
+      selector-type-no-unknown: true
+      media-feature-name-no-unknown: true
+      comment-no-empty: true
+      # Uncommenting this is hell
+      # no-descending-specificity: true,
+      no-duplicate-at-import-rules: true
+      no-duplicate-selectors: true
+      no-empty-source: true
+      no-extra-semicolons: true
+      no-invalid-double-slash-comments: true
+
+      # SCSS-specific
+      scss/at-rule-no-unknown: true
+      scss/at-each-key-value-single-line: true
+      scss/at-extend-no-missing-placeholder: true
+      scss/at-function-parentheses-space-before: 'never'
+      # scss/comment-no-empty: true
+      # scss/dimension-no-non-numeric-values: true
+      # scss/no-duplicate-mixins: true
+
+* Run stylelint checker
+
+      npx stylelint 'src/**/*.scss'
+
+* You can run stylelint from npm  
+  Add to the package.json the following script:
+```
+  "scripts": {
+...
+    "css:lint": "npx stylelint 'src/**/*.scss'"
+...
+```
+Then execute the following command
+```
+npm run css:lint
+```
+
+* If you use webpack you can add stylelint to your `webpack.mix.js`  
+  Install webpack stylelint plugin:
+```
+npm i stylelint-webpack-plugin --save-dev
+```
+Then add the following lines to the webpack file.
+```
+const stylelint = require('laravel-mix-stylelint');
+
+...
+
+mix
+  .stylelint({
+    configFile: path.join(__dirname, '.stylelintrc.yml'),
+    context: './src',
+    failOnError: false,
+    files: ['**/*.scss'],
+    fix: true,
+  })
+```
 
 ## Installation
 

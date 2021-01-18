@@ -32,14 +32,22 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    */
   protected $responsiveContext;
 
-  static protected $permissions = [
-    /*"grant" => [
-      "edit any article content" => [RoleInterface::ANONYMOUS_ID],
-    ],
-    "revoke" => [
-      "access content" => [RoleInterface::ANONYMOUS_ID],
-    ],*/
-  ];
+  /**
+   * Permissions to grant and revoke on before and after suite.
+   *
+   * @code
+   * $permissions = [
+   *   "grant" => [
+   *      "edit any article content" => [RoleInterface::ANONYMOUS_ID],
+   *   ],
+   *   "revoke" => [
+   *     "access content" => [RoleInterface::ANONYMOUS_ID],
+   *   ],
+   * ];
+   *
+   * @var array
+   */
+  static protected $permissions = [];
 
   /**
    * Sets User permissions

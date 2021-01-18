@@ -12,7 +12,7 @@ Feature: As an Administrator
 
   @sunnyday @api @administrator @page @delete
   Scenario: Simple Page delete
-    When I go to "delete" of the last entity "node" with "page" bundle created
+    When I go to "delete" of the "node" entity with label "Behat page test"
     Then I should see "This action cannot be undone."
     Then I should see "Delete"
     When I press the "Delete" button

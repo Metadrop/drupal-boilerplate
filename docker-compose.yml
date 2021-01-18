@@ -1,4 +1,4 @@
-version: "3.6"
+version: "3.7"
 
 services:
   mariadb:
@@ -30,12 +30,21 @@ services:
       PHP_FPM_GROUP: wodby
       # Set 80 columns for docker exec -it.
       COLUMNS: 80
-## PHPUnit Drupal testing configurations.
+#      # PHPUnit Drupal testing configurations
 #      SIMPLETEST_BASE_URL: "http://nginx"
 #      SIMPLETEST_DB: "${DB_DRIVER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}#tests_"
 #      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html:cached
+
+#  crond:
+#    image: wodby/drupal-php:$PHP_TAG
+#    container_name: "${PROJECT_NAME}_crond"
+#    environment:
+#      CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
+#    command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
+#    volumes:
+#      - ./:/var/www/html:cached
 
   nginx:
     image: wodby/nginx:$NGINX_TAG
@@ -50,7 +59,9 @@ services:
       NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
 #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html:cached
+#       # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+#      - mutagen:/var/www/html
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
 
@@ -77,10 +88,10 @@ services:
 #      APACHE_VHOST_PRESET: php
 #      APACHE_DOCUMENT_ROOT: /var/www/html/web
 #    volumes:
-#      - ./:/var/www/html
-## For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
-##      - ./:/var/www/html:cached # User-guided caching
-##      - docker-sync:/var/www/html # Docker-sync
+#      - ./:/var/www/html:cached
+#       # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+#      - mutagen:/var/www/html
+
 #    labels:
 #      - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
 
@@ -110,8 +121,7 @@ services:
 #      PMA_HOST: $DB_HOST
 #      PMA_USER: $DB_USER
 #      PMA_PASSWORD: $DB_PASSWORD
-#      PHP_UPLOAD_MAX_FILESIZE: 1G
-#      PHP_MAX_INPUT_VARS: 1G
+#      UPLOAD_LIMIT: 1G
 #    labels:
 #      - "traefik.http.routers.${PROJECT_NAME}_pma.rule=Host(`pma.${PROJECT_BASE_URL}`)"
 
@@ -122,6 +132,7 @@ services:
 #      SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
 #      SOLR_HEAP: 1024m
 #    labels:
+#      - "traefik.http.services.${PROJECT_NAME}_solr.loadbalancer.server.port=8983"
 #      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
 
 #  drupal-node:
@@ -165,8 +176,10 @@ services:
       - "3000"
     volumes:
       - ./:/var/www/html
+    command:
+      - sh -c 'yarn install && yarn run start'
     # This command is used to keep the node container alive.
-    command: tail -f /dev/null
+      - tail -f /dev/null
 
 #  blackfire:
 #    image: blackfire/blackfire
@@ -179,7 +192,7 @@ services:
 #    image: wodby/webgrind:$WEBGRIND_TAG
 #    container_name: "${PROJECT_NAME}_webgrind"
 #    environment:
-#      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug/profiler
+#      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug
 #    labels:
 #      - "traefik.http.routers.${PROJECT_NAME}_webgrind.rule=Host(`webgrind.${PROJECT_BASE_URL}`)"
 #    volumes:
@@ -187,6 +200,7 @@ services:
 
 #  elasticsearch:
 #    image: wodby/elasticsearch:$ELASTICSEARCH_TAG
+#    container_name: "${PROJECT_NAME}_elasticsearch"
 #    environment:
 #      ES_JAVA_OPTS: "-Xms500m -Xmx500m"
 #    ulimits:
@@ -196,6 +210,7 @@ services:
 
 #  kibana:
 #    image: wodby/kibana:$KIBANA_TAG
+#    container_name: "${PROJECT_NAME}_kibana"
 #    depends_on:
 #      - elasticsearch
 #    labels:
@@ -208,11 +223,21 @@ services:
 
 #  xhprof:
 #    image: wodby/xhprof:$XHPROF_TAG
+#    container_name: "${PROJECT_NAME}_xhprof"
 #    restart: always
 #    volumes:
 #      - files:/mnt/files
 #    labels:
 #      - "traefik.http.routers.${PROJECT_NAME}_xhprof.rule=Host(`xhprof.${PROJECT_BASE_URL}`)"
+
+  portainer:
+    image: portainer/portainer
+    container_name: "${PROJECT_NAME}_portainer"
+    command: --no-auth -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_portainer.rule=Host(`portainer.${PROJECT_BASE_URL}`)"
 
   traefik:
     image: traefik:$TRAEFIK_TAG
@@ -241,16 +266,6 @@ services:
       - HUB_HOST=hub
 #      - HUB_PORT=4444
 
-  #firefox:
-  #  image: selenium/node-firefox:3.141.59-neon
-  #  volumes:
-  #    - /dev/shm:/dev/shm
-  #  depends_on:
-  #    - selenium-hub
-  #  environment:
-  #    - HUB_HOST=selenium-hub
-  #    - HUB_PORT=4444
-
   phantomjs:
     image: wernight/phantomjs:${PHANTOMJS_VERSION}
     container_name: "${PROJECT_NAME}_phantomjs"
@@ -268,3 +283,22 @@ services:
     labels:
       - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
       - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+
+#  mutagen:
+#    build:
+#      context: .
+#      dockerfile: mutagen/Dockerfile
+#    init: true
+#    container_name: "mutagen"
+#    volumes:
+#    - mutagen:/var/www/html
+
+
+  backstopjs:
+    image: backstopjs/backstopjs:${BACKSTOPJS_TAG}
+    container_name: "${PROJECT_NAME}_backstop"
+    working_dir: '/src'
+    volumes:
+      - ./tests/backstopjs:/src # User-guided caching
+    entrypoint: []
+    command: tail -F /dev/null
