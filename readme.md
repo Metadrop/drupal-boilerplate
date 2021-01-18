@@ -75,6 +75,11 @@ a tool to ensure developers follow the Drupal coding standards and best practice
 To make your projects fit the highest quality assurance, a git-hook is automatically installed so is not possible to
 commit any change without accomplishing those quality requirements.
 Grumphp is already configured (so you don't need to worry about that) making the following quality checks:
+- [Git commit message](https://github.com/phpro/grumphp/blob/master/doc/tasks/git_commit_message.md):
+  - Ensures that the commit message subject line doesn't have a trailing period.
+  - Ensures that the commit message subject match with `Issue #[0-9]: Subject` format.
+  - Max subject width 130.
+
 - [phplint](https://github.com/overtrue/phplint): Detects PHP files syntax errors.
 - yamllint: Detects YAML files syntax errors.
 - composer: Perform composer.json and composer.lock validation.
