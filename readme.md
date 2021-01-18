@@ -37,6 +37,7 @@ The stack is configured as follows:
 | Traefik         | v2.0                   | v2.0            | `traefik`       | [_/traefik]                        | ✓                  |
 | Mkdocs          | latest                 | latest          | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
 | Portainer       | latest                 | latest          | `portainer`     | [portainer/portainer]              | ✓                  |
+| BackstopJS      | 4.4                    | 4.4             | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
 This is done with the purpose of differencing the local environment stack from the CI environment stack.
@@ -134,6 +135,19 @@ Til today, we provide the following scripts:
 - **copy-content-config-entity-to-module.sh**: For a given content entity (content type, paragraph, custom block type...)
 it will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of
 your choice.
+
+### Backstopjs
+[BackstopJS](https://github.com/garris/BackstopJS) automates visual regression testing of your responsive web UI by comparing DOM screenshots over time.
+
+* [Documentation](https://github.com/garris/BackstopJS#using-backstopjs)
+
+* Generate references:
+
+      make backstopjs-reference
+
+* Run regressions tests:
+
+      make backstopjs-test
 
 ### Buffet of selected modules
 We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve

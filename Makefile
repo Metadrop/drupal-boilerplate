@@ -22,3 +22,8 @@ ngrok-stop:
 frontend:
 	docker-compose exec node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
+backstopjs-reference:
+	docker-compose exec backstopjs backstop reference
+
+backstopjs-test:
+	docker-compose exec backstopjs backstop test

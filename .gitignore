@@ -53,6 +53,10 @@ node_modules/
 /reports/behat/junit/*
 /reports/codereview/*
 
+# BackstopJS
+/tests/backstopjs/backstop_data/html_report
+/tests/backstopjs/backstop_data/bitmaps_test
+
 # Temporary files
 /tmp/*
 

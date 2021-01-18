@@ -292,3 +292,13 @@ services:
 #    container_name: "mutagen"
 #    volumes:
 #    - mutagen:/var/www/html
+
+
+  backstopjs:
+    image: backstopjs/backstopjs:$BACKSTOPJS_TAG
+    container_name: "${PROJECT_NAME}_backstop"
+    working_dir: '/src'
+    volumes:
+      - ./tests/backstopjs:/src # User-guided caching
+    entrypoint: []
+    command: tail -F /dev/null
