@@ -68,10 +68,10 @@
         "drupal/styleguide": "^2.0@beta",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^6.0@alpha",
-        "drush/drush": "^10.3",
-        "edgedesign/phpqa": "^1.23"
+        "drush/drush": "^10.3"
     },
     "require-dev": {
+        "edgedesign/phpqa": "^1.23",
         "bex/behat-step-time-logger": "^2.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/coder": "^8.3",
