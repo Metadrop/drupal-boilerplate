@@ -56,7 +56,7 @@ services:
       ADMINER_DEFAULT_DB_HOST: $DB_HOST
       ADMINER_DEFAULT_DB_NAME: $DB_NAME
     labels:
-    - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
+      - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
 #volumes:
 ## For macOS users (Mutagen)
