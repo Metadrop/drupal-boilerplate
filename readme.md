@@ -156,7 +156,7 @@ the needs of different areas such as SEO, security, content editing, themming or
 ### Stylelint css
 [Stylelint](https://stylelint.io/) A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
 
-#### Installation
+### Installation
 * Install stylelint as dependency on your custom theme folder
 
       npm i stylelint --save-dev
@@ -165,31 +165,77 @@ the needs of different areas such as SEO, security, content editing, themming or
 
       npm i stylelint-scss --save-dev
 
+* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules)
+
+      # @TODO: Needs to be defined a standard base
+      # Base on stylelint-config-recommended
+      plugins:
+      - stylelint-scss
+        rules:
+      # Rules references https://stylelint.io/user-guide/rules/list
+      color-no-invalid-hex: true
+      font-family-no-duplicate-names : true
+      font-family-no-missing-generic-family-keyword: true
+      function-calc-no-invalid: true
+      # function-calc-no-unspaced-operator: true,
+      function-linear-gradient-no-nonstandard-direction: true
+      string-no-newline: true
+      unit-no-unknown: true
+      property-no-unknown: true
+      keyframe-declaration-no-important: true
+      # declaration-block-no-duplicate-properties: [
+      #   true,
+      #   {
+      #     ignore: [consecutive-duplicates-with-different-values]
+      #   }
+      # ],
+      # declaration-block-no-shorthand-property-overrides: true,
+      block-no-empty: true
+      selector-pseudo-class-no-unknown: true
+      selector-pseudo-element-no-unknown: true
+      selector-type-no-unknown: true
+      media-feature-name-no-unknown: true
+      comment-no-empty: true
+      # Uncommenting this is hell
+      # no-descending-specificity: true,
+      no-duplicate-at-import-rules: true
+      no-duplicate-selectors: true
+      no-empty-source: true
+      no-extra-semicolons: true
+      no-invalid-double-slash-comments: true
+
+      # SCSS-specific
+      scss/at-rule-no-unknown: true
+      scss/at-each-key-value-single-line: true
+      scss/at-extend-no-missing-placeholder: true
+      scss/at-function-parentheses-space-before: 'never'
+      # scss/comment-no-empty: true
+      # scss/dimension-no-non-numeric-values: true
+      # scss/no-duplicate-mixins: true
+
 * Run stylelint checker
 
       npx stylelint 'src/**/*.scss'
- 
+
 * You can run stylelint from npm  
-Add to the package.json the following script:  
+  Add to the package.json the following script:
 ```
   "scripts": {
 ...
     "css:lint": "npx stylelint 'src/**/*.scss'"
 ...
 ```
-Execute the following command
+Then execute the following command
 ```
 npm run css:lint
 ```
 
-* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules)
-
 * If you use webpack you can add stylelint to your `webpack.mix.js`  
-Install webpack stylelint plugin:
+  Install webpack stylelint plugin:
 ```
 npm i stylelint-webpack-plugin --save-dev
 ```
-Add the following lines to the webpack file.
+Then add the following lines to the webpack file.
 ```
 const stylelint = require('laravel-mix-stylelint');
 
