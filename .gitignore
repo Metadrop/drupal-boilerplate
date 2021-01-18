@@ -33,6 +33,7 @@ web/sites/*/translations/*
 
 # IDE related directories.
 /nbproject/private/
+.idea
 
 # Database and compressed files.
 *.mysql
