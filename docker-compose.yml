@@ -176,7 +176,10 @@ services:
       - "3000"
     volumes:
       - ./:/var/www/html
-    command: sh -c 'yarn install && yarn run start'
+    command:
+      - sh -c 'yarn install && yarn run start'
+    # This command is used to keep the node container alive.
+      - tail -f /dev/null
 
 #  blackfire:
 #    image: blackfire/blackfire
@@ -262,16 +265,6 @@ services:
     environment:
       - HUB_HOST=hub
 #      - HUB_PORT=4444
-
-  #firefox:
-  #  image: selenium/node-firefox:3.141.59-neon
-  #  volumes:
-  #    - /dev/shm:/dev/shm
-  #  depends_on:
-  #    - selenium-hub
-  #  environment:
-  #    - HUB_HOST=selenium-hub
-  #    - HUB_PORT=4444
 
   phantomjs:
     image: wernight/phantomjs:${PHANTOMJS_VERSION}
