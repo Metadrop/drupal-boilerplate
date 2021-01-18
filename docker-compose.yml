@@ -295,7 +295,7 @@ services:
 
 
   backstopjs:
-    image: backstopjs/backstopjs:$BACKSTOPJS_TAG
+    image: backstopjs/backstopjs:${BACKSTOPJS_TAG}
     container_name: "${PROJECT_NAME}_backstop"
     working_dir: '/src'
     volumes:
