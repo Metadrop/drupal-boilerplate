@@ -12,9 +12,9 @@ The stack is configured as follows:
 | --------------  | ---------------------- | --------------- | --------------- | ---------------------------------- | ------------------ |
 | Nginx           | 1.19, 1.18             | 1.19            | `nginx`         | [wodby/nginx]                      | ✓                  |
 | Apache          | 2.4                    | 2.4             | `apache`        | [wodby/apache]                     |                    |
-| PHP             | 7.4, 7.3, 7.2          | 7.4             | `php`           | [wodby/drupal-php]                 | ✓                  |
-| MariaDB         | 10.4, 10.3, 10.2, 10.1 | 10.4            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
-| PostgreSQL      | 12, 11, 10, 9.x        | 12              |` postgres`      | [wodby/postgres]                   |                    |
+| PHP             | 8.0, 7.4, 7.3, 7.2     | 7.4             | `php`           | [wodby/drupal-php]                 | ✓                  |
+| MariaDB         | 10.5, 10.4, 10.3, 10.2 | 10.5            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
+| PostgreSQL      | 13, 12, 11, 10, 9.x    | 13              |` postgres`      | [wodby/postgres]                   |                    |
 | Redis           | 6, 5                   | 6               |` redis`         | [wodby/redis]                      |                    |
 | Memcached       | 1                      | 1               |` memcached`     | [wodby/memcached]                  |                    |
 | Varnish         | 6.0, 4.1               | 6.0             |` varnish`       | [wodby/varnish]                    |                    |
@@ -25,17 +25,19 @@ The stack is configured as follows:
 | Kibana          | 7, 6                   | 7               |` kibana`        | [wodby/kibana]                     |                    |
 | OpenSMTPD       | 6.0                    | 6.0             | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
 | Mailhog         | latest                 | latest          | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
-| AthenaPDF       | 2.10.0                 | 2.10.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
+| AthenaPDF       | 2.16.0                 | 2.16.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
 | Rsyslog         | latest                 | latest          | `rsyslog`       | [wodby/rsyslog]                    |                    |
 | Blackfire       | latest                 | latest          | `blackfire`     | [blackfire/blackfire]              |                    |
-| Webgrind        | 1.5                    | 1.5             | `webgrind`      | [wodby/webgrind]                   |                    |
+| Webgrind        | 1.8                    | 1.8             | `webgrind`      | [wodby/webgrind]                   |                    |
 | Xhprof viewer   | latest                 | latest          | `xhprof`        | [wodby/xhprof]                     |                    |
-| Adminer         | 4.15                   | 4.15            | `adminer`       | [wodby/adminer]                    | ✓                  |
+| Adminer         | 4                      | 4               | `adminer`       | [wodby/adminer]                    | ✓                  |
 | phpMyAdmin      | latest                 | latest          | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
 | Selenium chrome | 3.141                  | 3.141           | `chrome`        | [selenium/node-chrome]             | ✓                  |
 | Selenium hub    | 3.141                  | 3.141           | `hub   `        | [selenium/hub]                     | ✓                  |
 | Traefik         | v2.0                   | v2.0            | `traefik`       | [_/traefik]                        | ✓                  |
 | Mkdocs          | latest                 | latest          | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
+| Portainer       | latest                 | latest          | `portainer`     | [portainer/portainer]              | ✓                  |
+| BackstopJS      | 4.4                    | 4.4             | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
 This is done with the purpose of differencing the local environment stack from the CI environment stack.
@@ -75,6 +77,11 @@ a tool to ensure developers follow the Drupal coding standards and best practice
 To make your projects fit the highest quality assurance, a git-hook is automatically installed so is not possible to
 commit any change without accomplishing those quality requirements.
 Grumphp is already configured (so you don't need to worry about that) making the following quality checks:
+- [Git commit message](https://github.com/phpro/grumphp/blob/master/doc/tasks/git_commit_message.md):
+  - Ensures that the commit message subject line doesn't have a trailing period.
+  - Ensures that the commit message subject match with `Issue #[0-9]: Subject` format.
+  - Max subject width 130.
+
 - [phplint](https://github.com/overtrue/phplint): Detects PHP files syntax errors.
 - yamllint: Detects YAML files syntax errors.
 - composer: Perform composer.json and composer.lock validation.
@@ -128,6 +135,19 @@ Til today, we provide the following scripts:
 - **copy-content-config-entity-to-module.sh**: For a given content entity (content type, paragraph, custom block type...)
 it will take the entity definition, all its fields, form configuration and view modes and will copy them to the module of
 your choice.
+
+### Backstopjs
+[BackstopJS](https://github.com/garris/BackstopJS) automates visual regression testing of your responsive web UI by comparing DOM screenshots over time.
+
+* [Documentation](https://github.com/garris/BackstopJS#using-backstopjs)
+
+* Generate references:
+
+      make backstopjs-reference
+
+* Run regressions tests:
+
+      make backstopjs-test
 
 ### Buffet of selected modules
 We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve

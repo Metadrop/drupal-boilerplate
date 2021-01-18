@@ -17,14 +17,14 @@ Feature: As a Administrator
 
   @sunnyday @api @administrator @article @edit
   Scenario: Simple Article edit
-    When I go to "edit" of the last entity "node" with "article" bundle created
+    When I go to "edit" of the "node" entity with label "Behat article test"
     And I fill in "Title" with "Behat article test edited"
     And I press the "Save" button
     Then I should see "Behat article test edited"
 
   @error @api @administrator @article @edit
   Scenario: Article edit
-    When I go to "edit" of the last entity "node" with "article" bundle created
+    When I go to "edit" of the "node" entity with label "Behat article test"
     And I fill in "Title" with ""
     And I press the "Save" button
     And I should see "Title field is required."
