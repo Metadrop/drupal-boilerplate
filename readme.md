@@ -120,7 +120,7 @@ Here are the bundled libraries:
 If you want to execute every behat tests just run:
 ```
 docker-compose exec php behat
-``
+```
 
 ### Unit testing with phpunit
 Test Driven Development focus on testing your code to ensure it does what is expected across refactors. This kind of
