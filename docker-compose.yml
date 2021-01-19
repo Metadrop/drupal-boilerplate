@@ -176,10 +176,7 @@ services:
       - "3000"
     volumes:
       - ./:/var/www/html
-    command:
-      - sh -c 'yarn install && yarn run start'
-    # This command is used to keep the node container alive.
-      - tail -f /dev/null
+    command: tail -f /dev/null
 
 #  blackfire:
 #    image: blackfire/blackfire

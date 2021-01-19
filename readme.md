@@ -8,36 +8,36 @@ This repository is a Drupal project that can be setup locally using docker.
 Based on [wodby/docker4drupal](https://github.com/wodby/docker4drupal), with some tweaks to speed-up your development.
 The stack is configured as follows:
 
-| Container       | Versions               | Default version | Service name    | Image                              | Enabled by default |
-| --------------  | ---------------------- | --------------- | --------------- | ---------------------------------- | ------------------ |
-| Nginx           | 1.19, 1.18             | 1.19            | `nginx`         | [wodby/nginx]                      | ✓                  |
-| Apache          | 2.4                    | 2.4             | `apache`        | [wodby/apache]                     |                    |
-| PHP             | 8.0, 7.4, 7.3, 7.2     | 7.4             | `php`           | [wodby/drupal-php]                 | ✓                  |
-| MariaDB         | 10.5, 10.4, 10.3, 10.2 | 10.5            |` mariadb`       | [wodby/mariadb]                    | ✓                  |
-| PostgreSQL      | 13, 12, 11, 10, 9.x    | 13              |` postgres`      | [wodby/postgres]                   |                    |
-| Redis           | 6, 5                   | 6               |` redis`         | [wodby/redis]                      |                    |
-| Memcached       | 1                      | 1               |` memcached`     | [wodby/memcached]                  |                    |
-| Varnish         | 6.0, 4.1               | 6.0             |` varnish`       | [wodby/varnish]                    |                    |
-| Node.js         | 14, 12, 10             | 14              |` node`          | [wodby/node]                       | ✓                  |
-| Drupal node     | 1.0                    | 1.0             | `drupal-node`   | [wodby/drupal-node]                |                    |
-| Solr            | 8, 7, 6, 5             | 8               | `solr`          | [wodby/solr]                       |                    |
-| Elasticsearch   | 7, 6                   | 7               | `elasticsearch` | [wodby/elasticsearch]              |                    |
-| Kibana          | 7, 6                   | 7               |` kibana`        | [wodby/kibana]                     |                    |
-| OpenSMTPD       | 6.0                    | 6.0             | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
-| Mailhog         | latest                 | latest          | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
-| AthenaPDF       | 2.16.0                 | 2.16.0          | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
-| Rsyslog         | latest                 | latest          | `rsyslog`       | [wodby/rsyslog]                    |                    |
-| Blackfire       | latest                 | latest          | `blackfire`     | [blackfire/blackfire]              |                    |
-| Webgrind        | 1.8                    | 1.8             | `webgrind`      | [wodby/webgrind]                   |                    |
-| Xhprof viewer   | latest                 | latest          | `xhprof`        | [wodby/xhprof]                     |                    |
-| Adminer         | 4                      | 4               | `adminer`       | [wodby/adminer]                    | ✓                  |
-| phpMyAdmin      | latest                 | latest          | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
-| Selenium chrome | 3.141                  | 3.141           | `chrome`        | [selenium/node-chrome]             | ✓                  |
-| Selenium hub    | 3.141                  | 3.141           | `hub   `        | [selenium/hub]                     | ✓                  |
-| Traefik         | v2.0                   | v2.0            | `traefik`       | [_/traefik]                        | ✓                  |
-| Mkdocs          | latest                 | latest          | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
-| Portainer       | latest                 | latest          | `portainer`     | [portainer/portainer]              | ✓                  |
-| BackstopJS      | 4.4                    | 4.4             | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
+| Container       | Versions               | Service name    | Image                              | Enabled by default |
+| --------------  | ---------------------- | --------------- | ---------------------------------- | ------------------ |
+| Nginx           | 1.19, 1.18             | `nginx`         | [wodby/nginx]                      | ✓                  |
+| Apache          | 2.4                    | `apache`        | [wodby/apache]                     |                    |
+| PHP             | 8.0, 7.4, 7.3, 7.2     | `php`           | [wodby/drupal-php]                 | ✓                  |
+| MariaDB         | 10.5, 10.4, 10.3, 10.2 |` mariadb`       | [wodby/mariadb]                    | ✓                  |
+| PostgreSQL      | 13, 12, 11, 10, 9.x    |` postgres`      | [wodby/postgres]                   |                    |
+| Redis           | 6, 5                   |` redis`         | [wodby/redis]                      |                    |
+| Memcached       | 1                      |` memcached`     | [wodby/memcached]                  |                    |
+| Varnish         | 6.0, 4.1               |` varnish`       | [wodby/varnish]                    |                    |
+| Node.js         | 14, 12, 10             |` node`          | [wodby/node]                       | ✓                  |
+| Drupal node     | 1.0                    | `drupal-node`   | [wodby/drupal-node]                |                    |
+| Solr            | 8, 7, 6, 5             | `solr`          | [wodby/solr]                       |                    |
+| Elasticsearch   | 7, 6                   | `elasticsearch` | [wodby/elasticsearch]              |                    |
+| Kibana          | 7, 6                   |` kibana`        | [wodby/kibana]                     |                    |
+| OpenSMTPD       | 6.0                    | `opensmtpd`     | [wodby/opensmtpd]                  |                    |
+| Mailhog         | latest                 | `mailhog`       | [mailhog/mailhog]                  | ✓                  |
+| AthenaPDF       | 2.16.0                 | `athenapdf`     | [arachnysdocker/athenapdf-service] |                    |
+| Rsyslog         | latest                 | `rsyslog`       | [wodby/rsyslog]                    |                    |
+| Blackfire       | latest                 | `blackfire`     | [blackfire/blackfire]              |                    |
+| Webgrind        | 1.8                    | `webgrind`      | [wodby/webgrind]                   |                    |
+| Xhprof viewer   | latest                 | `xhprof`        | [wodby/xhprof]                     |                    |
+| Adminer         | 4                      | `adminer`       | [wodby/adminer]                    | ✓                  |
+| phpMyAdmin      | latest                 | `pma`           | [phpmyadmin/phpmyadmin]            |                    |
+| Selenium chrome | 3.141                  | `chrome`        | [selenium/node-chrome]             | ✓                  |
+| Selenium hub    | 3.141                  | `hub   `        | [selenium/hub]                     | ✓                  |
+| Traefik         | v2.0                   | `traefik`       | [_/traefik]                        | ✓                  |
+| Mkdocs          | latest                 | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
+| Portainer       | latest                 | `portainer`     | [portainer/portainer]              | ✓                  |
+| BackstopJS      | 4.4                    | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
 This is done with the purpose of differencing the local environment stack from the CI environment stack.
@@ -115,6 +115,12 @@ Here are the bundled libraries:
 - [drupal-extension](https://www.drupal.org/project/drupalextension)
 - [nuvoleweb/drupal-behat](https://github.com/nuvoleweb/drupal-behat)
 - [metadrop/behat-contexts](https://github.com/metadrop/behat-contexts)
+
+### Run Behat tests
+If you want to execute every behat tests just run:
+```
+docker-compose exec php behat
+``
 
 ### Unit testing with phpunit
 Test Driven Development focus on testing your code to ensure it does what is expected across refactors. This kind of
@@ -256,7 +262,7 @@ mix
 To create a new project based on this boilerplate, the recommended method is using composer create-project:
 
 ```
-composer create-project metadrop/drupal-boilerplate:8.x-dev my-project
+composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-project
 ```
 
 Then, complete the setup following these steps:
