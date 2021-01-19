@@ -119,7 +119,7 @@ Here are the bundled libraries:
 ### Run Behat tests
 If you want to execute every behat tests just run:
 ```
-docker-compose exec -u wodby -T php vendor/bin/behat --config behat.yml --colors
+docker-compose exec php behat
 ``
 
 ### Unit testing with phpunit
