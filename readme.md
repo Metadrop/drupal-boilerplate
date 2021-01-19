@@ -116,6 +116,12 @@ Here are the bundled libraries:
 - [nuvoleweb/drupal-behat](https://github.com/nuvoleweb/drupal-behat)
 - [metadrop/behat-contexts](https://github.com/metadrop/behat-contexts)
 
+### Run Behat tests
+If you want to execute every behat tests just run:
+```
+docker-compose exec -u wodby -T php vendor/bin/behat --config behat.yml --colors
+``
+
 ### Unit testing with phpunit
 Test Driven Development focus on testing your code to ensure it does what is expected across refactors. This kind of
 tests are known as Unit tests, and in PHP can be implemented with [phpunit](https://phpunit.de/).
