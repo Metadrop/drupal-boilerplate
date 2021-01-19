@@ -262,7 +262,7 @@ mix
 To create a new project based on this boilerplate, the recommended method is using composer create-project:
 
 ```
-composer create-project metadrop/drupal-boilerplate:9.x-dev my-project
+composer create-project metadrop/drupal-boilerplate my-project
 ```
 
 Then, complete the setup following these steps:
