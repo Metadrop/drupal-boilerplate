@@ -1,5 +1,5 @@
-site_name: MetadropWeb Develop handbook
-theme: readthedocs
+site_name: Develop handbook
+theme: material
 dev_addr: '0.0.0.0:8080'
 nav:
   - Home: index.md
