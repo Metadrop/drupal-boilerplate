@@ -6,6 +6,7 @@
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/libraries/
+/create-project.gif
 
 # Ignore sensitive information.
 /web/sites/*/settings.local.php
