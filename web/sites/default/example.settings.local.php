@@ -29,6 +29,7 @@ $config['config_split.config_split.local']['status'] = TRUE;
 /** Trusted host configuration. */
 $settings['trusted_host_patterns'] = [
   '^.+\.localhost$', # localhost access
+  'nginx$',
 ];
 
 /** === NO CACHE DEVELOPMENT === */
