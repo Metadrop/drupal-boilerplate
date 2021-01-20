@@ -22,7 +22,8 @@ parameters:
     jsonlint: ~
     drupalcheck: ~
     phpcpd:
-      directory: ./docroot/**/custom
+      directory:
+        - ./docroot/**/custom
       triggered_by:
         - php
         - inc
