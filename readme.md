@@ -173,6 +173,10 @@ the needs of different areas such as SEO, security, content editing, themming or
 
       npm i stylelint-scss --save-dev
 
+* Install stylelint mix plugin
+
+      npm i laravel-mix-stylelint --save-dev
+
 * Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules)
 
       # @TODO: Needs to be defined a standard base
