@@ -176,6 +176,7 @@ services:
       - "3000"
     volumes:
       - ./:/var/www/html
+    entrypoint: []
     command: tail -f /dev/null
 
 #  blackfire:
