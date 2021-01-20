@@ -100,8 +100,8 @@ default:
       text:
         password_field: "edit-pass"
         username_field: "edit-name"
-        log_in: "edit-submit"
-        log_out: "Cerrar sesión"
+        log_in: "Log in"
+        log_out: "Log out"
         node_submit_label: "Save and publish"
     Bex\Behat\StepTimeLoggerExtension:
       enabled_always: true
