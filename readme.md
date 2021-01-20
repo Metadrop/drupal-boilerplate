@@ -1,5 +1,7 @@
 # Metadrop's Drupal Boilerplate
 
+![Create project](./create-project.gif)
+
 ## Introduction
 This repository is a Drupal project that can be setup locally using docker.
 
