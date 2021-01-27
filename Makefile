@@ -27,3 +27,6 @@ backstopjs-reference:
 
 backstopjs-test:
 	docker-compose exec backstopjs backstop test
+
+docker-up:
+	docker-compose up -d && scripts/setup-traefik-port.sh
