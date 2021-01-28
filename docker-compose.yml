@@ -28,8 +28,6 @@ services:
       DB_DRIVER: $DB_DRIVER
       PHP_FPM_USER: wodby
       PHP_FPM_GROUP: wodby
-      CONTAINER_PORT: $CONTAINER_PORT
-      PROJECT_BASE_URL: $PROJECT_BASE_URL
       # Set 80 columns for docker exec -it.
       COLUMNS: 80
 #      # PHPUnit Drupal testing configurations
