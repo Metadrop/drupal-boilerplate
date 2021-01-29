@@ -12,9 +12,6 @@ parameters:
     git_commit_message:
       enforce_no_subject_trailing_period: true
       max_subject_width: 130
-      matchers:
-        Must contain issue reference (if no reference use 0): '/(^Issue #[0-9]+:|^Merge branch.)/'
-        Space and uppercase after reference: '/(^Issue #[0-9]+: [A-Z]|^Merge branch.)/'
       case_insensitive: false
     phplint: ~
     yamllint: ~
