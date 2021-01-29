@@ -2,11 +2,12 @@ version: "3.7"
 
 services:
 
-  # @NOTE: ssh_auth_sock configuration only works for linux,
-  # uncomment if you have problems.
+  # @NOTE: enable ssh_auth_sock environment and volume variables
+  # in the case you need to access to remote servers
+  # inside docker using self-hosted credentials. It only works on Linux.
   php:
     environment:
-      SSH_AUTH_SOCK: /ssh-agent
+#      SSH_AUTH_SOCK: /ssh-agent
 #      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
 #      PHP_XDEBUG: 1
 #      PHP_XDEBUG_MODE: debug
