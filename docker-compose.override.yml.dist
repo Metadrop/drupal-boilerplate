@@ -5,8 +5,8 @@ services:
   # @NOTE: enable ssh_auth_sock environment and volume variables
   # in the case you need to access to remote servers
   # inside docker using self-hosted credentials. It only works on Linux.
-  php:
-    environment:
+#  php:
+#    environment:
 #      SSH_AUTH_SOCK: /ssh-agent
 #      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
 #      PHP_XDEBUG: 1
@@ -18,7 +18,7 @@ services:
 #      PHP_XDEBUG_CLIENT_HOST: 10.254.254.254 # macOS, Docker < 18.03
 #      PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
 #      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
-    volumes:
+#    volumes:
 #      - $SSH_AUTH_SOCK:/ssh-agent
 ## For XHProf and Xdebug profiler traces
 #      - files:/mnt/files
