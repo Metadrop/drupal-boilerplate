@@ -281,3 +281,12 @@ Note that WEB_SERVER_PORT is the local machine port which is mapped to point the
 3. Start containers running `docker-compose up -d` in repository root.
 4. To access the site go to URL: http://\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
 5. To access the project's documentation go to URL: http://docs.\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
+6. (Optional) In the case you need access to remote environments inside PHP container, uncomment these lines at docker-compose.override.yml:
+```yaml
+#  php:
+#    environment:
+#      SSH_AUTH_SOCK: /ssh-agent
+...
+#    volumes:
+#      - $SSH_AUTH_SOCK:/ssh-agent
+```
