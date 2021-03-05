@@ -70,11 +70,11 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "edgedesign/phpqa": "^1.23",
         "bex/behat-step-time-logger": "^2.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "drupal/core-dev": "^9.1",
         "drupal/devel": "^4.0",
-        "drupal/coder": "^8.3",
+        "edgedesign/phpqa": "^1.23",
         "jcalderonzumba/gastonjs": "^1.2",
         "jcalderonzumba/mink-phantomjs-driver": "^0.3.3",
         "metadrop/behat-contexts": "dev-fb-nuvoleweb-dev-i45-behat-4.x",
@@ -84,10 +84,7 @@
         "mikey179/vfsstream": "^1.6",
         "pdepend/pdepend": "^2.8",
         "phpmd/phpmd": "^2.9",
-        "phpunit/phpunit": "~8.4",
         "sebastian/phpcpd": "^5.0",
-        "symfony/css-selector": "^4.4",
-        "symfony/phpunit-bridge": "^4.4",
         "vijaycs85/drupal-quality-checker": "^1.3.0"
     },
     "conflict": {
