@@ -33,10 +33,6 @@
                     "type": "zip"
                 }
             }
-        },
-        {
-            "type": "vcs",
-            "url": "https://git.drupalcode.org/sandbox/desarrollo2.0-3097360.git"
         }
     ],
     "require": {
