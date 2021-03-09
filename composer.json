@@ -11,10 +11,6 @@
     ],
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/metadrop/behat-contexts"
         },
@@ -33,6 +29,10 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
