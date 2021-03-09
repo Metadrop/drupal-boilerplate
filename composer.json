@@ -37,10 +37,6 @@
         {
             "type": "vcs",
             "url": "https://git.drupalcode.org/sandbox/desarrollo2.0-3097360.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/pdureau/ui_patterns_field_formatters.git"
         }
     ],
     "require": {
