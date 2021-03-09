@@ -19,18 +19,6 @@
             "url": "https://github.com/metadrop/drupal-behat"
         },
         {
-            "type": "package",
-            "package": {
-                "name": "fontawesome/fontawesome",
-                "version": "5.5.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://use.fontawesome.com/releases/v5.5.0/fontawesome-free-5.5.0-web.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
