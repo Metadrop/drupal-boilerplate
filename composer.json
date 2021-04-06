@@ -11,10 +11,6 @@
     ],
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/metadrop/behat-contexts"
         },
@@ -23,24 +19,8 @@
             "url": "https://github.com/metadrop/drupal-behat"
         },
         {
-            "type": "package",
-            "package": {
-                "name": "fontawesome/fontawesome",
-                "version": "5.5.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://use.fontawesome.com/releases/v5.5.0/fontawesome-free-5.5.0-web.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "vcs",
-            "url": "https://git.drupalcode.org/sandbox/desarrollo2.0-3097360.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/pdureau/ui_patterns_field_formatters.git"
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
@@ -51,8 +31,6 @@
         "drupal/config_split": "^1.7",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
-        "drupal/crop": "^2.1",
-        "drupal/ctools": "^3.4",
         "drupal/environment_indicator": "^4.0",
         "drupal/eu_cookie_compliance": "^1.13",
         "drupal/honeypot": "^2.0",
