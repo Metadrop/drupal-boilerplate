@@ -1,18 +1,9 @@
-parameters:
-  git_hook_variables:
-    EXEC_GRUMPHP_COMMAND: docker-compose exec -T php
+grumphp:
   extensions:
     - GrumphpDrupalCheck\ExtensionLoader
-  ascii:
-    failed: vendor/vijaycs85/drupal-quality-checker/resources/ascii/grumpy.txt
-    succeeded: vendor/vijaycs85/drupal-quality-checker/resources/ascii/happy.txt
-  git_dir: .
-  bin_dir: vendor/bin
+  hooks_dir: ~
+  hooks_preset: local
   tasks:
-    git_commit_message:
-      enforce_no_subject_trailing_period: true
-      max_subject_width: 130
-      case_insensitive: false
     phplint: ~
     yamllint: ~
     composer: ~
@@ -40,7 +31,5 @@ parameters:
         - feature
         - info
         - txt
-        - md
-        - js
         - test
       standard: Drupal,DrupalPractice
