@@ -4,6 +4,10 @@ grumphp:
   hooks_dir: ~
   hooks_preset: local
   tasks:
+    git_commit_message:
+      enforce_no_subject_trailing_period: true
+      max_subject_width: 130
+      case_insensitive: false
     phplint: ~
     yamllint: ~
     composer: ~
