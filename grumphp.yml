@@ -36,4 +36,6 @@ grumphp:
         - info
         - txt
         - test
+        - md
+        - js
       standard: Drupal,DrupalPractice
