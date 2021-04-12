@@ -66,3 +66,5 @@ node_modules/
 
 # Ensure .gitkeep files are commited so folder structure get respected.
 !.gitkeep
+/.editorconfig
+/.gitattributes
