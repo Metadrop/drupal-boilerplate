@@ -2,7 +2,6 @@ grumphp:
   extensions:
     - GrumphpDrupalCheck\ExtensionLoader
   hooks_dir: ~
-  hooks_preset: local
   tasks:
     git_commit_message:
       enforce_no_subject_trailing_period: true
