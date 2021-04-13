@@ -58,7 +58,6 @@
         "metadrop/behat-contexts": "dev-fb-nuvoleweb-dev-i45-behat-4.x",
         "metadrop/grumphp-drupal-check": "^0.3.0",
         "metadrop/scripthor": "1.x-dev",
-        "mglaman/drupal-check": "^1.1.8",
         "mikey179/vfsstream": "^1.6",
         "pdepend/pdepend": "^2.8",
         "phpmd/phpmd": "^2.9",
