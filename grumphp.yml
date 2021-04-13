@@ -1,13 +1,9 @@
-parameters:
+grumphp:
   git_hook_variables:
     EXEC_GRUMPHP_COMMAND: docker-compose exec -T php
   extensions:
     - GrumphpDrupalCheck\ExtensionLoader
-  ascii:
-    failed: vendor/vijaycs85/drupal-quality-checker/resources/ascii/grumpy.txt
-    succeeded: vendor/vijaycs85/drupal-quality-checker/resources/ascii/happy.txt
-  git_dir: .
-  bin_dir: vendor/bin
+  hooks_dir: ~
   tasks:
     git_commit_message:
       enforce_no_subject_trailing_period: true

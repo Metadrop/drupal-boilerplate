@@ -56,14 +56,11 @@
         "jcalderonzumba/gastonjs": "^1.2",
         "jcalderonzumba/mink-phantomjs-driver": "^0.3.3",
         "metadrop/behat-contexts": "dev-fb-nuvoleweb-dev-i45-behat-4.x",
-        "metadrop/grumphp-drupal-check": "~0.1",
+        "metadrop/grumphp-drupal-check": "^0.3.0",
         "metadrop/scripthor": "1.x-dev",
-        "mglaman/drupal-check": "^1.1",
         "mikey179/vfsstream": "^1.6",
         "pdepend/pdepend": "^2.8",
-        "phpmd/phpmd": "^2.9",
-        "sebastian/phpcpd": "^5.0",
-        "vijaycs85/drupal-quality-checker": "^1.3.0"
+        "phpmd/phpmd": "^2.9"
     },
     "conflict": {
         "drupal/drupal": "*"
