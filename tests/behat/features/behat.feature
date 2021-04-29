@@ -4,11 +4,11 @@ Feature:
   So that I can enjoy BDD!
 
   @behat
-  Scenario: Pagina principal
+  Scenario: Goutte driver works
     Given I go to "/"
     Then the response status code should be 200
 
   @behat @javascript
-  Scenario: Pagina principal con JS
+  Scenario: Selenium driver works
     Given I go to "/"
     Then I should see "Home"
