@@ -23,6 +23,7 @@ Feature: As a user
 
   @error @api @article @edit @anonymous
   Scenario: Simple Article edit anonymous access
+    Given I am an anonymous user
     When I go to "edit" of the "node" entity with label "Behat article test"
     Then the response status code should be 403
 

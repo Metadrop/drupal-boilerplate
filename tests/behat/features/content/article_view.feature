@@ -23,6 +23,7 @@ Feature: As a user
 
   @api @article @view @anonymous
   Scenario: Simple Article view anonymous access
+    Given I am an anonymous user
     When I go to the "node" entity with label "Behat article test"
     Then the response status code should be 200
     Then I should see "Behat article test"

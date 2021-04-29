@@ -24,6 +24,7 @@ Feature: As a user
 
   @error @api @article @delete @anonymous
   Scenario: Simple Article delete anonymous access
+    Given I am an anonymous user
     When I go to "delete" of the "node" entity with label "Behat article test"
     Then the response status code should be 403
 

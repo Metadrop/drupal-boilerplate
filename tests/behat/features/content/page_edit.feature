@@ -23,6 +23,7 @@ Feature: As a user
 
   @error @api @page @edit @anonymous
   Scenario: Simple Page edit anonymous access
+    Given I am an anonymous user
     When I go to "edit" of the "node" entity with label "Behat page test"
     Then the response status code should be 403
 
