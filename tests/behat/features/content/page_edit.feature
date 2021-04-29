@@ -29,6 +29,7 @@ Feature: As a user
 
   @error @api @page @edit @authenticated
   Scenario Outline: Simple Page edit authenticated access
+    Given I am logged in as a user with the <role> role
     When I go to "edit" of the "node" entity with label "Behat page test"
     Then the response status code should be 403
 

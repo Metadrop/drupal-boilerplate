@@ -30,6 +30,7 @@ Feature: As a user
 
   @error @api @article @delete @authenticated
   Scenario Outline: Simple Article delete authenticated access
+    Given I am logged in as a user with the <role> role
     When I go to "delete" of the "node" entity with label "Behat article test"
     Then the response status code should be 403
 

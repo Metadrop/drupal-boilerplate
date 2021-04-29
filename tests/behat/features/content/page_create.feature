@@ -35,6 +35,7 @@ Feature: As a user
 
   @error @api @page @create @authenticated
   Scenario Outline: Simple Page creation authenticated access
+    Given I am logged in as a user with the <role> role
     When I go to "/node/add/page"
     Then the response status code should be 403
 
