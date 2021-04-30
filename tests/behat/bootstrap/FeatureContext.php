@@ -5,22 +5,19 @@
  * Behat Feature Context file.
  */
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Drupal\DrupalExtension\Context\DrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use Behat\Behat\Hook\Scope\AfterStepScope;
-use Behat\Testwork\Tester\Result\TestResult;
-use Behat\Mink\Exception\ExpectationException;
-use Drupal\DrupalExtension\Hook\Scope\BeforeNodeCreateScope;
 use Drupal\user\Entity\Role;
-use Drupal\user\RoleInterface;
 
+/**
+ * Main project custom context.
+ */
 class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
 
   /**
+   * Mink context.
+   *
    * @var Drupal\DrupalExtension\Context\MinkContext
    */
   protected $minkContext;
@@ -35,6 +32,8 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
   /**
    * Permissions to grant and revoke on before and after suite.
    *
+   * @var array
+   *
    * @code
    * $permissions = [
    *   "grant" => [
@@ -44,17 +43,15 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    *     "access content" => [RoleInterface::ANONYMOUS_ID],
    *   ],
    * ];
-   *
-   * @var array
    */
   static protected $permissions = [];
 
   /**
-   * Sets User permissions
+   * Sets User permissions.
    *
    * @BeforeSuite
    */
-  public static function beforeSUserPermissionsSet() {
+  public static function beforeSuiteUserPermissionsSet() {
     $roles = Role::loadMultiple();
     foreach (self::$permissions as $type => $value) {
       foreach ($value as $permission => $rolesList) {
@@ -67,7 +64,7 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
   }
 
   /**
-   * Restores User permissions
+   * Restores User permissions.
    *
    * @AfterSuite
    */
@@ -85,12 +82,9 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
   }
 
   /**
-   * Recolecta los subcontexteos necesarios.
+   * Retrieve all required sub-contexts.
    *
    * @BeforeScenario
-   *
-   * @param BeforeScenarioScope $scope
-   *   Scope del scenario.
    */
   public function gatherContexts(BeforeScenarioScope $scope) {
     $environment = $scope->getEnvironment();
@@ -99,14 +93,13 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
   }
 
   /**
-   * Constructor.
+   * Gets context parameters if they are defined.
    *
-   * Guarda las parámetros custom, si los hay.
-   *
-   * @param type $parameters
+   * @param mixed $parameters
+   *   Context parameter.
    */
   public function __construct($parameters = NULL) {
-    $this->customParameters = !empty($parameters) ? $parameters : array();
+    $this->customParameters = !empty($parameters) ? $parameters : [];
   }
 
   /**
