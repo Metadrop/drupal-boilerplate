@@ -11,14 +11,6 @@
     ],
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/metadrop/behat-contexts"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/metadrop/drupal-behat"
-        },
-        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
@@ -48,19 +40,7 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "bex/behat-step-time-logger": "^2.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-        "drupal/core-dev": "^9.1",
-        "drupal/devel": "^4.0",
-        "edgedesign/phpqa": "^1.23",
-        "jcalderonzumba/gastonjs": "^1.2",
-        "jcalderonzumba/mink-phantomjs-driver": "^0.3.3",
-        "metadrop/behat-contexts": "dev-fb-nuvoleweb-dev-i45-behat-4.x",
-        "metadrop/grumphp-drupal-check": "^0.3.0",
-        "metadrop/scripthor": "1.x-dev",
-        "mikey179/vfsstream": "^1.6",
-        "pdepend/pdepend": "^2.8",
-        "phpmd/phpmd": "^2.9"
+        "metadrop/drupal-dev": "^0.1"
     },
     "conflict": {
         "drupal/drupal": "*"
