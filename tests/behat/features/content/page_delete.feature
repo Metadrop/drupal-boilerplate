@@ -22,18 +22,13 @@ Feature: As a user
       | administrator  |
 
 
-  @error @api @page @delete @anonymous
-  Scenario: Simple Page delete anonymous access
-    Given I am an anonymous user
-    When I go to "delete" of the "node" entity with label "Behat page test"
-    Then the response status code should be 403
-
-  @error @api @page @delete @authenticated
-  Scenario Outline: Simple Page delete authenticated access
-    Given I am logged in as a user with the <role> role
+  @error @api @page @delete @authenticated @anonymous
+  Scenario Outline: Simple Page delete role access
+    Given I am a user with <role> role
     When I go to "delete" of the "node" entity with label "Behat page test"
     Then the response status code should be 403
 
     Examples:
       | role           |
+      | anonymous      |
       | authenticated  |
