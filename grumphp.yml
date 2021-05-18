@@ -1,6 +1,6 @@
 grumphp:
   git_hook_variables:
-    EXEC_GRUMPHP_COMMAND: docker-compose exec -T php
+    EXEC_GRUMPHP_COMMAND: docker-compose run --rm -T php
   extensions:
     - GrumphpDrupalCheck\ExtensionLoader
   hooks_dir: ~
