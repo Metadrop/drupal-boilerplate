@@ -27,18 +27,13 @@ Feature: As a user
       | administrator  |
 
 
-  @error @api @page @create @anonymous
-  Scenario: Simple Page creation anonymous access
-    Given I am an anonymous user
-    When I go to "/node/add/page"
-    Then the response status code should be 403
-
-  @error @api @page @create @authenticated
-  Scenario Outline: Simple Page creation authenticated access
-    Given I am logged in as a user with the <role> role
+  @error @api @page @create @authenticated @anonymous
+  Scenario Outline: Simple Page creation role access
+    Given I am a user with <role> role
     When I go to "/node/add/page"
     Then the response status code should be 403
 
     Examples:
       | role           |
+      | anonymous      |
       | authenticated  |

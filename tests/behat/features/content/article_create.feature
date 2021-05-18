@@ -27,18 +27,13 @@ Feature: As a user
       | administrator  |
 
 
-  @error @api @article @create @anonymous
-  Scenario: Simple Article creation anonymous access
-    Given I am an anonymous user
-    When I go to "/node/add/article"
-    Then the response status code should be 403
-
-  @error @api @article @create @authenticated
-  Scenario Outline: Simple Article creation authenticated access
-    Given I am logged in as a user with the <role> role
+  @error @api @article @create @authenticated @anonymous
+  Scenario Outline: Simple Article creation role access
+    Given I am a user with <role> role
     When I go to "/node/add/article"
     Then the response status code should be 403
 
     Examples:
       | role           |
+      | anonymous      |
       | authenticated  |
