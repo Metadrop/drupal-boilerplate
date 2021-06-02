@@ -27,3 +27,11 @@ backstopjs-reference:
 
 backstopjs-test:
 	docker-compose exec backstopjs backstop test
+
+setup:
+	cp docker-compose.override.yml.dist docker-compose.override.yml
+	cp web/sites/default/example.settings.local.php web/sites/default/settings.local.php
+	docker-compose up -d
+	docker-compose exec -T php composer install
+	scripts/reload-local.sh
+#docker-compose exec -T php drush si --existing-config -y
