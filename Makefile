@@ -34,4 +34,4 @@ setup:
 	docker-compose up -d
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh
-#docker-compose exec -T php drush si --existing-config -y
+      #docker-compose exec -T php drush si --existing-config -y
