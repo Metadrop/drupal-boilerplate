@@ -29,6 +29,7 @@ backstopjs-test:
 	docker-compose exec backstopjs backstop test
 
 setup:
+        chmod u+w web/sites/default -R
 	cp docker-compose.override.yml.dist docker-compose.override.yml
 	cp web/sites/default/example.settings.local.php web/sites/default/settings.local.php
 	docker-compose up -d
