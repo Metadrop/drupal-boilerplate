@@ -6,6 +6,8 @@ DRUPAL_VER ?= 8
 PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
 BEHAT_YML ?= "tests/behat/behat.yml"
+SITE ?= "default"
+DEFAULT_SITE_ALIAS ?= "pro"
 
 test:
 	docker-compose exec php phpunit
@@ -29,10 +31,10 @@ backstopjs-test:
 	docker-compose exec backstopjs backstop test
 
 setup:
-        chmod u+w web/sites/default -R
+	chmod u+w web/sites/default -R
 	cp docker-compose.override.yml.dist docker-compose.override.yml
-	cp web/sites/default/example.settings.local.php web/sites/default/settings.local.php
+	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
 	docker-compose up -d
 	docker-compose exec -T php composer install
-	scripts/reload-local.sh
-      #docker-compose exec -T php drush si --existing-config -y
+	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
+	#docker-compose exec -T php drush si --existing-config -y
