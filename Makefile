@@ -41,3 +41,6 @@ setup:
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
 	#docker-compose exec -T php drush si --existing-config -y
+
+lighthouse-report:
+	docker-compose run -T --rm lighthouse-ci lhci autorun

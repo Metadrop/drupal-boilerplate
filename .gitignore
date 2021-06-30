@@ -53,6 +53,7 @@ node_modules/
 /reports/behat/errors/*
 /reports/behat/junit/*
 /reports/codereview/*
+/reports/lighthouse/*
 
 # BackstopJS
 /tests/backstopjs/backstop_data/html_report

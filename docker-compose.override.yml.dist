@@ -59,6 +59,15 @@ services:
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
+#  lighthouse-ci:
+#    container_name: "${PROJECT_NAME}_lighthouse-ci"
+#    build:
+#      context: ./lighthouse
+#    security_opt:
+#      - 'seccomp:./lighthouse/seccomp-chrome.json'
+#    volumes:
+#      - ./reports/lighthouse:/home/lhci/reports
+
 #volumes:
 ## For macOS users (Mutagen)
 #  mutagen:

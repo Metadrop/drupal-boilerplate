@@ -40,6 +40,7 @@ The stack is configured as follows:
 | Mkdocs          | latest                 | `mkdocs`        | [metadrop/docker-mkdocs]           | ✓                  |
 | Portainer       | latest                 | `portainer`     | [portainer/portainer]              | ✓                  |
 | BackstopJS      | 4.4                    | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
+| Lighthouse-ci   | 0.8.0                  | `lighthouse-ci` | [GoogleChrome/lighthouse-ci]       |                    |
 
 There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
 This is done with the purpose of differencing the local environment stack from the CI environment stack.
@@ -156,6 +157,23 @@ your choice.
 * Run regressions tests:
 
       make backstopjs-test
+
+### Lighthouse
+[Lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
+
+#### Setup
+
+* Uncomment the lighthouse service from docker-compose-override.yml
+
+* Configure lighthouse file with your needs.
+  The lighthouse configuration file is on PROJECT-ROOT/reports/lighthouse/lighthouserc.js  
+  [Documentation](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
+
+* Launch the lighthouse make command
+
+      make lighthouse-report
+
+* The reports are created on PROJECT-ROOT/reports/lighthouse/
 
 ### Buffet of selected modules
 We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve
