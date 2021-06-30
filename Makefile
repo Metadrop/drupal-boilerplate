@@ -43,4 +43,4 @@ setup:
 	#docker-compose exec -T php drush si --existing-config -y
 
 lighthouse-report:
-	docker-compose run -T --rm lighthouse-ci lhci autorun
+	chmod o+w reports/lighthouse && docker-compose run -T --rm lighthouse-ci lhci autorun
