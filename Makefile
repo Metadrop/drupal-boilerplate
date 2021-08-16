@@ -41,3 +41,9 @@ setup:
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
 	#docker-compose exec -T php drush si --existing-config -y
+
+solr-sync:
+	./scripts/solr-sync.sh ${PROJECT_NAME} ${SOLR_CONTAINER} ${CORES}
+
+solr-rebuild:
+	docker-compose stop solr && docker-compose rm -f solr && docker-compose up -d solr && make solr-sync
