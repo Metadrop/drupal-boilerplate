@@ -1,9 +1,52 @@
 # Metadrop's Drupal Boilerplate
 
+## Introduction
+
+This repository is boilerplate to create Drupal 8/9/10 projects faster with a lot tools already preconfigured.
+
+Tools included: @TODO
+  - Behat
+  - ...
+
+
+## Quickview
 ![Create project](./create-project.gif)
 
-## Introduction
-This repository is a Drupal project that can be setup locally using docker.
+
+## Usage
+
+To create a new project based on this boilerplate, the recommended method is using Composer's create-project command:
+
+```
+composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-project
+```
+
+
+Once Composer finalizes the proejct creation a wizard will be autmatically run. Answer the questions...@TODO
+
+@TODO: Explain questions.
+
+
+Then, complete the setup following these steps:
+
+
+2. Copy the `docker-compose.override.yml.dist` file to `docker-compose.override.yml`. Look for the
+services.traefik.ports value. There you have the port mapping in the form `<your local machine port>:<container port>`.
+Note that WEB_SERVER_PORT is the local machine port which is mapped to point the web server port inside the container.
+3. Start containers running `docker-compose up -d` in repository root.
+4. To access the site go to URL: http://\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
+5. To access the project's documentation go to URL: http://docs.\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
+6. (Optional) In the case you need access to remote environments inside PHP container, uncomment these lines at docker-compose.override.yml:
+```yaml
+#  php:
+#    environment:
+#      SSH_AUTH_SOCK: /ssh-agent
+...
+#    volumes:
+#      - $SSH_AUTH_SOCK:/ssh-agent
+```
+
+
 
 ## Stack
 ### docker-compose infrastructure
@@ -149,7 +192,7 @@ Til today, we provide the following scripts:
 - **solr-sync.sh** Reload docker solr cores from local files.
 
 ### Solr
-* Reload cores.  
+* Reload cores.
   It will reload the solr service, and then sync the cores from local files.
 ```
 make solr-rebuild
@@ -204,6 +247,7 @@ Add to the package.json the following script:
 ```json
   "scripts": {
     "css:lint": "npx stylelint 'src/**/*.scss'"
+  }
 ```
 
 Then execute the following command
@@ -236,29 +280,17 @@ mix
   })
 ```
 
-## Installation
+## Additions from Docker4Drupal
 
-To create a new project based on this boilerplate, the recommended method is using composer create-project:
+### `.env` file
 
-```
-composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-project
-```
+Added several variables:
 
-Then, complete the setup following these steps:
 
-1. Copy the `.env.example` file to `.env` and edit it to fit your needs.
-2. Copy the `docker-compose.override.yml.dist` file to `docker-compose.override.yml`. Look for the
-services.traefik.ports value. There you have the port mapping in the form `<your local machine port>:<container port>`.
-Note that WEB_SERVER_PORT is the local machine port which is mapped to point the web server port inside the container.
-3. Start containers running `docker-compose up -d` in repository root.
-4. To access the site go to URL: http://\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
-5. To access the project's documentation go to URL: http://docs.\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
-6. (Optional) In the case you need access to remote environments inside PHP container, uncomment these lines at docker-compose.override.yml:
-```yaml
-#  php:
-#    environment:
-#      SSH_AUTH_SOCK: /ssh-agent
-...
-#    volumes:
-#      - $SSH_AUTH_SOCK:/ssh-agent
-```
+@TODO:
+ - DOCKER_PROJECT_ROOT:
+ - THEME_PATH:
+ - NPM_RUN_COMMAND:
+ - DEFAULT_DRUSH_ALIAS:
+
+
