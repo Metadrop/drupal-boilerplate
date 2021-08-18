@@ -2,12 +2,21 @@
 
 ## Introduction
 
-This repository is boilerplate to create Drupal 8/9/10 projects faster with a lot tools already preconfigured.
+This repository is a boilerplate to create Drupal 8/9/10 projects faster with a lot tools already preconfigured.
 
-Tools included: @TODO
-  - Behat
-  - ...
+Tools included out-of-the-box:
 
+  - A docker infrastructure.
+  - A boilerplate folder structure that fits all project needs.
+  - A working and preconfigured Drush, the Drupal shell.
+  - MkDocs to document your project using Markdown files.
+  - Grumphp to enforce [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards). It is configured to use [phplint](https://github.com/overtrue/phplint), yamlint,  [jsonlint](https://github.com/Seldaek/jsonlint), [drupalcheck](https://github.com/mglaman/drupal-check), [phpcpd](https://github.com/sebastianbergmann/phpcpd) and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer).
+
+
+
+It is based on [Docker4Drupal](https://wodby.com/docs/1.0/stacks/drupal/local/), which uses Docker and Docker Compose. To get all the information about available webservers, databases, PHP versions and other containers check their [wodby/docker4drupa repository](https://github.com/wodby/docker4drupal).
+
+Because it uses Docker under the hood, you can customize whatever you want, add new containers or use any standard Docker funcionality to accomodate your project needs.
 
 ## Quickview
 ![Create project](./create-project.gif)
@@ -22,35 +31,26 @@ composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-p
 ```
 
 
-Once Composer finalizes the proejct creation a wizard will be autmatically run. Answer the questions...@TODO
+Once Composer finalizes the project creation an assistant will be autmatically run. It will ask you a few questions:
 
-@TODO: Explain questions.
+ - The project name: this a machine name for the project. It will be used for Docker container names, project URL and some other places. Please, use only letters, numbers and underscores.
 
+ - Setup a git repository? If yes, the assistant will initialize a git repository and make the initial commit.
 
-Then, complete the setup following these steps:
+ - Install Drupal? If thes, the assistan will configure and install a Drupal site.
 
-
-2. Copy the `docker-compose.override.yml.dist` file to `docker-compose.override.yml`. Look for the
-services.traefik.ports value. There you have the port mapping in the form `<your local machine port>:<container port>`.
-Note that WEB_SERVER_PORT is the local machine port which is mapped to point the web server port inside the container.
-3. Start containers running `docker-compose up -d` in repository root.
-4. To access the site go to URL: http://\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
-5. To access the project's documentation go to URL: http://docs.\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
-6. (Optional) In the case you need access to remote environments inside PHP container, uncomment these lines at docker-compose.override.yml:
-```yaml
-#  php:
-#    environment:
-#      SSH_AUTH_SOCK: /ssh-agent
-...
-#    volumes:
-#      - $SSH_AUTH_SOCK:/ssh-agent
-```
+ - Radix sub-theme: the asistant can create a [Radix](https://www.drupal.org/project/radix) subtheme for you. We quite often use Radix as the base theme of our projects. You can skip this and use your own theme, of course.
 
 
+After the assistant finished, if you have selected to install Drupal your project will be running and the assitant will print the URL to access it.
 
-## Stack
+
+## Included out-of-the-box
+
 ### docker-compose infrastructure
+
 Based on [wodby/docker4drupal](https://github.com/wodby/docker4drupal), with some tweaks to speed-up your development.
+
 The stack is configured as follows:
 
 | Container       | Versions               | Service name    | Image                              | Enabled by default |
@@ -84,15 +84,13 @@ The stack is configured as follows:
 | Portainer       | latest                 | `portainer`     | [portainer/portainer]              | ✓                  |
 | BackstopJS      | 4.4                    | `backstopjs`    | [backstopjs/backstopjs]            | ✓                  |
 
-There is a docker-compose.override.yml.dist file including some container definitions like adminer and mkdocs.
-This is done with the purpose of differencing the local environment stack from the CI environment stack.
+There is a docker-compose.override.yml.dist file including some container definitions like Adminer and MkDocs.
+This is done with the purpose of differencing the local environment stack from the stack of other environments.
 The docker-compose.override.yml is git-ignored so your stack gets clean.
 
 
 ### Drupal project folder structure
-The folder structure skafold is based on [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project)
-so all your dependencies are managed by composer, drupal is required as [drupal/core](https://github.com/drupal/core) package
-and web-root files are automatically generated via [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) composer plugin.
+The folder structure scaffold is based on [drupal/recommended-project](https://github.com/drupal/recommended-project), the Drupal's [official recommended method to install Drupal](https://www.drupal.org/docs/develop/using-composer/using-composer-to-install-drupal-and-manage-dependencies#download-core). This way, all your dependencies are managed by Composer, Drupal is required as [drupal/core-recommended](https://github.com/drupal/core-recommended) package and web-root files are automatically generated via [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) composer plugin. @TODO: The recommended package is now drupal/core-composer-scaffold.
 
 ### Drush (Drupal Shell)
 Drush is a command line shell for Drupal, and a swiss army knife letting developers
@@ -217,6 +215,31 @@ the needs of different areas such as SEO, security, content editing, themming or
 
 ### Stylelint css
 [Stylelint](https://stylelint.io/) is a modern linter that helps you avoid errors and enforce conventions in your styles.
+
+
+
+
+## Manual configuration
+
+Follow these steps:
+
+1. Copy the `.env.example` file to `.env` and edit it to fit your needs.
+1. Copy the `docker-compose.override.yml.dist` file to `docker-compose.override.yml`. Look for the
+services.traefik.ports value. There you have the port mapping in the form `<your local machine port>:<container port>`.
+Note that WEB_SERVER_PORT is the local machine port which is mapped to point the web server port inside the container.
+1. Start containers running `docker-compose up -d` in repository root.
+1. To access the site go to URL: http://\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
+1. To access the project's documentation go to URL: http://docs.\<PROJECT_BASE_URL\>:\<WEBSERVER_PORT\>/
+1. (Optional) In the case you need access to remote environments inside PHP container, uncomment these lines at docker-compose.override.yml:
+```yaml
+#  php:
+#    environment:
+#      SSH_AUTH_SOCK: /ssh-agent
+...
+#    volumes:
+#      - $SSH_AUTH_SOCK:/ssh-agent
+```
+
 
 #### Installation
 * Install stylelint as dependency on your custom theme folder
