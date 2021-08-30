@@ -1,5 +1,6 @@
 include docker.mk
 
+# By default, setup command targets the default site.
 SITE ?= "default"
 
 # Update this with the base drush alias for your site.
