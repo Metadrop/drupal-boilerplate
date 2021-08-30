@@ -24,7 +24,7 @@ behat:
 ngrok:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml up -d && docker-compose exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
 
-## ngrok	:	Stop the created ngrok tunnel
+## ngrok-stop	:	Stop the created ngrok tunnel
 ngrok-stop:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml rm -fsv ngrok
 
