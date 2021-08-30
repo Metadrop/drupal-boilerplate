@@ -7,39 +7,49 @@ PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
 BEHAT_YML ?= "tests/behat/behat.yml"
 SITE ?= "default"
+
 # Update this with the base drush alias for your site.
 # Example, if your site's drush aliases are contained into mysite.site.yml
 # then the default site alias will be "mysite"
 DEFAULT_SITE_ALIAS ?= "mysite"
 
 ## test	:	Run project unit tests
+.PHONY: test
 test:
 	docker-compose exec php phpunit
 
 ## behat	:	Run project Behat tests
+.PHONY: behat
 behat:
 	docker-compose exec -u www-data -T php ${BEHAT} --config ${BEHAT_YML} --colors $(params)
 
 ## ngrok	:	Setup a ngrok tunnel to make the site available
+.PHONY: ngrok
 ngrok:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml up -d && docker-compose exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
 
 ## ngrok-stop	:	Stop the created ngrok tunnel
+.PHONY: ngrok-stop
 ngrok-stop:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml rm -fsv ngrok
 
 ## frontend	:	Generate frontend assets like compiling scss
+.PHONY: frontend
 frontend:
 	docker-compose exec node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
 ## backstopjs-reference	:	Generate BackstopJS reference files
+.PHONY: backstopjs-reference
 backstopjs-reference:
 	docker-compose exec backstopjs backstop reference
 
 ## backstopjs-test	:	Run BackstopJS tests
+.PHONY: backstopjs-test
 backstopjs-test:
 	docker-compose exec backstopjs backstop test
+
 ## setup	:	Prepares the site and loads it with data from the reference site
+.PHONY: setup
 setup:
 	chmod u+w web/sites/default -R
 	cp docker-compose.override.yml.dist docker-compose.override.yml
@@ -49,9 +59,11 @@ setup:
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
 
 ## solr-sync	:	Reload docker Solr cores from local files.
+.PHONY: solr-sync
 solr-sync:
 	./scripts/solr-sync.sh ${PROJECT_NAME} ${SOLR_CONTAINER} ${CORES}
 
 ## solr-rebuild	:	Re-creates the Solr core
+.PHONY: solr-rebuild
 solr-rebuild:
 	docker-compose stop solr && docker-compose rm -f solr && docker-compose up -d solr && make solr-sync
