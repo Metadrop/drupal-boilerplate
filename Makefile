@@ -21,7 +21,7 @@ test:
 ## behat	:	Run project Behat tests
 .PHONY: behat
 behat:
-	docker-compose exec -u www-data -T php ${BEHAT} --config ${BEHAT_YML} --colors $(params)
+	docker-compose exec php behat --colors
 
 ## ngrok	:	Setup a ngrok tunnel to make the site available
 .PHONY: ngrok
