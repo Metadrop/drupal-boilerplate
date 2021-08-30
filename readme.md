@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository is a boilerplate to create Drupal 8/9/10 projects faster with a lot tools already preconfigured.
+This repository is a boilerplate to create Drupal 8/9/10 projects with a lot tools already preconfigured with minimal effort.
 
 Tools included out-of-the-box:
 
@@ -11,6 +11,13 @@ Tools included out-of-the-box:
   - A working and preconfigured Drush, the Drupal shell.
   - MkDocs to document your project using Markdown files.
   - Grumphp to enforce [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards). It is configured to use [phplint](https://github.com/overtrue/phplint), yamlint,  [jsonlint](https://github.com/Seldaek/jsonlint), [drupalcheck](https://github.com/mglaman/drupal-check), [phpcpd](https://github.com/sebastianbergmann/phpcpd) and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer).
+  - Phpqa for static analysis.
+  - Behat BDD testing configured and working.
+  - PHPUnit for unit testing configured and working.
+  - [BackstopJS](https://github.com/garris/BackstopJS) for visual regression testing.
+  - [Stylelint](https://stylelint.io/) for checking style files.
+  - [Scripthor](https://github.com/Metadrop/scripthor) toolset with some helper scripts for development.
+  - Optionally, a Solr container ready to be used by Drupal.
 
 
 
@@ -208,8 +215,7 @@ so you can focus on write your unit tests.
 
 ### Scripthor toolset
 
-[Scripthor](https://github.com/Metadrop/scripthor) is our set of scripts for our daily routine, to speed up the
-development workflow.
+[Scripthor](https://github.com/Metadrop/scripthor) is our set of scripts for our daily routine, to speed up the development workflow.
 
 Til today, we provide the following scripts:
 - **reload-local.sh**: Reload your local environment setting everything up for a new developer, a new branch, or just
@@ -258,8 +264,7 @@ Although the Solr container is not enabled by default, some commands to manage t
 
 ### Buffet of selected modules
 
-We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve
-the needs of different areas such as SEO, security, content editing, themming or deployments across different environments.
+We are updating or selection of required modules to ensure you won't forget anything. The modules bundled will solve the needs of different areas such as SEO, security, content editing, themming or deployments across different environments.
 
 ### Stylelint CSS
 
@@ -280,8 +285,7 @@ the needs of different areas such as SEO, security, content editing, themming or
 
       npm i laravel-mix-stylelint --save-dev
 
-* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules). For a reference, these
-are [Metadrop's](https://gitlab.com/-/snippets/2067128).
+* Create .stylelintrc.yml file with your [stylelint rules](https://stylelint.io/developer-guide/rules). For a reference, these are [Metadrop's](https://gitlab.com/-/snippets/2067128).
 
 * Run stylelint checker
 
