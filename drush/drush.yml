@@ -17,6 +17,7 @@ command:
         structure-tables-key: common
     sanitize:
       options:
+        # Set a custom password if needed.
         sanitize-password: password
 sql:
   # List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
