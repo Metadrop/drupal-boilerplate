@@ -371,3 +371,7 @@ Added several variables:
  - DEFAULT_DRUSH_ALIAS:
 
 
+
+
+[Test link to deploy](docs/docs/deploy.md)
+[Test link tu subpage](docs/docs/others/mkdocs.md)
