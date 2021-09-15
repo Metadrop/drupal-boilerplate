@@ -8,6 +8,12 @@ SITE ?= "default"
 # then the default site alias will be "mysite"
 DEFAULT_SITE_ALIAS ?= "metadrop"
 
+
+## info	:	Show project info
+.PHONY: info
+info:
+	@scripts/get_info.sh
+
 ## test	:	Run project unit tests
 .PHONY: test
 test:
