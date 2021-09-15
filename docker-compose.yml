@@ -264,16 +264,34 @@ services:
       - HUB_HOST=hub
 #      - HUB_PORT=4444
 
-  phantomjs:
-    image: wernight/phantomjs:${PHANTOMJS_VERSION}
-    container_name: "${PROJECT_NAME}_phantomjs"
-    volumes:
-      - ./:/var/www/html:cached # User-guided caching
-    depends_on:
-      - php
-      - nginx
-    entrypoint: phantomjs
-    command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
+  # BUG: Standalone chrome image can't be used until this is resolved:
+  # https://bugs.chromium.org/p/chromedriver/issues/detail?id=3857
+#  chrome:
+#    image: selenium/standalone-chrome:$SELENIUM_CHROME_TAG
+#    container_name: "${PROJECT_NAME}_chrome"
+#    ports:
+#      - "4444:4444"
+#    volumes:
+#      - /dev/shm:/dev/shm
+#    entrypoint:
+#      - chromedriver
+#      - "--no-sandbox"
+#      - "--disable-dev-shm-usage"
+#      - "--log-path=/tmp/chromedriver.log"
+#      - "--verbose"
+#      - "--whitelisted-ips="
+
+
+  #phantomjs:
+    #image: wernight/phantomjs:${PHANTOMJS_VERSION}
+    #container_name: "${PROJECT_NAME}_phantomjs"
+    #volumes:
+      #- ./:/var/www/html:cached # User-guided caching
+    #depends_on:
+      #- php
+      #- nginx
+    #entrypoint: phantomjs
+    #command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
 
   mailhog:
     image: mailhog/mailhog
