@@ -15,7 +15,7 @@ Feature: As a user
     Then I should see "This action cannot be undone."
     Then I should see "Delete"
     When I press the "Delete" button
-    Then I should see the message "The Basic page Behat page test has been deleted"
+    Then I should see "The Basic page Behat page test has been deleted"
 
     Examples:
       | role           |
