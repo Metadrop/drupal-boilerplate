@@ -182,7 +182,6 @@ To run it, just run:
 docker-compose exec php phpqa
 ```
 
-@TODO: Give more details. How is this different from using Grumphp?
 
 ### Behavior Driven Development on natural language with Behat
 
