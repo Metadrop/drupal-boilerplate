@@ -6,7 +6,7 @@ SITE ?= "default"
 # Update this with the base drush alias for your site.
 # Example, if your site's drush aliases are contained into mysite.site.yml
 # then the default site alias will be "mysite"
-DEFAULT_SITE_ALIAS ?= "metadrop"
+DEFAULT_SITE_ALIAS ?= "sitename"
 
 
 ## info	:	Show project info
