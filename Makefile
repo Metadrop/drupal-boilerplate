@@ -1,8 +1,12 @@
 include docker.mk
 
-# By default, setup command targets the default site.
-SITE ?= "default"
+.PHONY: test
 
+DRUPAL_VER ?= 8
+PHP_VER ?= 7.1
+BEHAT ?= "vendor/bin/behat"
+BEHAT_YML ?= "tests/behat/behat.yml"
+SITE ?= "default"
 # Update this with the base drush alias for your site.
 # Example, if your site's drush aliases are contained into mysite.site.yml
 # then the default site alias will be "mysite"
@@ -22,7 +26,7 @@ test:
 ## behat	:	Run project Behat tests
 .PHONY: behat
 behat:
-	docker-compose exec php behat --colors
+	docker-compose exec php  ${BEHAT} --colors
 
 ## ngrok	:	Setup a ngrok tunnel to make the site available
 .PHONY: ngrok
