@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository is a boilerplate to create Drupal 8/9/10 projects with a lot tools already preconfigured with minimal effort.
+This repository is a boilerplate to create Drupal 8/9/10 projects with many tools already preconfigured with minimal effort.
 
 Tools included out-of-the-box:
 
