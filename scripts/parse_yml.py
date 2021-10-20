@@ -2,11 +2,12 @@
 
 # Simple script to get project info.
 
+import sys
 import subprocess
 import yaml
-import sys
-from ConfigParser import ConfigParser
-from StringIO import StringIO
+import re
+import configparser
+import io
 
 
 
@@ -21,10 +22,10 @@ class Informer(object):
 
 
   def parse_env(self):
-    self.parser = ConfigParser()
+    self.parser = configparser.ConfigParser()
     with open(".env") as stream:
-      stream = StringIO("[general]\n" + stream.read())
-      self.parser.readfp(stream)
+      stream = io.StringIO("[general]\n" + stream.read())
+      self.parser.read_file(stream)
     #print(self.parser.items("general"))
 
 
@@ -36,6 +37,7 @@ class Informer(object):
 
   def parse_docker_info(self):
     docker_info_stream = subprocess.check_output(['docker-compose', 'config'])
+    # print(docker_info_stream )
     self.info = yaml.safe_load(docker_info_stream)
 
 
@@ -52,9 +54,9 @@ class Informer(object):
 
 
 
-  def get_urls(self):
+  def get_ports(self):
     raw_ports = self.get_docker_conf(['services', 'traefik', 'ports'])
-    self.urls = []
+    self.ports = []
 
     for port_info in raw_ports:
       if port_info['target'] == 80:
@@ -64,12 +66,79 @@ class Informer(object):
       else:
         protocol = 'http(s)'
 
-      base_url = self.get_env_value('project_base_url')
-      self.urls += ["{}://{}:{}".format(protocol, base_url, port_info['published'] )]
+
+      port_info = {
+        'protocol': protocol,
+        'port': port_info['published']
+        }
+
+      self.ports += [port_info]
 
 
-    if len(self.urls) == 0:
+    if len(self.ports) == 0:
       print("It seems the traefik port is not configured in the '{}' file".format(source_file))
+
+
+
+
+  def get_urls(self):
+    self.get_ports()
+
+    self.urls = {}
+
+     # Webserver url.
+    self.urls['web'] = self.get_url('apache')
+
+    if self.urls['web'] is None:
+      self.urls['web'] = self.get_url('nginx')
+
+    # Adminer.
+    self.urls['adminer'] = self.get_url('adminer')
+
+    # Docs.
+    self.urls['mkdocs'] = self.get_url('mkdocs')
+
+
+
+  def get_url(self, service):
+    url = None
+    value_dict = self.get_docker_conf(['services', service, 'labels'])
+
+
+    if value_dict is not None:
+      for key in value_dict.keys():
+        if key.find('routers') != -1:
+          break
+
+      value = value_dict[key]
+      results = re.search(r"`(.*)`", value)
+      url = results.group(1)
+
+    return url
+
+
+
+  def format_service_urls(self, url):
+    urls = [];
+    for port in self.ports:
+      urls += [ "{}://{}:{}".format(port["protocol"], url, port["port"])]
+
+    return urls
+
+
+
+  def format_service_section(self, service_name, url):
+    urls = self.format_service_urls(url)
+
+    indent_length = 25 - len(service_name)
+
+    output = "  - {}".format(service_name)
+    for url in urls:
+      #output += " "*indent_length + url + "\n"
+      output += "\n      " + url + "\n"
+
+    output += "\n"
+    return output
 
 
 
@@ -77,14 +146,13 @@ class Informer(object):
 
     self.get_urls()
 
-    output = "\nProject urls:"
+    output = "\nProject urls:\n\n"
 
-    for url in self.urls:
-      output += "\n  {}".format(url)
+    output += self.format_service_section('Site URL', self.urls['web'])
+    output += self.format_service_section('Documentation', self.urls['mkdocs'])
+    output += self.format_service_section('Database web interface', self.urls['adminer'])
 
     print(output)
-
-
 
 
 
