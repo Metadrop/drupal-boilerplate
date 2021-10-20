@@ -21,11 +21,11 @@ It provides the following tools:
   - Testing tools:
     - [Behat](behat.md)
     - [PHPUnit](phpunit.md)
-    - BackstopJs
+    - [BackstopJS](backstopjs.md)
   - Documentation:
-    - MkDocs
+    - [MkDocs](mkdocs.md)
   - Helpers:
-    - Makefiles
+    - [Makefiles](makefiles.md)
 
 
 
