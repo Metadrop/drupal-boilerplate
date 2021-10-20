@@ -3,6 +3,7 @@ theme: material
 dev_addr: '0.0.0.0:8080'
 nav:
   - Home: index.md
+  - Boilerplate: boilerplate/index.md
   - Local: local.md
   - Deployment: deploy.md
   - Tests: tests.md
