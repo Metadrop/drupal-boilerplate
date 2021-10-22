@@ -43,7 +43,7 @@ paralell-lint:
 # Beware that configuration or \Edge\QA\Tools\Tool might change (especially $SETTINGS is not stable :)
 # Use it for development of new tools, but not on production (you can add just a new tool, don't have to define all tools).
 tool:
-  phpcs: [Edge\QA\Tools\Analyzer\Phpcs, Edge\QA\Tools\Analyzer\PhpcsV3]
+  phpcs: Edge\QA\Tools\Analyzer\Phpcs
   phpmd: Edge\QA\Tools\Analyzer\Phpmd
   phpcpd: Edge\QA\Tools\Analyzer\Phpcpd
   parallel-lint: Edge\QA\Tools\Analyzer\ParallelLint
