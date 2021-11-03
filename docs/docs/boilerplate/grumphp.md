@@ -27,4 +27,4 @@ Grumphp is already configured (so you don't need to worry about that) making the
 
 Configuration is done in the `grumphp.yml` file. Check [GrumPHP repository](https://github.com/phpro/grumphp) for documentation.
 
-By deafult, it only analizes custom folders (`./docroot/**/custom`).
+By default, it only analyzes custom folders (`./docroot/**/custom`).

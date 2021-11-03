@@ -46,9 +46,9 @@ npm run css:lint
 ##### Run using Laravel Mix
 
 Radix uses Laravel Mix, a wrapper around Webpack for common build processes.
-You can add stylelint to your `webpack.mix.js` on your Radix subtheme.
+You can add Stylelint to your `webpack.mix.js` on your Radix subtheme.
 
-Install webpack stylelint plugin:
+Install Webpack Stylelint plugin:
 
 ```bash
 npm i stylelint-webpack-plugin --save-dev
