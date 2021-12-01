@@ -33,10 +33,4 @@ grumphp:
         - install
         - profile
         - theme
-        - feature
-        - info
-        - txt
-        - md
-        - js
-        - test
       standard: Drupal,DrupalPractice
