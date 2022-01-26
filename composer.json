@@ -31,6 +31,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/radix": "^4.10",
+        "consolidation/robo": "^2.0",
         "drupal/redirect": "^1.6",
         "drupal/simple_sitemap": "^3.8",
         "drupal/stage_file_proxy": "^1.1",
