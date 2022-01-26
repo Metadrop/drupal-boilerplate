@@ -41,29 +41,18 @@ composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-p
 ```
 
 
-Once Composer finalizes the project creation an assistant will be autmatically run. It will ask you a few questions:
+Once Composer finalizes the project creation an assistant will be automatically run. It will ask you a few questions:
 
  - The project name: this a machine name for the project. It will be used for Docker container names, project URL and some other places. Please, use only letters, numbers and underscores.
 
  - Setup a git repository? If yes, the assistant will initialize a git repository and make the initial commit.
 
- - Install Drupal? If thes, the assistan will configure and install a Drupal site.
+ - Install Drupal? If yes, the assistant will configure and install a Drupal site.
 
- - Radix sub-theme: the asistant can create a [Radix](https://www.drupal.org/project/radix) subtheme for you. We quite often use Radix as the base theme of our projects. You can skip this and use your own theme, of course.
-
-
-After the assistant finished, if you have selected to install Drupal your project will be running and the assitant will print the URL to access it.
+ - Radix sub-theme: the assistant can create a [Radix](https://www.drupal.org/project/radix) subtheme for you. We quite often use Radix as the base theme of our projects. You can skip this and use your own theme, of course.
 
 
-
-
-
-
-
-
-
-
-
+After the assistant finished, if you have selected to install Drupal your project will be running and the assistant will print the URL to access it.
 
 
 
