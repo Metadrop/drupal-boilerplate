@@ -73,4 +73,11 @@ After the assistant finished, if you have selected to install Drupal your projec
 
 ### Is this for me?
 
+This boilerplate is a good choice for medium to advanced users that want to have a full local environment with a complete set of tools ready to use for their Drupal projects in matter of minutes. However, you should be comfortable using Docker, Drush and another tools without a managing layer like DDEV provides.
+
+
 ### Why not Lando/DDEV/whatever?
+
+We love them! However, we have had some issues trying to adapt them to a certain edge case projects. Those tools allows to handle complex topics like docker thanks to a managing layer. However, that layer imposes some limits. It is not easy to hit them, but when you do it is a hard limit. That's when this boilerplate can be helpful.
+
+
