@@ -20,14 +20,3 @@ Feature: As a user
       | role           |
       | administrator  |
 
-
-  @error @api @article @edit @authenticated @anonymous
-  Scenario Outline: Simple Article edit role access
-    Given I am a user with <role> role
-    When I go to "edit" of the "node" entity with label "Behat article test"
-    Then the response status code should be 403
-
-    Examples:
-      | role           |
-      | anonymous      |
-      | authenticated  |

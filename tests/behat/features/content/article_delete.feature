@@ -20,15 +20,3 @@ Feature: As a user
     Examples:
       | role           |
       | administrator  |
-
-
-  @error @api @article @delete @authenticated @anonymous
-  Scenario Outline: Simple Article delete role access
-    Given I am a user with <role> role
-    When I go to "delete" of the "node" entity with label "Behat article test"
-    Then the response status code should be 403
-
-    Examples:
-      | role           |
-      | anonymous      |
-      | authenticated  |

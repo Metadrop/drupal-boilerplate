@@ -19,15 +19,3 @@ Feature: As a user
     Examples:
       | role           |
       | administrator  |
-
-
-  @error @api @page @edit @authenticated @anonymous
-  Scenario Outline: Simple Page edit role access
-    Given I am a user with <role> role
-    When I go to "edit" of the "node" entity with label "Behat page test"
-    Then the response status code should be 403
-
-    Examples:
-      | role           |
-      | anonymous      |
-      | authenticated  |
