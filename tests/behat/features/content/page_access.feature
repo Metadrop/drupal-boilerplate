@@ -5,9 +5,8 @@ Feature: As a system
   Background:
     Given "page" content:
       | title                        | status    |
-      | Behat page test published    | published |
-      | Behat page test unpublished  | draft     |
-
+      | Behat page test published    | 1         |
+      | Behat page test unpublished  | 0         |
 
   @sunnyday @api @page @access @authenticated @anonymous
   Scenario Outline: Simple Page access by moderation state

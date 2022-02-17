@@ -4,11 +4,11 @@ Feature: As a system
 
   Background:
     Given "article" content:
-      | title                           | status       |
-      | Behat article test published    | published    |
-      | Behat article test unpublished  | draft        |
+      | title                           | status   |
+      | Behat article test published    | 1        |
+      | Behat article test unpublished  | 0        |
 
-  @sunnyday @api @article @access @authenticated @anonymous @exclude
+  @sunnyday @api @article @access @authenticated @anonymous
   Scenario Outline: Simple article access by moderation state
     Given I am a user with <role> role
 
@@ -35,7 +35,7 @@ Feature: As a system
       | anonymous      |
       | authenticated  |
 
-  @sunnyday @api @article @access @editor @manager @exclude
+  @sunnyday @api @article @access @administrator
   Scenario Outline: Simple article access by moderation state (administrative roles)
     Given I am a user with <role> role
 
