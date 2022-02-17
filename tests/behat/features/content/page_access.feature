@@ -4,42 +4,29 @@ Feature: As a system
 
   Background:
     Given "page" content:
-      | title                        | moderation_state |
-      | Behat page test published    | published        |
-      | Behat page test draft        | draft            |
-      | Behat page test archived     | archived         |
-      | Behat page test unpublished  | unpublished      |
+      | title                        | status    |
+      | Behat page test published    | published |
+      | Behat page test unpublished  | draft     |
 
-  @sunnyday @api @page @access @authenticated @anonymous @energies
+
+  @sunnyday @api @page @access @authenticated @anonymous
   Scenario Outline: Simple Page access by moderation state
     Given I am a user with <role> role
 
     # View:
     When I go to the "node" entity with label "Behat page test published"
     Then the response status code should be 200
-    When I go to the "node" entity with label "Behat page test draft"
-    Then the response status code should be 403
-    When I go to the "node" entity with label "Behat page test archived"
-    Then the response status code should be 403
     When I go to the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 403
 
     # Edit:
     When I go to "edit" of the "node" entity with label "Behat page test published"
     Then the response status code should be 403
-    When I go to "edit" of the "node" entity with label "Behat page test draft"
-    Then the response status code should be 403
-    When I go to "edit" of the "node" entity with label "Behat page test archived"
-    Then the response status code should be 403
     When I go to "edit" of the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 403
 
     # Delete:
     When I go to "delete" of the "node" entity with label "Behat page test published"
-    Then the response status code should be 403
-    When I go to "delete" of the "node" entity with label "Behat page test draft"
-    Then the response status code should be 403
-    When I go to "delete" of the "node" entity with label "Behat page test archived"
     Then the response status code should be 403
     When I go to "delete" of the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 403
@@ -49,31 +36,19 @@ Feature: As a system
       | anonymous      |
       | authenticated  |
 
-  @sunnyday @api @page @access @editor @manager @energies
+  @sunnyday @api @page @access @administrator
   Scenario Outline: Simple Page access by moderation state (administrative roles)
     Given I am a user with <role> role
 
     # View:
-    When I go to the "node" entity with label "Behat page test draft"
-    Then the response status code should be 200
-    When I go to the "node" entity with label "Behat page test archived"
-    Then the response status code should be 200
     When I go to the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 200
 
     # Edit:
-    When I go to "edit" of the "node" entity with label "Behat page test draft"
-    Then the response status code should be 200
-    When I go to "edit" of the "node" entity with label "Behat page test archived"
-    Then the response status code should be 200
     When I go to "edit" of the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 200
 
     # Delete:
-    When I go to "delete" of the "node" entity with label "Behat page test draft"
-    Then the response status code should be 200
-    When I go to "delete" of the "node" entity with label "Behat page test archived"
-    Then the response status code should be 200
     When I go to "delete" of the "node" entity with label "Behat page test unpublished"
     Then the response status code should be 200
 

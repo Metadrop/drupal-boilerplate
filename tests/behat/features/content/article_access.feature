@@ -1,45 +1,31 @@
 Feature: As a system
-  I want to protect Article access per moderation state
+  I want to protect Article access per status
   So that only published content is accessible to not privileged users
 
   Background:
     Given "article" content:
-      | title                           | moderation_state |
-      | Behat article test published    | published        |
-      | Behat article test draft        | draft            |
-      | Behat article test archived     | archived         |
-      | Behat article test unpublished  | unpublished      |
+      | title                           | status       |
+      | Behat article test published    | published    |
+      | Behat article test unpublished  | draft        |
 
-  @sunnyday @api @article @access @authenticated @anonymous @energies
+  @sunnyday @api @article @access @authenticated @anonymous @exclude
   Scenario Outline: Simple article access by moderation state
     Given I am a user with <role> role
 
     # View:
     When I go to the "node" entity with label "Behat article test published"
     Then the response status code should be 200
-    When I go to the "node" entity with label "Behat article test draft"
-    Then the response status code should be 403
-    When I go to the "node" entity with label "Behat article test archived"
-    Then the response status code should be 403
     When I go to the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 403
 
     # Edit:
     When I go to "edit" of the "node" entity with label "Behat article test published"
     Then the response status code should be 403
-    When I go to "edit" of the "node" entity with label "Behat article test draft"
-    Then the response status code should be 403
-    When I go to "edit" of the "node" entity with label "Behat article test archived"
-    Then the response status code should be 403
     When I go to "edit" of the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 403
 
     # Delete:
     When I go to "delete" of the "node" entity with label "Behat article test published"
-    Then the response status code should be 403
-    When I go to "delete" of the "node" entity with label "Behat article test draft"
-    Then the response status code should be 403
-    When I go to "delete" of the "node" entity with label "Behat article test archived"
     Then the response status code should be 403
     When I go to "delete" of the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 403
@@ -49,31 +35,19 @@ Feature: As a system
       | anonymous      |
       | authenticated  |
 
-  @sunnyday @api @article @access @editor @manager @energies
+  @sunnyday @api @article @access @editor @manager @exclude
   Scenario Outline: Simple article access by moderation state (administrative roles)
     Given I am a user with <role> role
 
     # View:
-    When I go to the "node" entity with label "Behat article test draft"
-    Then the response status code should be 200
-    When I go to the "node" entity with label "Behat article test archived"
-    Then the response status code should be 200
     When I go to the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 200
 
     # Edit:
-    When I go to "edit" of the "node" entity with label "Behat article test draft"
-    Then the response status code should be 200
-    When I go to "edit" of the "node" entity with label "Behat article test archived"
-    Then the response status code should be 200
     When I go to "edit" of the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 200
 
     # Delete:
-    When I go to "delete" of the "node" entity with label "Behat article test draft"
-    Then the response status code should be 200
-    When I go to "delete" of the "node" entity with label "Behat article test archived"
-    Then the response status code should be 200
     When I go to "delete" of the "node" entity with label "Behat article test unpublished"
     Then the response status code should be 200
 

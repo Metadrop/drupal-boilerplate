@@ -4,7 +4,7 @@ Feature: As a user
 
   Background:
     Given "article" content:
-      | title           |
+      | title              |
       | Behat article test |
 
 
