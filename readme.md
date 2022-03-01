@@ -32,6 +32,10 @@ Because it uses Docker under the hood, you can customize whatever you want, add 
  - [Docker](https://docs.docker.com/get-docker/)
  - [Docker Compose](https://docs.docker.com/compose/install/)
 
+ **Optionally**
+
+ - Pyhton 3 with PyYAML installed for the `make info` command
+
 ## Usage
 
 To create a new project based on this boilerplate, the recommended method is using Composer's create-project command:
@@ -68,5 +72,12 @@ This boilerplate is a good choice for medium to advanced users that want to have
 ### Why not Lando/DDEV/whatever?
 
 We love them! However, we have had some issues trying to adapt them to a certain edge case projects. Those tools allows to handle complex topics like docker thanks to a managing layer. However, that layer imposes some limits. It is not easy to hit them, but when you do it is a hard limit. That's when this boilerplate can be helpful.
+
+## Troubleshoting
+
+### 'make info' command doesn't work
+
+Python 3 with PyYML installed is needed.
+
 
 
