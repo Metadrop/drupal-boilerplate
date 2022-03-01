@@ -15,10 +15,10 @@ DEFAULT_SITE_ALIAS ?= "sitename"
 info:
 	@scripts/get_info.sh
 
-## test	:	Run project unit tests
+## test	:	Run Unit tests. Pass the path to a file or directory with the Unit test. Example: make test web/modules/contrib/devel/tests/src/Unit
 .PHONY: test
 test:
-	docker-compose exec php phpunit
+	docker-compose exec php phpunit $(filter-out $@,$(MAKECMDGOALS))
 
 ## behat	:	Run project Behat tests
 .PHONY: behat

@@ -79,5 +79,25 @@ We love them! However, we have had some issues trying to adapt them to a certain
 
 Python 3 with PyYML installed is needed.
 
+### Unit tests are not working
 
+You may encounter several errors when running the `make test` command. For example:
+
+```
+PHP Fatal error:  Declaration of Drupal\Tests\ultimate_cron\Kernel\UltimateCronQueueTest::setUp() must be compatible with Drupal\Tests\system\Kernel\System\CronQueueTest::setUp(): void in /var/www/html/web/modules/contrib/ultimate_cron/tests/src/Kernel/UltimateCronQueueTest.php on line 26
+```
+
+Or
+
+```
+Fatal error: Uncaught Error: Class 'Drupal\Tests\group\Functional\GroupBrowserTestBase' not found in /var/www/html/web/modules/contrib/webform/modules/webform_group/tests/src/Functional/WebformGroupBrowserTestBase.php:13
+```
+
+This is due `make test`tries to run all Unit tests and some modules have issues. For example, first error comes from this issue "[Kernel test not compatible with core [9.x]](https://www.drupal.org/project/ultimate_cron/issues/3208608)", while second error is handled on this other issue: "[Group Testing Fails in PHPUnit for Webform Group submodule](https://www.drupal.org/project/webform/issues/3132204)".
+
+If you want to run all tests you need to address all those issues. But what for? You probably just want to run the test from a certain module. For that, just pass the proper path in the `make` command, like this:
+
+```
+make test web/modules/contrib/devel/tests/src/Unit
+```
 
