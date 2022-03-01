@@ -13,7 +13,19 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {
+            "name": "metadrop/drupal-dev",
+            "type": "git",
+            "url": "/home/ricardo/development/metadrop/_pruebas_con_composer/drupal-dev/.git",
+            "reference": "0.x"
+        },
+        {
+            "name": "metadrop/scripthor",
+            "type": "git",
+            "url": "/home/ricardo/development/metadrop/_pruebas_con_composer/scripthor/.git",
+            "reference": "master"
+       }
     ],
     "require": {
         "composer/installers": "^1.7",
@@ -42,7 +54,7 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.1.8"
+        "metadrop/drupal-dev": "^0.1.10"
     },
     "conflict": {
         "drupal/drupal": "*"
