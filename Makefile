@@ -5,7 +5,6 @@ include docker.mk
 DRUPAL_VER ?= 8
 PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
-BEHAT_YML ?= "tests/behat/behat.yml"
 SITE ?= "default"
 # Update this with the base drush alias for your site.
 # Example, if your site's drush aliases are contained into mysite.site.yml
