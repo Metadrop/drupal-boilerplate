@@ -17,7 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.7",
-        "consolidation/robo": "^2.0",
+        "consolidation/robo": "^3.0",
         "cweagans/composer-patches": "^1.7",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
         "drupal/admin_toolbar": "^2.4",
