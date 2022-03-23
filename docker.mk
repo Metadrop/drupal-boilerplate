@@ -83,8 +83,8 @@ logs:
 	@docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
 
 ## debug	:	Enable xdebug.
-.PHONY: debug
-debug:
+.PHONY: xdebug
+xdebug:
 	@echo "Starting up containers for $(PROJECT_NAME) with xdebug enabled."
 	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
 	docker-compose stop php
