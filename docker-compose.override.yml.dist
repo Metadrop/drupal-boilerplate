@@ -12,6 +12,7 @@ services:
 #      - $SSH_AUTH_SOCK:/ssh-agent
 ## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #      - mutagen:/var/www/html
+
 #  nginx:
 #    volumes:
 # For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
