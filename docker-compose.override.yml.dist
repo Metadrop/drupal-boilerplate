@@ -40,7 +40,7 @@ services:
 
   mkdocs:
     container_name: "${PROJECT_NAME}_mkdocs"
-    image: metadrop/docker-mkdocs
+    image: metadrop/docker-mkdocs:$MKDOCS_TAG
     volumes:
       - ./docs:/docs
     working_dir: /docs
