@@ -82,7 +82,7 @@ drush:
 logs:
 	@docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
 
-## xdebug	:	Enable xdebug.
+## enable_xdebug	:	Enable xdebug.
 .PHONY: enable_xdebug
 enable_xdebug:
 	@echo "Enabling xdebug in $(PROJECT_NAME)."
@@ -91,7 +91,7 @@ enable_xdebug:
 	docker-compose pull php
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up php -d
 
-## xdebug	:	Disable xdebug.
+## disable_xdebug	:	Disable xdebug.
 .PHONY: disable_xdebug
 disable_xdebug:
 	@echo "Disabling xdebug in $(PROJECT_NAME)."
