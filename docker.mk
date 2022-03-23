@@ -86,8 +86,8 @@ logs:
 .PHONY: debug
 debug:
 	@echo "Starting up containers for $(PROJECT_NAME) with xdebug enabled."
-	echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
-	docker-compose stop
+	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
+	@docker-compose stop
 	docker-compose pull
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up -d
 
