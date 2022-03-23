@@ -18,14 +18,5 @@ services:
 #      PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
 #      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
 #    volumes:
-#      - $SSH_AUTH_SOCK:/ssh-agent
 ## For XHProf and Xdebug profiler traces
 #      - files:/mnt/files
-## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
-#      - mutagen:/var/www/html
-
-#  nginx:
-#    volumes:
-# For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
-#      - ./:/var/www/html:cached # User-guided caching
-#      - docker-sync:/var/www/html # Docker-sync
