@@ -54,7 +54,8 @@ backstopjs-test:
 .PHONY: setup
 setup:
 	chmod u+w web/sites/default -R
-	cp docker-compose.override.yml.dist docker-compose.override.yml
+	cp -u docker-compose.override.yml.dist docker-compose.override.yml
+	cp -n docker-compose.xdebug.override.yml.dist docker-compose.xdebug.override.yml
 	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
 	docker-compose up -d
 	docker-compose exec -T php composer install
