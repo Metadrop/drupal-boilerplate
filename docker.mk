@@ -82,14 +82,21 @@ drush:
 logs:
 	@docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
 
-## debug	:	Enable xdebug.
-.PHONY: xdebug
-xdebug:
-	@echo "Starting up containers for $(PROJECT_NAME) with xdebug enabled."
+## xdebug	:	Enable xdebug.
+.PHONY: enable_xdebug
+enable_xdebug:
+	@echo "Enabling xdebug in $(PROJECT_NAME)."
 	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
 	docker-compose stop php
 	docker-compose pull php
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up php -d
+
+## xdebug	:	Disable xdebug.
+.PHONY: disable_xdebug
+disable_xdebug:
+	@echo "Disabling xdebug in $(PROJECT_NAME)."
+	docker-compose stop php
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml up php -d
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
