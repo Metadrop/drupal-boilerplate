@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+
+## ##### NETBeans xdebug 3 configuration #####
+#
+#  php:
+#    environment:
+#      PHP_XDEBUG: 1
+#      PHP_XDEBUG_MODE: debug
+#      XDEBUG_SESSION: netbeans-xdebug
+#      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
+#    volumes:
+#    # For XHProf and Xdebug profiler traces
+#      - files:/mnt/files
+
+
+## ##### PHP Storm xdebug 3 configuration #####
+##
+## You should create a 'PHP Web Page' configuration and, this is the most important part, a server configuration
+## named 'local' for this to work. Usually inside this server configuration you should remap the project root path
+## with the 'inside docker' path.
+## Other related links:
+## - https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html#integrationWithProduct
+## - https://wodby.com/docs/stacks/php/local/#xdebug
+#
+#  php:
+#    environment:
+#      PHP_XDEBUG: 1
+#      PHP_XDEBUG_MODE: debug
+#      XDEBUG_SESSION: local
+#      PHP_XDEBUG_IDEKEY: "PHPSTORM"
+#      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
+#    volumes:
+#    # For XHProf and Xdebug profiler traces
+#      - files:/mnt/files
