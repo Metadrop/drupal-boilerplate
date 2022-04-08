@@ -13,19 +13,7 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "name": "metadrop/drupal-dev",
-            "type": "git",
-            "url": "/home/ricardo/development/metadrop/_pruebas_con_composer/drupal-dev/.git",
-            "reference": "0.x"
-        },
-        {
-            "name": "metadrop/scripthor",
-            "type": "git",
-            "url": "/home/ricardo/development/metadrop/_pruebas_con_composer/scripthor/.git",
-            "reference": "master"
-       }
+        }
     ],
     "require": {
         "composer/installers": "^1.7",
