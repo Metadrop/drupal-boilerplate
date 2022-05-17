@@ -61,6 +61,10 @@ setup:
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
 
+## setup-from-config	:	Prepares the site and installs it using the Drupal configuration files
+.PHONY: setup-from-config
+setup-from-config:
+		docker-compose exec -T php drush si --existing-config -y
 ## solr-sync	:	Reload docker Solr cores from local files.
 .PHONY: solr-sync
 solr-sync:
