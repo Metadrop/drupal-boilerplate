@@ -28,12 +28,12 @@ behat:
 ## ngrok	:	Setup a ngrok tunnel to make the site available
 .PHONY: ngrok
 ngrok:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml up -d && docker-compose exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml up -d && docker-compose exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
 
 ## ngrok-stop	:	Stop the created ngrok tunnel
 .PHONY: ngrok-stop
 ngrok-stop:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f ci/docker-compose.ngrok.yml rm -fsv ngrok
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml rm -fsv ngrok
 
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
