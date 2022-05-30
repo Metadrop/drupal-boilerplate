@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  localtunnel:
+    image: juanjol/localtunnel:latest
+    container_name: "${PROJECT_NAME}_localtunnel"
+    command: "-p=80 -s=${PROJECT_NAME}"
