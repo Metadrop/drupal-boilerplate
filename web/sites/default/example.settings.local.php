@@ -32,6 +32,12 @@ $settings['trusted_host_patterns'] = [
   'nginx$',
 ];
 
+
+
+/** Skip file system permissions hardening. Not a security issue when developing locally. */
+$settings['skip_permissions_hardening'] = TRUE;
+
+
 /** === NO CACHE DEVELOPMENT === */
 //  /** Assertions. */
 //  assert_options(ASSERT_ACTIVE, TRUE);
@@ -58,5 +64,3 @@ $settings['trusted_host_patterns'] = [
 //  /** Disable Dynamic Page Cache. */
 //  $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 //
-//  /** Skip file system permissions hardening. */
-//  $settings['skip_permissions_hardening'] = TRUE;

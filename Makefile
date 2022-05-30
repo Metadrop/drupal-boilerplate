@@ -1,11 +1,8 @@
 include docker.mk
 
-.PHONY: test
-
 DRUPAL_VER ?= 8
 PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
-BEHAT_YML ?= "tests/behat/behat.yml"
 SITE ?= "default"
 # Update this with the base drush alias for your site.
 # Example, if your site's drush aliases are contained into mysite.site.yml
@@ -18,10 +15,10 @@ DEFAULT_SITE_ALIAS ?= "sitename"
 info:
 	@scripts/get_info.sh
 
-## test	:	Run project unit tests
+## test	:	Run Unit tests. Pass the path to a file or directory with the Unit test. Example: make test web/modules/contrib/devel/tests/src/Unit
 .PHONY: test
 test:
-	docker-compose exec php phpunit
+	docker-compose exec php phpunit $(filter-out $@,$(MAKECMDGOALS))
 
 ## behat	:	Run project Behat tests
 .PHONY: behat
@@ -58,11 +55,16 @@ backstopjs-test:
 setup:
 	chmod u+w web/sites/default -R
 	cp docker-compose.override.yml.dist docker-compose.override.yml
+	cp -n docker-compose.xdebug.override.yml.dist docker-compose.xdebug.override.yml
 	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
 	docker-compose up -d
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
 
+## setup-from-config	:	Prepares the site and installs it using the Drupal configuration files
+.PHONY: setup-from-config
+setup-from-config:
+		docker-compose exec -T php drush si --existing-config -y
 ## solr-sync	:	Reload docker Solr cores from local files.
 .PHONY: solr-sync
 solr-sync:

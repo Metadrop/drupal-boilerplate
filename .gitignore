@@ -8,6 +8,9 @@
 /web/libraries/
 /create-project.gif
 
+# Ignore xdebug docker-compose file
+docker-compose.xdebug.override.yml
+
 # Ignore sensitive information.
 /web/sites/*/settings.local.php
 

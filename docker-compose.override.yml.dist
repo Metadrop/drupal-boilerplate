@@ -8,20 +8,8 @@ services:
 #  php:
 #    environment:
 #      SSH_AUTH_SOCK: /ssh-agent
-#      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
-#      PHP_XDEBUG: 1
-#      PHP_XDEBUG_MODE: debug
-#      PHP_IDE_CONFIG: serverName=my-ide
-#      PHP_XDEBUG_IDEKEY: "my-ide"
-#      PHP_XDEBUG_CLIENT_HOST: host.docker.internal # Docker 18.03+ Mac/Win
-#      PHP_XDEBUG_CLIENT_HOST: 172.17.0.1 # Linux
-#      PHP_XDEBUG_CLIENT_HOST: 10.254.254.254 # macOS, Docker < 18.03
-#      PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
-#      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
 #    volumes:
 #      - $SSH_AUTH_SOCK:/ssh-agent
-## For XHProf and Xdebug profiler traces
-#      - files:/mnt/files
 ## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #      - mutagen:/var/www/html
 
@@ -40,7 +28,7 @@ services:
 
   mkdocs:
     container_name: "${PROJECT_NAME}_mkdocs"
-    image: metadrop/docker-mkdocs
+    image: metadrop/docker-mkdocs:$MKDOCS_TAG
     volumes:
       - ./docs:/docs
     working_dir: /docs
