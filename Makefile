@@ -28,7 +28,10 @@ behat:
 ## Localtunnel	:	Setup a local tunnel to make the site available
 .PHONY: localtunnel
 localtunnel:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.localtunnel.yml up -d && docker-compose logs localtunnel | grep -Po --color=never "your(.*)?"
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.localtunnel.yml up -d
+	@echo "Obtaining url..."
+	@sleep 3
+	@docker-compose logs localtunnel | grep -Po --color=never "your(.*)?"
 
 ## localtunnel-stop	:	Stop the created local tunnel
 .PHONY: localtunnel-stop

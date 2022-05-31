@@ -4,4 +4,8 @@ services:
   localtunnel:
     image: juanjol/localtunnel:latest
     container_name: "${PROJECT_NAME}_localtunnel"
-    command: "-p=80 -s=${PROJECT_NAME}"
+    links:
+      - apache
+    command: "-p=80 --local-host=apache -s=${PROJECT_NAME} --print-requests --allow-invalid-cert"
+    depends_on:
+      - apache
