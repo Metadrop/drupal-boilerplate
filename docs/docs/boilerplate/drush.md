@@ -25,7 +25,7 @@ Drush is preconfigured to:
 
   - Forbid write operations on the @prod environment (sql-sync and rsync).
 
-  - Encourage composer usage instead of using Drush to manage module code.
+  - Encourage Composer usage instead of using Drush to manage module code.
 
   - Sanitize passwords using `password` as password during SQL sync operations. Edit `drush/drush.yml` to use a less obvious value. See [drush.yml example file](https://www.drush.org/latest/examples/example.drush.yml/) to modify or add more configuration.
 

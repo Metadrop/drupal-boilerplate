@@ -61,7 +61,7 @@ Once inside the MariaDB database container run:
 
 `mysql -u root -ppassword -b drupal`
 
-If have changed the default values you will have to update in the command. Checl your `.env` file for the current values.
+If you have changed any of default values you will have to update them in the previous command. Check your `.env` file for the current values.
 
 ## Reload project with data from a remote environment
 
@@ -70,7 +70,7 @@ You can use the Scripthor script to reload the data:
 
 `scripts/reload-local.sh --site=<SITE_ALIAS>`
 
-SITE_ALIAS would the Drush alias fromt the remote environment you want to load data from.
+SITE_ALIAS would be the Drush alias fromt the remote environment you want to load data from.
 
 
 ## Get project URL and related tools

@@ -50,7 +50,7 @@ With those two items you can run a Drupal site. However, this boilerplate aims t
 
 Because there are many tools available and it is hard to remember all the commands needed to use all of them, the boilerplate provides commands in the form of `make` commands for all the common and frequent actions. Try `make help` from the repository root.
 
-Finally, all the tools use their standard configuration hand handling mechanism, so you don't have to learn any syntax or tool. If you need to modify or customize any tool just use the standard wat the tools provides.
+Finally, all the tools use their standard configuration hand handling mechanism, so you don't have to learn any syntax or tool. If you need to modify or customize any tool just use the standard way the tools provides.
 
 
 ## Technical decisions
