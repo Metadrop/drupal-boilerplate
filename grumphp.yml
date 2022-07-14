@@ -9,6 +9,17 @@ grumphp:
       enforce_no_subject_trailing_period: true
       max_subject_width: 130
       case_insensitive: false
+    git_branch_name:
+      whitelist:
+        - "fb-[0-9A-Za-z\\s_-]*"
+        - "hf-[0-9A-Za-z\\s_-]*"
+        - "bf-[0-9A-Za-z\\s_-]*"
+        - "dev"
+      blacklist:
+        - "release"
+        - "master"
+      additional_modifiers: ''
+      allow_detached_head: true
     phplint: ~
     yamllint: ~
     composer: ~
