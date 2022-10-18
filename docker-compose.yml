@@ -318,3 +318,4 @@ services:
       - ./tests/backstopjs:/src # User-guided caching
     entrypoint: []
     command: tail -F /dev/null
+    user: node
