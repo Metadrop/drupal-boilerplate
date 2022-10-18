@@ -17,7 +17,7 @@ grumphp:
         - "dev"
       blacklist:
         - "release"
-        - "master"
+        - "main"
       additional_modifiers: ''
       allow_detached_head: true
     phplint: ~
