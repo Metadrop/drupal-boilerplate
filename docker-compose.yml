@@ -168,7 +168,6 @@ services:
   node:
     image: wodby/node:$NODE_TAG
     container_name: "${PROJECT_NAME}_node"
-    working_dir: ${THEME_PATH}
     labels:
       - "traefik.http.services.${PROJECT_NAME}_node.loadbalancer.server.port=3000"
       - "traefik.http.routers.${PROJECT_NAME}_node.rule=Host(`node.${PROJECT_BASE_URL}`)"
