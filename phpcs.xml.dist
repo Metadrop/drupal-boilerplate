@@ -44,6 +44,7 @@
   <exclude-pattern>*.ico</exclude-pattern>
   <exclude-pattern>*/settings.php</exclude-pattern>
   <exclude-pattern>*/*\.settings.php</exclude-pattern>
+  <exclude-pattern>*/settings\.*\.php</exclude-pattern>
 
 <!--
    After drupal/coder upgrade (in context of 8.7.11 security release) js static analysis started to fail.
