@@ -309,7 +309,6 @@ services:
 #    volumes:
 #    - mutagen:/var/www/html
 
-
   backstopjs:
     image: backstopjs/backstopjs:${BACKSTOPJS_TAG}
     container_name: "${PROJECT_NAME}_backstop"

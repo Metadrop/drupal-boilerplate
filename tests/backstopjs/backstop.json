@@ -33,6 +33,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": 5,
+      "scrollToSelector": "",
       "selectors": [],
       "selectorExpansion": true,
       "expect": 0,
@@ -47,12 +48,28 @@
     "html_report": "backstop_data/html_report",
     "ci_report": "backstop_data/ci_report"
   },
-  "report": ["browser"],
+  "report": [
+    "browser",
+    "CI"
+  ],
+  "ci": {
+    "format" :  "junit" ,
+    "testSuiteName" :  "backstopJS"
+  },
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"]
+    "ignoreHTTPSErrors": true,
+    "slowMo": 500,
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-gpu",
+      "--force-device-scale-factor=1",
+      "--disable-infobars=true",
+      "--hide-scrollbars"
+    ]
   },
-  "asyncCaptureLimit": 5,
+  "asyncCaptureLimit": 2,
   "asyncCompareLimit": 50,
   "debug": false,
   "debugWindow": false
