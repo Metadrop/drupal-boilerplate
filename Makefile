@@ -43,7 +43,7 @@ frontend:
 ## backstopjs-reference	:	Generate BackstopJS reference files
 .PHONY: backstopjs-reference
 backstopjs-reference:
-	docker-compose exec backstopjs backstop reference
+	docker-compose exec backstopjs backstop reference --filter='$(filter-out $@,$(MAKECMDGOALS))'
 
 ## backstopjs-test	:	Run BackstopJS tests
 .PHONY: backstopjs-test
