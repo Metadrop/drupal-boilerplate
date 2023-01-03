@@ -20,7 +20,7 @@
         "consolidation/robo": "^3.0",
         "cweagans/composer-patches": "^1.7",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
-        "drupal/admin_toolbar": "^2.4",
+        "drupal/admin_toolbar": "^3.3",
         "drupal/components": "^2.4",
         "drupal/config_split": "^1.7",
         "drupal/core-composer-scaffold": "^9",
