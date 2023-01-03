@@ -35,7 +35,7 @@
         "drupal/radix": "^5.0",
         "drupal/redirect": "^1.6",
         "drupal/simple_sitemap": "^3.8",
-        "drupal/stage_file_proxy": "^1.1",
+        "drupal/stage_file_proxy": "^2.0",
         "drupal/styleguide": "^2.0@beta",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^6.0@alpha",
