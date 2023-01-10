@@ -43,7 +43,7 @@
     },
     "require-dev": {
         "metadrop/drupal-dev": "^0.1.10",
-	"metadrop/scripthor": "v2.2.7-rc1"
+	"metadrop/scripthor": "v2.2.7-rc2"
     },
     "conflict": {
         "drupal/drupal": "*"
