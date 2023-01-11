@@ -8,10 +8,9 @@ SITE ?= "default"
 # Example, if your site's drush aliases are contained into mysite.site.yml
 # then the default site alias will be "mysite"
 DEFAULT_SITE_ALIAS ?= "sitename"
-FRONTEND_THEMES_PATH = "/var/www/html/web/themes/custom"
-# Update this with the name of your theme.
-FRONTEND_THEME ?= "example"
+FRONTEND_BASE_PATH = "/var/www/html/web/themes/custom"
 
+frontend_target ?= "example"
 
 ## info	:	Show project info
 .PHONY: info
@@ -41,7 +40,7 @@ ngrok-stop:
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
 frontend:
-	docker-compose exec -w ${FRONTEND_THEMES_PATH}/${FRONTEND_THEME} node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose exec -w ${FRONTEND_BASE_PATH}/$(frontend_target) node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
 ## backstopjs-reference	:	Generate BackstopJS reference files
 .PHONY: backstopjs-reference
