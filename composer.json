@@ -42,8 +42,7 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.1.10",
-	"metadrop/scripthor": "v2.2.7-rc6"
+        "metadrop/drupal-dev": "^0.1.10"
     },
     "conflict": {
         "drupal/drupal": "*"
