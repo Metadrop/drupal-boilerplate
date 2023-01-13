@@ -3,6 +3,10 @@ version: "3.7"
 services:
 
 ## ##### NETBeans xdebug 3 configuration #####
+##
+## You should configure the PathMapping in the Netbeans' Project Properties. Select 'Run Configuration' and click on the 'Advanced...' button. Then configure the Path Mapping as:
+## 'Server Path' -> /var/www/html/web
+## ' Project Path' -> the local route to the 'web' folder.
 #
 #  php:
 #    environment:
