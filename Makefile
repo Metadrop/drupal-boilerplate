@@ -60,6 +60,7 @@ setup:
 	docker-compose up -d
 	docker-compose exec -T php composer install
 	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
+	docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php 'vendor/bin/grumphp' 'git:init'
 
 ## setup-from-config	:	Prepares the site and installs it using the Drupal configuration files
 .PHONY: setup-from-config
