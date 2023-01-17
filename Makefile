@@ -4,6 +4,8 @@ DRUPAL_VER ?= 8
 PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
 SITE ?= "default"
+PROFILE ?= "minimal"
+ENVIRONMENT ?= "stg"
 
 
 ## info	:	Show project info
@@ -58,22 +60,21 @@ init-setup:
 	docker-compose exec -T php composer install
 	docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php 'vendor/bin/grumphp' 'git:init'
 
-## setup	:	Prepares the site and loads it with data from the reference site
+## setup	:	Prepares the site and installs it using the Drupal configuration files
 .PHONY: setup
 setup:
-	chmod u+w web/sites/default -R
-	cp docker-compose.override.yml.dist docker-compose.override.yml
-	cp -n docker-compose.xdebug.override.yml.dist docker-compose.xdebug.override.yml
-	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
-	docker-compose up -d
-	docker-compose exec -T php composer install
-	scripts/reload-local.sh --site=${DEFAULT_SITE_ALIAS}
-	docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php 'vendor/bin/grumphp' 'git:init'
+	make init-setup
+	docker-compose exec -T php drush @${SITE}.local si ${PROFILE} --existing-config --sites-subdir=${SITE} -y
+	docker-compose exec -T php drush @${SITE}.local cim -y
+	docker-compose exec -T php drush @${SITE}.local cr
+	docker-compose exec -T php drush @${SITE}.local uli
 
-## setup-from-config	:	Prepares the site and installs it using the Drupal configuration files
-.PHONY: setup-from-config
-setup-from-config:
-		docker-compose exec -T php drush si --existing-config -y
+## setup-from-environment	:	Prepares the site and loads it with data from the reference site
+.PHONY: setup-from-environment
+setup-from-environment:
+	make init-setup
+	./scripts/reload-local.sh --site=${SITE} --env=${ENVIRONMENT}
+
 ## solr-sync	:	Reload docker Solr cores from local files.
 .PHONY: solr-sync
 solr-sync:
