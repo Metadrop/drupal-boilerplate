@@ -4,10 +4,6 @@ DRUPAL_VER ?= 8
 PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
 SITE ?= "default"
-# Update this with the base drush alias for your site.
-# Example, if your site's drush aliases are contained into mysite.site.yml
-# then the default site alias will be "mysite"
-DEFAULT_SITE_ALIAS ?= "sitename"
 
 
 ## info	:	Show project info
@@ -49,6 +45,18 @@ backstopjs-reference:
 .PHONY: backstopjs-test
 backstopjs-test:
 	docker-compose exec backstopjs backstop test
+
+## init-setup	:	Prepares the site
+.PHONY: init-setup
+init-setup:
+	mkdir -p web/sites/default/files/behat/errors
+	chmod u+w web/sites/${SITE} -R
+	cp docker-compose.override.yml.dist docker-compose.override.yml
+	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
+	cp web/sites/${SITE}/example.local.drush.yml web/sites/${SITE}/local.drush.yml
+	docker-compose up -d
+	docker-compose exec -T php composer install
+	docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php 'vendor/bin/grumphp' 'git:init'
 
 ## setup	:	Prepares the site and loads it with data from the reference site
 .PHONY: setup
