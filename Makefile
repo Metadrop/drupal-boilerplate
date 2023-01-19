@@ -1,7 +1,5 @@
 include docker.mk
 
-DRUPAL_VER ?= 8
-PHP_VER ?= 7.1
 BEHAT ?= "vendor/bin/behat"
 SITE ?= "default"
 PROFILE ?= "minimal"
