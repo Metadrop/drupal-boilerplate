@@ -1,5 +1,5 @@
 docker:
-  uri: 'example.docker.localhost:8000'
+  uri: 'http://example.docker.localhost:8000'
   docker:
       service: php
       exec:
@@ -8,7 +8,7 @@ docker:
   user: 'wodby'
 
 pro:
-  uri: 'example.com'
+  uri: 'https://example.com'
   root: ''
   host: 'example.com'
   user: ''

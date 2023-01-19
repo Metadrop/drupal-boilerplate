@@ -3,7 +3,7 @@ phpqa:
   # can be overriden by CLI: phpqa --tools phpcs:1
   analyzedDirs: web/modules/custom,web/themes/custom
   buildDir: reports/codereview
-  ignoredDirs: vendor
+  ignoredDirs: vendor,buildDir
   ignoredFiles: "*.css"
   report: false
   execution: parallel
