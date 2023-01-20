@@ -9,12 +9,14 @@ grumphp:
       enforce_no_subject_trailing_period: true
       max_subject_width: 130
       case_insensitive: false
+    # Adjust here the format that must have
+    # the git branch names of your project.
     git_branch_name:
       whitelist:
-        - "fb-[0-9A-Za-z\\s_-]*"
-        - "hf-[0-9A-Za-z\\s_-]*"
-        - "bf-[0-9A-Za-z\\s_-]*"
-        - "dev"
+        - "feature/[0-9A-Za-z\\s_-]*"
+        - "hotfix/[0-9A-Za-z\\s_-]*"
+        - "bugfix/[0-9A-Za-z\\s_-]*"
+        - "develop"
       blacklist:
         - "release"
         - "main"
