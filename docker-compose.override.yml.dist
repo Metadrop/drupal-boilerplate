@@ -2,33 +2,136 @@ version: "3.7"
 
 services:
 
-  # @NOTE: enable ssh_auth_sock environment and volume variables
-  # in the case you need to access to remote servers
-  # inside docker using self-hosted credentials. It only works on Linux.
-#  php:
-#    environment:
-#      SSH_AUTH_SOCK: /ssh-agent
+  # Existing containers (extra config):
+
+#  mariadb:
 #    volumes:
-#      - $SSH_AUTH_SOCK:/ssh-agent
-## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+#      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+#      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
+
+  # @NOTE: enable ssh_auth_sock environment and volume variables
+  # in the case you need to access to remote servers inside docker
+  # using self-hosted credentials. It only works on Linux.
+  php:
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
+    volumes:
+      - ./:/var/www/html
+      - $SSH_AUTH_SOCK:/ssh-agent
+
+#  crond:
+#    volumes:
+#      - ./:/var/www/html:cached
+
+  nginx:
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
+    volumes:
+      - ./:/var/www/html:cached
+#      # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #      - mutagen:/var/www/html
 
-#  nginx:
+#  postgres:
 #    volumes:
-# For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
-#      - ./:/var/www/html:cached # User-guided caching
-#      - docker-sync:/var/www/html # Docker-sync
+#      - ./postgres-init:/docker-entrypoint-initdb.d # Place init file(s) here.
+#      - /path/to/postgres/data/on/host:/var/lib/postgresql/data # Use bind mount
+
+#  apache:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
+#    volumes:
+#      - ./:/var/www/html:cached
+#      # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
+#      - mutagen:/var/www/html
+
+#  varnish:
+#    labels:
+#      - "traefik.http.services.${PROJECT_NAME}_varnish.loadbalancer.server.port=6081"
+#      - "traefik.http.routers.${PROJECT_NAME}_varnish.rule=Host(`varnish.${PROJECT_BASE_URL}`)"
+
+#  pma:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_pma.rule=Host(`pma.${PROJECT_BASE_URL}`)"
+
+#  solr:
+#    labels:
+#      - "traefik.http.services.${PROJECT_NAME}_solr.loadbalancer.server.port=8983"
+#      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
+
+#  drupal-node:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_drupal_node.rule=Host(`drupal_node.${PROJECT_BASE_URL}`)"
+#    volumes:
+#      - ./path/to/your/single-page-app:/app
+
+  node:
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_node.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${PROJECT_NAME}_node.rule=Host(`node.${PROJECT_BASE_URL}`)"
+    volumes:
+      - ./:/var/www/html
+    expose:
+      - "3000"
+
+#  webgrind:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_webgrind.rule=Host(`webgrind.${PROJECT_BASE_URL}`)"
+#    volumes:
+#      - files:/mnt/files
+
+#  kibana:
+#    labels:
+#      - "traefik.http.services.${PROJECT_NAME}_kibana.loadbalancer.server.port=5601"
+#      - "traefik.http.routers.${PROJECT_NAME}_kibana.rule=Host(`kibana.${PROJECT_BASE_URL}`)"
+
+#  xhprof:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_xhprof.rule=Host(`xhprof.${PROJECT_BASE_URL}`)"
+#    volumes:
+#      - files:/mnt/files
+
+  chrome:
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./:/var/www/html:cached # User-guided caching
+
+  backstopjs:
+    volumes:
+      - ./tests/backstopjs:/src # User-guided caching
+
+  mailhog:
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+
+#  phantomjs:
+#    volumes:
+#     - ./:/var/www/html:cached # User-guided caching
+
+  # Additional containers:
 
   traefik:
-    # https://stackoverflow.com/questions/48851190/docker-compose-override-a-ports-property-instead-of-merging-it
+    image: traefik:$TRAEFIK_TAG
+    container_name: "${PROJECT_NAME}_traefik"
+    command: --api.insecure=true --providers.docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
-     - '8000:80'
-     - '8444:443'
-#     - '8080:8080' # Dashboard
+      - '8000:80'
+ #     - '8444:443'
+
+#  portainer:
+#    image: portainer/portainer
+#    container_name: "${PROJECT_NAME}_portainer"
+#    command: --no-auth -H unix:///var/run/docker.sock
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_portainer.rule=Host(`portainer.${PROJECT_BASE_URL}`)"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
 
   mkdocs:
     container_name: "${PROJECT_NAME}_mkdocs"
-    image: metadrop/docker-mkdocs:$MKDOCS_TAG
+    image: metadrop/docker-mkdocs
     volumes:
       - ./docs:/docs
     working_dir: /docs
@@ -40,15 +143,16 @@ services:
     container_name: "${PROJECT_NAME}_adminer"
     image: wodby/adminer:$ADMINER_TAG
     environment:
-#      # For PostgreSQL:
-#      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
       ADMINER_DEFAULT_DB_HOST: $DB_HOST
       ADMINER_DEFAULT_DB_NAME: $DB_NAME
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
-#volumes:
-## For macOS users (Mutagen)
 #  mutagen:
-## For Xdebug profiler
-#  files:
+#    build:
+#      context: .
+#      dockerfile: mutagen/Dockerfile
+#    init: true
+#    container_name: "mutagen"
+#    volumes:
+#    - mutagen:/var/www/html
