@@ -133,7 +133,6 @@ services:
   node:
     image: wodby/node:$NODE_TAG
     container_name: "${PROJECT_NAME}_node"
-    working_dir: ${THEME_PATH}
     entrypoint: []
     command: tail -f /dev/null
 

@@ -2,9 +2,15 @@ include docker.mk
 
 BEHAT ?= "vendor/bin/behat"
 SITE ?= "default"
+# Update this with the base drush alias for your site.
+# Example, if your site's drush aliases are contained into mysite.site.yml
+# then the default site alias will be "mysite"
+DEFAULT_SITE_ALIAS ?= "sitename"
+FRONTEND_BASE_PATH = "/var/www/html/web/themes/custom"
 PROFILE ?= "minimal"
 ENVIRONMENT ?= "stg"
 
+frontend_target ?= "example"
 
 ## info	:	Show project info
 .PHONY: info
@@ -34,7 +40,7 @@ ngrok-stop:
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
 frontend:
-	docker-compose exec node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose exec -w ${FRONTEND_BASE_PATH}/$(frontend_target) node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
 ## backstopjs-reference	:	Generate BackstopJS reference files
 .PHONY: backstopjs-reference
