@@ -1,22 +1,41 @@
 version: "3.7"
 
 services:
-  # @NOTE: enable ssh_auth_sock environment and volume variables
-  # in the case you need to access to remote servers
-  # inside docker using self-hosted credentials. It only works on Linux.
+
+
+## ##### NETBeans xdebug 3 configuration #####
+##
+## You should configure the PathMapping in the Netbeans' Project Properties. Select 'Run Configuration' and click on the 'Advanced...' button. Then configure the Path Mapping as:
+## 'Server Path' -> /var/www/html/web
+## ' Project Path' -> the local route to the 'web' folder.
+#
 #  php:
 #    environment:
-#      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
 #      PHP_XDEBUG: 1
 #      PHP_XDEBUG_MODE: debug
-#      PHP_IDE_CONFIG: serverName=my-ide
-#      PHP_XDEBUG_IDEKEY: "my-ide"
-#      PHP_XDEBUG_CLIENT_HOST: host.docker.internal # Docker 18.03+ Mac/Win
-#      PHP_XDEBUG_CLIENT_HOST: 172.17.0.1 # Linux
-#      PHP_XDEBUG_CLIENT_HOST: 10.254.254.254 # macOS, Docker < 18.03
-#      PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
+#      XDEBUG_SESSION: netbeans-xdebug
 #      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
-#      PHP_XDEBUG_LOG_LEVEL: 0
 #    volumes:
-## For XHProf and Xdebug profiler traces
+#    # For XHProf and Xdebug profiler traces
+#      - files:/mnt/files
+
+
+## ##### PHP Storm xdebug 3 configuration #####
+##
+## You should create a 'PHP Web Page' configuration and, this is the most important part, a server configuration
+## named 'local' for this to work. Usually inside this server configuration you should remap the project root path
+## with the 'inside docker' path.
+## Other related links:
+## - https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html#integrationWithProduct
+## - https://wodby.com/docs/stacks/php/local/#xdebug
+#
+#  php:
+#    environment:
+#      PHP_XDEBUG: 1
+#      PHP_XDEBUG_MODE: debug
+#      XDEBUG_SESSION: local
+#      PHP_XDEBUG_IDEKEY: "PHPSTORM"
+#      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
+#    volumes:
+#    # For XHProf and Xdebug profiler traces
 #      - files:/mnt/files
