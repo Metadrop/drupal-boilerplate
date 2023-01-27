@@ -20,19 +20,8 @@ grumphp:
         - "print_r"
         - "console.log"
       whitelist_patterns: [ ]
-      triggered_by:
-        - php
-        - inc
-        - module
-        - install
-        - profile
-        - theme
-        - feature
-        - info
-        - js
-        - test
-      regexp_type: G
-      match_word: false
+    # Adjust here the format that must have
+    # the git branch names of your project.
     git_branch_name:
       whitelist:
         - "feature\/[0-9A-Za-z\\s_-]*"
@@ -44,6 +33,11 @@ grumphp:
         - release
       additional_modifiers: ''
       allow_detached_head: true
+    phplint: ~
+    yamllint: ~
+    composer: ~
+    jsonlint: ~
+    drupalcheck: ~
     file_size:
       max_size: 2M
       ignore_patterns:
@@ -70,6 +64,8 @@ grumphp:
         - info
         - js
         - test
+      regexp_type: G
+      match_word: false
     phpmd:
       exclude:
         - tests/
@@ -84,7 +80,6 @@ grumphp:
         - feature
         - info
         - test
-
     phpcs:
       encoding: utf-8
       triggered_by:

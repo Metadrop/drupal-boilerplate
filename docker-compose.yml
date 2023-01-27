@@ -10,9 +10,6 @@ services:
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASSWORD
-#    volumes:
-#      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
-#      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
     image: wodby/drupal-php:$PHP_TAG
@@ -34,8 +31,6 @@ services:
 #      SIMPLETEST_BASE_URL: "http://nginx"
 #      SIMPLETEST_DB: "${DB_DRIVER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}#tests_"
 #      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
-    volumes:
-      - ./:/var/www/html:cached
 
 #  crond:
 #    image: wodby/drupal-php:$PHP_TAG
@@ -43,8 +38,6 @@ services:
 #    environment:
 #      CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
 #    command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
-#    volumes:
-#      - ./:/var/www/html:cached
 
   nginx:
     image: wodby/nginx:$NGINX_TAG
@@ -58,12 +51,6 @@ services:
       NGINX_SERVER_ROOT: /var/www/html/web
       NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
 #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
-    volumes:
-      - ./:/var/www/html:cached
-#       # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
-#      - mutagen:/var/www/html
-    labels:
-      - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
 
 #  postgres:
 #    image: wodby/postgres:$POSTGRES_TAG
@@ -73,9 +60,6 @@ services:
 #      POSTGRES_PASSWORD: $DB_PASSWORD
 #      POSTGRES_DB: $DB_NAME
 #      POSTGRES_USER: $DB_USER
-#    volumes:
-#      - ./postgres-init:/docker-entrypoint-initdb.d # Place init file(s) here.
-#      - /path/to/postgres/data/on/host:/var/lib/postgresql/data # Use bind mount
 
 #  apache:
 #    image: wodby/apache:$APACHE_TAG
@@ -87,13 +71,6 @@ services:
 #      APACHE_BACKEND_HOST: php
 #      APACHE_VHOST_PRESET: php
 #      APACHE_DOCUMENT_ROOT: /var/www/html/web
-#    volumes:
-#      - ./:/var/www/html:cached
-#       # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
-#      - mutagen:/var/www/html
-
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
 
 #  varnish:
 #    image: wodby/varnish:$VARNISH_TAG
@@ -106,9 +83,6 @@ services:
 #      VARNISH_BACKEND_PORT: 80
 #      VARNISH_CONFIG_PRESET: drupal
 #      VARNISH_ALLOW_UNRESTRICTED_PURGE: 1
-#    labels:
-#      - "traefik.http.services.${PROJECT_NAME}_varnish.loadbalancer.server.port=6081"
-#      - "traefik.http.routers.${PROJECT_NAME}_varnish.rule=Host(`varnish.${PROJECT_BASE_URL}`)"
 
 #  redis:
 #    container_name: "${PROJECT_NAME}_redis"
@@ -122,8 +96,6 @@ services:
 #      PMA_USER: $DB_USER
 #      PMA_PASSWORD: $DB_PASSWORD
 #      UPLOAD_LIMIT: 1G
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_pma.rule=Host(`pma.${PROJECT_BASE_URL}`)"
 
 #  solr:
 #    image: wodby/solr:$SOLR_TAG
@@ -131,19 +103,12 @@ services:
 #    environment:
 #      SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
 #      SOLR_HEAP: 1024m
-#    labels:
-#      - "traefik.http.services.${PROJECT_NAME}_solr.loadbalancer.server.port=8983"
-#      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
 
 #  drupal-node:
 #    image: wodby/drupal-node:$DRUPAL_NODE_TAG
 #    container_name: "${PROJECT_NAME}_drupal_nodejs"
 #    environment:
 #       NODE_SERVICE_KEY: node-service-key
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_drupal_node.rule=Host(`drupal_node.${PROJECT_BASE_URL}`)"
-#    volumes:
-#      - ./path/to/your/single-page-app:/app
 #    command: sh -c 'npm install && npm run start'
 
 #  memcached:
@@ -168,14 +133,6 @@ services:
   node:
     image: wodby/node:$NODE_TAG
     container_name: "${PROJECT_NAME}_node"
-    working_dir: ${THEME_PATH}
-    labels:
-      - "traefik.http.services.${PROJECT_NAME}_node.loadbalancer.server.port=3000"
-      - "traefik.http.routers.${PROJECT_NAME}_node.rule=Host(`node.${PROJECT_BASE_URL}`)"
-    expose:
-      - "3000"
-    volumes:
-      - ./:/var/www/html
     entrypoint: []
     command: tail -f /dev/null
 
@@ -191,10 +148,6 @@ services:
 #    container_name: "${PROJECT_NAME}_webgrind"
 #    environment:
 #      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_webgrind.rule=Host(`webgrind.${PROJECT_BASE_URL}`)"
-#    volumes:
-#      - files:/mnt/files
 
 #  elasticsearch:
 #    image: wodby/elasticsearch:$ELASTICSEARCH_TAG
@@ -211,9 +164,6 @@ services:
 #    container_name: "${PROJECT_NAME}_kibana"
 #    depends_on:
 #      - elasticsearch
-#    labels:
-#      - "traefik.http.services.${PROJECT_NAME}_kibana.loadbalancer.server.port=5601"
-#      - "traefik.http.routers.${PROJECT_NAME}_kibana.rule=Host(`kibana.${PROJECT_BASE_URL}`)"
 
 #  opensmtpd:
 #    container_name: "${PROJECT_NAME}_opensmtpd"
@@ -223,41 +173,16 @@ services:
 #    image: wodby/xhprof:$XHPROF_TAG
 #    container_name: "${PROJECT_NAME}_xhprof"
 #    restart: always
-#    volumes:
-#      - files:/mnt/files
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_xhprof.rule=Host(`xhprof.${PROJECT_BASE_URL}`)"
-
-  portainer:
-    image: portainer/portainer
-    container_name: "${PROJECT_NAME}_portainer"
-    command: --no-auth -H unix:///var/run/docker.sock
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - "traefik.http.routers.${PROJECT_NAME}_portainer.rule=Host(`portainer.${PROJECT_BASE_URL}`)"
-
-  traefik:
-    image: traefik:$TRAEFIK_TAG
-    container_name: "${PROJECT_NAME}_traefik"
-    command: --api.insecure=true --providers.docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 
   hub:
     image: selenium/hub:$HUB_TAG
     container_name: ${PROJECT_NAME}_hub
     #ports:
     #  - "4444:4444"
-    volumes:
-      - ./:/var/www/html:cached # User-guided caching
 
   chrome:
     image: selenium/node-chrome:$CHROME_TAG
     container_name: "${PROJECT_NAME}_chrome"
-    volumes:
-      - /dev/shm:/dev/shm
-      - ./:/var/www/html:cached # User-guided caching
     depends_on:
       - hub
     environment:
@@ -269,10 +194,6 @@ services:
 #  chrome:
 #    image: selenium/standalone-chrome:$SELENIUM_CHROME_TAG
 #    container_name: "${PROJECT_NAME}_chrome"
-#    ports:
-#      - "4444:4444"
-#    volumes:
-#      - /dev/shm:/dev/shm
 #    entrypoint:
 #      - chromedriver
 #      - "--no-sandbox"
@@ -282,40 +203,23 @@ services:
 #      - "--whitelisted-ips="
 
 
-  #phantomjs:
-    #image: wernight/phantomjs:${PHANTOMJS_VERSION}
-    #container_name: "${PROJECT_NAME}_phantomjs"
-    #volumes:
-      #- ./:/var/www/html:cached # User-guided caching
-    #depends_on:
-      #- php
-      #- nginx
-    #entrypoint: phantomjs
-    #command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
+#  phantomjs:
+#    image: wernight/phantomjs:${PHANTOMJS_VERSION}
+#    container_name: "${PROJECT_NAME}_phantomjs"
+#    depends_on:
+#      - php
+#      - nginx
+#    entrypoint: phantomjs
+#    command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
 
   mailhog:
     image: mailhog/mailhog
     container_name: "${PROJECT_NAME}_mailhog"
-    labels:
-      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
-      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
-
-#  mutagen:
-#    build:
-#      context: .
-#      dockerfile: mutagen/Dockerfile
-#    init: true
-#    container_name: "mutagen"
-#    volumes:
-#    - mutagen:/var/www/html
-
 
   backstopjs:
     image: backstopjs/backstopjs:${BACKSTOPJS_TAG}
     container_name: "${PROJECT_NAME}_backstop"
     working_dir: '/src'
-    volumes:
-      - ./tests/backstopjs:/src # User-guided caching
     entrypoint: []
     command: tail -F /dev/null
     user: node
