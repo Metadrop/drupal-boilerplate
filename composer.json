@@ -13,7 +13,24 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "metadrop/grumphp-php-compatibility",
+                "version": "master",
+                "dist": {
+                    "url": "https://github.com/Metadrop/grumphp-php-compatibility/archive/refs/heads/master.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Metadrop\\PhpCompatibilityTask\\": "src/"
+                    }
+                }
+            }
+        },
+
     ],
     "require": {
         "composer/installers": "^1.7",
@@ -42,7 +59,9 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.1.10"
+        "metadrop/drupal-dev": "^0.1.10",
+        "metadrop/grumphp-php-compatibility": "master",
+        "phpcompatibility/php-compatibility": "dev-develop as 9.3.6"
     },
     "conflict": {
         "drupal/drupal": "*"
