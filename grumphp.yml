@@ -19,7 +19,9 @@ grumphp:
         - "var_dump"
         - "print_r"
         - "console.log"
-      whitelist_patterns: [ ]
+      whitelist_patterns: [ ]      
+      regexp_type: G
+      match_word: false
     # Adjust here the format that must have
     # the git branch names of your project.
     git_branch_name:
@@ -64,8 +66,6 @@ grumphp:
         - info
         - js
         - test
-      regexp_type: G
-      match_word: false
     phpmd:
       exclude:
         - tests/
