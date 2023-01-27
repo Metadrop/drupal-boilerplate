@@ -27,8 +27,8 @@ grumphp:
         - "feature\/[0-9A-Za-z\\s_-]*"
         - "bugfix\/[0-9A-Za-z\\s_-]*"
         - "hotfix\/[0-9A-Za-z\\s_-]*"
-      blacklist:
         - develop
+      blacklist:        
         - main
         - release
       additional_modifiers: ''
