@@ -43,9 +43,12 @@ frontend:
 	docker-compose exec -w ${FRONTEND_BASE_PATH}/$(frontend_target) node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
 ## backstopjs-reference	:	Generate BackstopJS reference files
+##		 An optional parameter is available to generate only scenarios matching it.
+##            If the param is not added all references will be generated.
+##		 Example: make backstopjs-reference "Scenario Label Regex"
 .PHONY: backstopjs-reference
 backstopjs-reference:
-	docker-compose exec backstopjs backstop reference
+	docker-compose exec backstopjs backstop reference --filter='$(filter-out $@,$(MAKECMDGOALS))'
 
 ## backstopjs-test	:	Run BackstopJS tests
 .PHONY: backstopjs-test
