@@ -3,23 +3,36 @@ grumphp:
     EXEC_GRUMPHP_COMMAND: docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php
   extensions:
     - GrumphpDrupalCheck\ExtensionLoader
+    - Metadrop\PhpCompatibilityTask\ExtensionLoader
   hooks_dir: ~
+  hooks_preset: local
   tasks:
     git_commit_message:
       enforce_no_subject_trailing_period: true
       max_subject_width: 130
       case_insensitive: false
+      matchers:
+        Must contain gitlab reference (if no reference use 0): '/(^Issue #[0-9]+:|^Merge branch.)/'
+        Space and uppercase after reference: '/(^Issue #[0-9]+: [A-Z]|^Merge branch.)/'
+    git_blacklist:
+      keywords:
+        - "var_dump"
+        - "print_r"
+        - "console.log"
+      whitelist_patterns: [ ]      
+      regexp_type: G
+      match_word: false
     # Adjust here the format that must have
     # the git branch names of your project.
     git_branch_name:
       whitelist:
-        - "feature/[0-9A-Za-z\\s_-]*"
-        - "hotfix/[0-9A-Za-z\\s_-]*"
-        - "bugfix/[0-9A-Za-z\\s_-]*"
-        - "develop"
-      blacklist:
-        - "release"
-        - "main"
+        - "feature\/[0-9A-Za-z\\s_-]*"
+        - "bugfix\/[0-9A-Za-z\\s_-]*"
+        - "hotfix\/[0-9A-Za-z\\s_-]*"
+        - develop
+      blacklist:        
+        - main
+        - release
       additional_modifiers: ''
       allow_detached_head: true
     phplint: ~
@@ -27,9 +40,21 @@ grumphp:
     composer: ~
     jsonlint: ~
     drupalcheck: ~
+    file_size:
+      max_size: 2M
+      ignore_patterns:
+        - '#tests/backstopjs/backstop_data/bitmaps_reference/(.*).png#'
+    phplint: ~
+    yamllint: ~
+    composer: ~
+    jsonlint: ~
+    drupalcheck:
+      deprecations: true
+      analysis: true
+      php8: true
     phpcpd:
       directory:
-        - ./docroot/**/custom
+        - ./web/**/custom
       triggered_by:
         - php
         - inc
@@ -37,6 +62,24 @@ grumphp:
         - install
         - profile
         - theme
+        - feature
+        - info
+        - js
+        - test
+    phpmd:
+      exclude:
+        - tests/
+      ruleset: [ '/phpmd.xml.dist' ]
+      triggered_by:
+        - php
+        - inc
+        - module
+        - install
+        - profile
+        - theme
+        - feature
+        - info
+        - test
     phpcs:
       encoding: utf-8
       triggered_by:
@@ -46,4 +89,15 @@ grumphp:
         - install
         - profile
         - theme
+        - feature
+        - info
+        - txt
+        - test
       standard: Drupal,DrupalPractice
+    php_compatibility:
+      testVersion: "8.1"
+      triggered_by:
+        - php
+        - inc
+        - module
+        - install
