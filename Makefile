@@ -51,9 +51,12 @@ backstopjs-reference:
 	docker-compose exec backstopjs backstop reference --filter='$(filter-out $@,$(MAKECMDGOALS))'
 
 ## backstopjs-test	:	Run BackstopJS tests
+##		 An optional parameter is available to generate only scenarios matching it.
+##            If the param is not added all tests will be run.
+##		 Example: make backstopjs-test "Scenario Label Regex"
 .PHONY: backstopjs-test
 backstopjs-test:
-	docker-compose exec backstopjs backstop test
+	docker-compose exec backstopjs backstop test --filter='$(filter-out $@,$(MAKECMDGOALS))'
 
 ## init-setup	:	Prepares the site
 .PHONY: init-setup
