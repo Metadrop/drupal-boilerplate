@@ -178,31 +178,17 @@ services:
   hub:
     image: selenium/hub:$HUB_TAG
     container_name: ${PROJECT_NAME}_hub
-    #ports:
-    #  - "4444:4444"
 
   chrome:
     image: selenium/node-chrome:$CHROME_TAG
     container_name: "${PROJECT_NAME}_chrome"
+    shm_size: ${SHM_SIZE}
     depends_on:
       - hub
     environment:
-      - HUB_HOST=hub
-#      - HUB_PORT=4444
-
-  # BUG: Standalone chrome image can't be used until this is resolved:
-  # https://bugs.chromium.org/p/chromedriver/issues/detail?id=3857
-#  chrome:
-#    image: selenium/standalone-chrome:$SELENIUM_CHROME_TAG
-#    container_name: "${PROJECT_NAME}_chrome"
-#    entrypoint:
-#      - chromedriver
-#      - "--no-sandbox"
-#      - "--disable-dev-shm-usage"
-#      - "--log-path=/tmp/chromedriver.log"
-#      - "--verbose"
-#      - "--whitelisted-ips="
-
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
 #  phantomjs:
 #    image: wernight/phantomjs:${PHANTOMJS_VERSION}
