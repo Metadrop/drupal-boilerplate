@@ -92,7 +92,6 @@ services:
 
   chrome:
     volumes:
-      - /dev/shm:/dev/shm
       - ./:/var/www/html:cached # User-guided caching
 
   backstopjs:
