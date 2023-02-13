@@ -182,6 +182,7 @@ services:
   chrome:
     image: selenium/node-chrome:$CHROME_TAG
     container_name: "${PROJECT_NAME}_chrome"
+    shm_size: ${SHM_SIZE}
     depends_on:
       - hub
     environment:
