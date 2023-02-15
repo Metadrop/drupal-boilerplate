@@ -40,7 +40,6 @@
         "drupal/config_split": "^2.0@RC",
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-recommended": "^10.0",
-        "drupal/drupal-extension": "^5.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/eu_cookie_compliance": "^1.13",
         "drupal/honeypot": "^2.0",
