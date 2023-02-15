@@ -98,6 +98,25 @@ xdebug-stop:
 	docker-compose stop php
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d php
 
+## record       :       Start recording tests
+.PHONY: record
+record:
+        @echo "Start video recording in $(PROJECT_NAME)."
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml pull chrome_video
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml stop chrome
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml up -d chrome
+        sleep 1
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml up -d chrome_video
+        sleep 3
+
+## record-stop  :       Stop recording tests
+.PHONY: record-stop
+record-stop:
+        @echo "Stopping video recording in $(PROJECT_NAME)."
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml exec chrome_video pkill ffmpeg
+        docker cp -a "$(PROJECT_NAME)_chrome_video:/videos/chrome_video.mp4" ./tmp/chrome_video.mp4
+        docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml stop chrome_video
+
 # https://stackoverflow.com/a/6273809/1826109
 %:
 	@:
