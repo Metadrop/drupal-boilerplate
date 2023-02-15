@@ -1,0 +1,27 @@
+From 6c25b272d97536459e3e7d130b3da298e23568b7 Mon Sep 17 00:00:00 2001
+From: Omar <omar.lopesino@metadrop.net>
+Date: Wed, 15 Feb 2023 10:51:44 +0100
+Subject: [PATCH] Update the way to click an element
+
+---
+ lib/WebDriver/Element.php | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/lib/WebDriver/Element.php b/lib/WebDriver/Element.php
+index d4ecddf..6edb48a 100644
+--- a/lib/WebDriver/Element.php
++++ b/lib/WebDriver/Element.php
+@@ -148,4 +148,13 @@ protected function getIdentifierPath($identifier)
+     {
+         return preg_replace('/' . preg_quote($this->id) . '$/', $identifier, $this->url);
+     }
++
++    /**
++     * {@inheritdoc}
++     */
++    public function click()
++    {
++        return parent::click([':id' => $this->id]);
++    }
++
+ }
