@@ -92,6 +92,14 @@
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "composer-exit-on-patch-failure": true,
-        "enable-patching": true
+        "enable-patching": true,
+        "patches": {
+            "behat/mink-selenium2-driver": {
+                "Iframe switch - Send element info as selenium 4 require it - https://github.com/minkphp/MinkSelenium2Driver/pull/361": "patches/mink-361-selenium-driver-switch-to-iframe-1.patch"
+            },
+            "instaclick/php-webdriver": {
+                "Update the way to click an element - https://github.com/instaclick/php-webdriver/pull/121": "patches/instaclick-php-webdriver-121-click.patch"
+            }
+        }
     }
 }

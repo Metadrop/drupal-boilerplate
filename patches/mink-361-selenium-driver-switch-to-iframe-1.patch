@@ -1,0 +1,79 @@
+From 3d6e0e22a3a43477c7ea9e5d6dcb2e62777c3dc8 Mon Sep 17 00:00:00 2001
+From: Omar <omar.lopesino@metadrop.net>
+Date: Tue, 14 Feb 2023 17:23:51 +0100
+Subject: [PATCH 1/3] Iframe switch - Send element info as new selenium
+ versions require it
+
+---
+ src/Selenium2Driver.php | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/Selenium2Driver.php b/src/Selenium2Driver.php
+index ee7f2e75..4f5cc759 100755
+--- a/src/Selenium2Driver.php
++++ b/src/Selenium2Driver.php
+@@ -423,7 +423,17 @@ public function switchToWindow($name = null)
+      */
+     public function switchToIFrame($name = null)
+     {
+-        $this->wdSession->frame(array('id' => $name));
++        if (!empty($name)) {
++          $element = $this->wdSession->element('id', $name);
++          $element_info = [
++            'ELEMENT' => $element->getID(),
++          ];
++        }
++        else {
++          $element_info = NULL;
++        }
++
++        $this->wdSession->frame(array('id' => $element_info));
+     }
+ 
+     /**
+
+From 97ed86ab48de4cd9da39d0dc1d2b70249456cf99 Mon Sep 17 00:00:00 2001
+From: Omar <omar.lopesino@metadrop.net>
+Date: Tue, 14 Feb 2023 17:33:08 +0100
+Subject: [PATCH 2/3] Iframe switch - Use lowercase null constant
+
+---
+ src/Selenium2Driver.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Selenium2Driver.php b/src/Selenium2Driver.php
+index 4f5cc759..b48bacc0 100755
+--- a/src/Selenium2Driver.php
++++ b/src/Selenium2Driver.php
+@@ -430,7 +430,7 @@ public function switchToIFrame($name = null)
+           ];
+         }
+         else {
+-          $element_info = NULL;
++          $element_info = null;
+         }
+ 
+         $this->wdSession->frame(array('id' => $element_info));
+
+From 97b4d48680ee7579adfefc0d825c20c37438f978 Mon Sep 17 00:00:00 2001
+From: Omar <omar.lopesino@metadrop.net>
+Date: Tue, 14 Feb 2023 18:04:20 +0100
+Subject: [PATCH 3/3] Iframe switch - get element by name, not by ID
+
+---
+ src/Selenium2Driver.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Selenium2Driver.php b/src/Selenium2Driver.php
+index b48bacc0..f6433b17 100755
+--- a/src/Selenium2Driver.php
++++ b/src/Selenium2Driver.php
+@@ -424,7 +424,7 @@ public function switchToWindow($name = null)
+     public function switchToIFrame($name = null)
+     {
+         if (!empty($name)) {
+-          $element = $this->wdSession->element('id', $name);
++          $element = $this->wdSession->element('name', $name);
+           $element_info = [
+             'ELEMENT' => $element->getID(),
+           ];
