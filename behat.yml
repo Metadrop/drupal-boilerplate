@@ -57,12 +57,7 @@ default:
 
   extensions:
     Behat\MinkExtension:
-      goutte: ~
-      sessions:
-        default:
-          goutte:
-            guzzle_parameters:
-              verify: false
+      browserkit_http: ~
       browser_name: 'chrome'
       base_url: 'http://nginx'
       show_cmd: lynx %s
