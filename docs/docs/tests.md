@@ -29,5 +29,4 @@ It is recommended to do this just after the tests finishes.
 
 4. Video edit
 
-It is possible recommended to cut the video beginning and end so that the empty selenium screen does not appear and only appear
-the text execution.
+It is recommended to cut the video beginning and end so that the empty selenium screen does not appear and only the test execution appears.
