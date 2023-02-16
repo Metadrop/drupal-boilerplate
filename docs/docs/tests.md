@@ -26,6 +26,7 @@ It is recommended to only start recording just before running the tests.
 
 It is recommended to do this just after the tests finishes.
 
+When this commands finishes, the video recorded will be located at tmp/chrome-video.mp4. Please note that the tmp folder is relative to the project codebase and not the /tmp folder.
 
 4. Video edit
 
