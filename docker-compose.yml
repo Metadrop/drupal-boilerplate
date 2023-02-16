@@ -189,6 +189,8 @@ services:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
 
 #  phantomjs:
 #    image: wernight/phantomjs:${PHANTOMJS_VERSION}

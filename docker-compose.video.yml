@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  chrome_video:
+    container_name: "${PROJECT_NAME}_chrome_video"
+    image: selenium/video:${SELENIUM_FFMPEG_TAG}
+    depends_on:
+      - chrome
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome
+      - FILE_NAME=chrome_video.mp4
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
