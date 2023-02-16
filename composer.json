@@ -19,6 +19,10 @@
             "url": "https://github.com/albeorte96/drupal-dev.git"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/albeorte96/behat-contexts.git"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "metadrop/grumphp-php-compatibility",
