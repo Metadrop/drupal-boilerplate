@@ -12,6 +12,9 @@ ENVIRONMENT ?= "stg"
 
 frontend_target ?= "example"
 
+AUTHOR ?= ""
+ENVIRONMENTS ?= "@self"
+
 ## info	:	Show project info
 .PHONY: info
 info:
@@ -94,3 +97,9 @@ solr-sync:
 .PHONY: solr-rebuild
 solr-rebuild:
 	docker-compose stop solr && docker-compose rm -f solr && docker-compose up -d solr && make solr-sync
+
+update:
+	docker-compose exec -T php sh -c './scripts/update-helper.sh --author=${AUTHOR} --envs=${ENVIRONMENTS}'
+
+update-security:
+	docker-compose exec -T php sh -c './scripts/update-helper.sh --author=${AUTHOR} --envs=${ENVIRONMENTS} --security'
