@@ -105,8 +105,10 @@ record:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml pull chrome_video
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml stop chrome
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml up -d chrome
+	# Wait until chrome container is fully loaded:
 	sleep 1
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.video.yml up -d chrome_video
+	# Wait until ffmpeg process is fully loaded:
 	sleep 3
 
 ## record-stop  :       Stop recording tests
