@@ -15,6 +15,10 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/albeorte96/drupal-dev.git"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "metadrop/grumphp-php-compatibility",
@@ -57,7 +61,7 @@
         "drush/drush": "^11.0"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.1.10",
+        "metadrop/drupal-dev": "dev-feature/drupal-10",
         "metadrop/grumphp-php-compatibility": "master",
         "phpcompatibility/php-compatibility": "dev-develop as 9.3.5"
     },
