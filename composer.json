@@ -20,7 +20,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/albeorte96/behat-contexts.git"
+            "url": "https://github.com/Metadrop/behat-contexts.git"
         },
         {
             "type": "vcs",
