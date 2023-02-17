@@ -178,6 +178,8 @@ services:
   hub:
     image: selenium/hub:$HUB_TAG
     container_name: ${PROJECT_NAME}_hub
+    #ports:
+    #  - "4444:4444"
 
   chrome:
     image: selenium/node-chrome:$CHROME_TAG
