@@ -58,9 +58,9 @@ backstopjs-reference:
 backstopjs-test:
 	docker-compose exec backstopjs backstop test --filter='$(filter-out $@,$(MAKECMDGOALS))'
 
-## init-setup	:	Prepares the site
-.PHONY: init-setup
-init-setup:
+## setup-init	:	Prepares the site
+.PHONY: setup-init
+setup-init:
 	mkdir -p web/sites/default/files/behat/errors
 	chmod u+w web/sites/${SITE} -R
 	cp docker-compose.override.yml.dist docker-compose.override.yml
@@ -73,7 +73,7 @@ init-setup:
 ## setup	:	Prepares the site and installs it using the Drupal configuration files
 .PHONY: setup
 setup:
-	make init-setup
+	make setup-init
 	docker-compose exec -T php drush @${SITE}.local si ${PROFILE} --existing-config --sites-subdir=${SITE} -y
 	docker-compose exec -T php drush @${SITE}.local cim -y
 	docker-compose exec -T php drush @${SITE}.local cr
@@ -82,7 +82,7 @@ setup:
 ## setup-from-environment	:	Prepares the site and loads it with data from the reference site
 .PHONY: setup-from-environment
 setup-from-environment:
-	make init-setup
+	make setup-init
 	./scripts/reload-local.sh --site=${SITE} --env=${ENVIRONMENT}
 
 ## solr-sync	:	Reload docker Solr cores from local files.
