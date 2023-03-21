@@ -58,7 +58,13 @@ Once Composer finalizes the project creation an assistant will be automatically 
 
 After the assistant finished, if you have selected to install Drupal your project will be running and the assistant will print the URL to access it.
 
+!!! NOTE
+    By default, drupal-boilerplate is installed with a minimal profile, if you want to have an installation with a non-empty Drupal, once the process is finished, launch the following drush command:
 
+    `drush site-install standard`
+
+    This will install on the basis of drupal-boilerplate, a Drupal with the standard profile containing preconfigured commonly used features.
+    Using the standard profile disables the `make setup` command.
 
 
 ## FAQ
