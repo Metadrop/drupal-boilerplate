@@ -20,7 +20,6 @@ if (getenv('DB_NAME') != NULL) {
 }
 
 // Config splits.
-//$config['config_split.config_split.ci']['status'] = TRUE;
 $config['config_split.config_split.local']['status'] = TRUE;
 //$config['config_split.config_split.dev']['status'] = TRUE;
 //$config['config_split.config_split.stg']['status'] = TRUE;
