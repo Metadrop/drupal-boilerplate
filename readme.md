@@ -59,12 +59,17 @@ Once Composer finalizes the project creation an assistant will be automatically 
 After the assistant finished, if you have selected to install Drupal your project will be running and the assistant will print the URL to access it.
 
 !!! NOTE
-    By default, drupal-boilerplate is installed with a minimal profile, if you want to have an installation with a non-empty Drupal, once the process is finished, launch the following drush command:
+    By default, drupal-boilerplate is installed with a minimal profile. If you want to install another profile, you must not install Drupal during the composer create-project installation problem, when the question 'Do you want to install Drupal?' appears. 
+    
+After that, just install the profile you need with the `drush site-install` command into the PHP container, after the project creation has finished.
 
-    `drush site-install standard`
+Example:
 
-    This will install on the basis of drupal-boilerplate, a Drupal with the standard profile containing preconfigured commonly used features.
-    Using the standard profile disables the `make setup` command.
+```
+   drush site-install standard
+```
+
+Please note that if you install a profile that implements the hook_install the `make setup` command won't work as it makes a installation from configuration, and those installations requires the hook install to not be present.
 
 
 ## FAQ
