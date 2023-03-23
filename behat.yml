@@ -45,7 +45,9 @@ default:
         - Metadrop\Behat\Context\FileContext
         - Metadrop\Behat\Context\FormContext
         - Metadrop\Behat\Context\EntityContext
-        - Metadrop\Behat\Context\LogsContext
+        - Metadrop\Behat\Context\LogsContext:
+            parameters:
+              write_report: true
         - Metadrop\Behat\Context\NodeAccessContext
         - Metadrop\Behat\Context\ParagraphsContext
         - Metadrop\Behat\Context\UIContext:
