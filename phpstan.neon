@@ -1,0 +1,10 @@
+parameters:
+    level: 8
+    paths:
+        - web/modules/custom
+        - web/themes/custom
+    ignoreErrors:
+        - message: '#.*return type has no value type specified.*#'
+        - message: '#.*has parameter .* with no type specified#'
+        - message: '#.*has no return type specified.*#'
+        - message: '#.*has parameter .* with no value type specified*#'
