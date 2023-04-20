@@ -44,6 +44,24 @@ To create a new project based on this boilerplate, the recommended method is usi
 composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-project
 ```
 
+Depending in the Drupal release you want you should use a different branch.
+
+| Drupal release	| 9.x 	| 10.x	|  	|
+|---	|---	|---	|---	|
+| Boilerplate branch| 2.x branch 	| 3.x branch 	|  	|
+
+
+| Drupal release	| Boilerplate branch 	| Example command	|
+|---	|---	|---	|
+| 9.x  | 2.x branch | composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:^2 my-project 	|
+| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:3.0.0-beta1  my-project 	|
+
+
+
+Because this boilerplate uses drupal/core-recommended under the hood you will get an updated release of the chosen core.
+
+
+
 
 Once Composer finalizes the project creation an assistant will be automatically run. It will ask you a few questions:
 
@@ -59,8 +77,8 @@ Once Composer finalizes the project creation an assistant will be automatically 
 After the assistant finished, if you have selected to install Drupal your project will be running and the assistant will print the URL to access it.
 
 !!! NOTE
-    By default, drupal-boilerplate is installed with a minimal profile. If you want to install another profile, you must not install Drupal during the composer create-project installation problem, when the question 'Do you want to install Drupal?' appears. 
-    
+    By default, drupal-boilerplate is installed with a minimal profile. If you want to install another profile, you must not install Drupal during the composer create-project installation problem, when the question 'Do you want to install Drupal?' appears.
+
 After that, just install the profile you need with the `drush site-install` command into the PHP container, after the project creation has finished.
 
 Example:
@@ -111,4 +129,3 @@ If you want to run all tests you need to address all those issues. But what for?
 ```
 make test web/modules/contrib/devel/tests/src/Unit
 ```
-
