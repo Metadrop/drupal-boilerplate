@@ -1,9 +1,5 @@
-docker:
+local:
   uri: 'http://example.docker.localhost:8000'
-  docker:
-      service: php
-      exec:
-        options: --user wodby
   root: '/var/www/html'
   user: 'wodby'
 

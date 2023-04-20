@@ -2,7 +2,6 @@ grumphp:
   git_hook_variables:
     EXEC_GRUMPHP_COMMAND: docker-compose run -e'PHP_ERROR_REPORTING=E_ALL & ~E_DEPRECATED' --rm -T php
   extensions:
-    - GrumphpDrupalCheck\ExtensionLoader
     - Metadrop\PhpCompatibilityTask\ExtensionLoader
   hooks_dir: ~
   hooks_preset: local
@@ -39,7 +38,6 @@ grumphp:
     yamllint: ~
     composer: ~
     jsonlint: ~
-    drupalcheck: ~
     file_size:
       max_size: 2M
       ignore_patterns:
@@ -48,10 +46,6 @@ grumphp:
     yamllint: ~
     composer: ~
     jsonlint: ~
-    drupalcheck:
-      deprecations: true
-      analysis: true
-      php8: true
     phpcpd:
       directory:
         - ./web/**/custom
@@ -101,3 +95,11 @@ grumphp:
         - inc
         - module
         - install
+    phpstan:
+      autoload_file: ~
+      configuration: ~
+      force_patterns: []
+      ignore_patterns: []
+      triggered_by: ['php', 'module', 'inc', 'theme', 'install']
+      memory_limit: "-1"
+      use_grumphp_paths: true
