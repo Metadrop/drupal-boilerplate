@@ -46,9 +46,6 @@ composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-p
 
 Depending in the Drupal release you want you should use a different branch.
 
-| Drupal release	| 9.x 	| 10.x	|  	|
-|---	|---	|---	|---	|
-| Boilerplate branch| 2.x branch 	| 3.x branch 	|  	|
 
 
 | Drupal release	| Boilerplate branch 	| Example command	|
