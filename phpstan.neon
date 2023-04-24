@@ -1,5 +1,14 @@
 parameters:
     level: 8
+    fileExtensions:
+    		- php
+    		- module
+    		- inc
+    		- theme
+    		- install
+    scanDirectories:
+        - web/modules/contrib
+        - web/themes/contrib
     paths:
         - web/modules/custom
         - web/themes/custom
