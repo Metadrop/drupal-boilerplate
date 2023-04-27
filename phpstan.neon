@@ -9,6 +9,7 @@ parameters:
     scanDirectories:
         - web/modules/contrib
         - web/themes/contrib
+        - web/core
     paths:
         - web/modules/custom
         - web/themes/custom
