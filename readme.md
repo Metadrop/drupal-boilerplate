@@ -24,8 +24,8 @@ It is based on [Docker4Drupal](https://wodby.com/docs/1.0/stacks/drupal/local/),
 Because it uses Docker under the hood, you can customize whatever you want, add new containers or use any standard Docker funcionality to accomodate your project needs.
 
 ## Quickview
-![Create project](./create-project.gif)
 
+https://github.com/Metadrop/drupal-boilerplate/assets/776453/2b3d53c6-e2bf-4c48-87a0-2e2fdd66db1d
 
 ## Requisites
 
