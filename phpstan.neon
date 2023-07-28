@@ -1,11 +1,12 @@
 parameters:
     level: 8
     fileExtensions:
-    		- php
-    		- module
-    		- inc
-    		- theme
-    		- install
+        - php
+        - module
+        - inc
+        - theme
+        - install
+        - profile
     scanDirectories:
         - web/modules/contrib
         - web/themes/contrib
