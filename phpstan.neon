@@ -14,6 +14,7 @@ parameters:
     paths:
         - web/modules/custom
         - web/themes/custom
+    reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - message: '#.*return type has no value type specified.*#'
         - message: '#.*has parameter .* with no type specified.*#'
