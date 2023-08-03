@@ -17,22 +17,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/Metadrop/drupal-behat.git"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "metadrop/grumphp-php-compatibility",
-                "version": "master",
-                "dist": {
-                    "url": "https://github.com/Metadrop/grumphp-php-compatibility/archive/refs/heads/master.zip",
-                    "type": "zip"
-                },
-                "autoload": {
-                    "psr-4": {
-                        "Metadrop\\PhpCompatibilityTask\\": "src/"
-                    }
-                }
-            }
         }
     ],
     "require": {
@@ -61,9 +45,7 @@
         "drush/drush": "^11.0"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.3",
-        "metadrop/grumphp-php-compatibility": "master",
-        "phpcompatibility/php-compatibility": "dev-develop as 9.3.5"
+        "metadrop/drupal-dev": "^0.5"
     },
     "conflict": {
         "drupal/drupal": "*"
