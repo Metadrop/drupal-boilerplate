@@ -75,3 +75,6 @@ node_modules/
 !.gitkeep
 /.editorconfig
 /.gitattributes
+
+# Generated artifact by metadrop/drupal-artifact-builder
+deploy-artifact
