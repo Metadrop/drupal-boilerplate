@@ -42,7 +42,7 @@
         "drush/drush": "^10.3"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^0.5"
+        "metadrop/drupal-dev": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
