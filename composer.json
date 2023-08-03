@@ -42,7 +42,8 @@
         "drupal/styleguide": "^2.0",
         "drupal/ultimate_cron": "^2.0@alpha",
         "drupal/webform": "^6.2@beta",
-        "drush/drush": "^11.0"
+        "drush/drush": "^11.0",
+        "metadrop/drupal-artifact-builder": "^1.4"
     },
     "require-dev": {
         "metadrop/drupal-dev": "^1.0"
