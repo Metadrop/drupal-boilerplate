@@ -63,7 +63,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "phpro/grumphp": true,
-            "metadrop/scripthor": true
+            "metadrop/scripthor": true,
+            "metadrop/composer-comments": true
         }
     },
     "scripts": {
