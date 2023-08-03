@@ -18,6 +18,8 @@ phpqa:
     - module
     - install
     - theme
+    - inc
+    - profile
 
 phpcs:
   standard: Drupal,DrupalPractice,PHPCompatibility
@@ -32,7 +34,7 @@ phpmd:
 phpcpd:
   minLines: 5
   minTokens: 70
-  names: "*.php,*.module,*.install,*.theme"
+  names: "*.php,*.module,*.install,*.theme,*.inc,*.profile"
 
 paralell-lint:
   reports:
