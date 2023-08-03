@@ -1,0 +1,26 @@
+[
+  {
+    "domain": "example.com",
+    "path": "/",
+    "name": "cookie-agreed",
+    "value": "2",
+    "expirationDate": 1798790400,
+    "hostOnly": false,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameSite": "no_restriction"
+  },
+  {
+    "domain": "example.com",
+    "path": "/",
+    "name": "cookie-agreed-categories",
+    "value": "%22mandatory%22%2C%22analytics%22%2C%22advertising%22",
+    "expirationDate": 1798790400,
+    "hostOnly": false,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameSite": "no_restriction"
+  }
+]
