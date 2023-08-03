@@ -87,7 +87,7 @@ grumphp:
         - info
         - txt
         - test
-      standard: Drupal,DrupalPractice
+      standard: Drupal,DrupalPractice,PHPCompatibility
     php_compatibility:
       testVersion: "8.1"
       triggered_by:

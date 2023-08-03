@@ -20,7 +20,7 @@ phpqa:
     - theme
 
 phpcs:
-  standard: Drupal,DrupalPractice
+  standard: Drupal,DrupalPractice,PHPCompatibility
   reports:
     file:
       checkstyle: checkstyle-drupal.xml
