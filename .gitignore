@@ -58,9 +58,12 @@ node_modules/
 /reports/codereview/*
 
 # BackstopJS
-/tests/backstopjs/backstop_data/html_report
-/tests/backstopjs/backstop_data/bitmaps_test
-/tests/backstopjs/backstop_data/ci_report/
+/tests/*/backstopjs/backstop_data/html_report
+/tests/*/backstopjs/backstop_data/ci_report
+/tests/*/backstopjs/backstop_data/bitmaps_test
+/tests/*/*/backstopjs/backstop_data/html_report
+/tests/*/*/backstopjs/backstop_data/ci_report
+/tests/*/*/backstopjs/backstop_data/bitmaps_test
 
 # Temporary files
 /tmp/*

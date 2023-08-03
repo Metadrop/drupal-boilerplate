@@ -96,7 +96,7 @@ services:
 
   backstopjs:
     volumes:
-      - ./tests/backstopjs:/src # User-guided caching
+      - ./tests/:/src/tests
 
   mailhog:
     labels:

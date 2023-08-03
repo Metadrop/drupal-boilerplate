@@ -7,6 +7,7 @@ PROFILE ?= "minimal"
 ENVIRONMENT ?= "stg"
 
 frontend_target ?= "example"
+backstopjs_type ?= "functional"
 
 ## info	:	Show project info
 .PHONY: info
@@ -42,17 +43,23 @@ frontend:
 ##		 An optional parameter is available to generate only scenarios matching it.
 ##            If the param is not added all references will be generated.
 ##		 Example: make backstopjs-reference "Scenario Label Regex"
+##       There also exists the backstopjs_type paramter which allows selecting the type of test you want run.
+##       Example: make backstopjs_type=functional backstopjs-test
+##       Example: make backstopjs_type=environment/pro backstopjs-test
 .PHONY: backstopjs-reference
 backstopjs-reference:
-	docker-compose exec backstopjs backstop reference --filter='$(filter-out $@,$(MAKECMDGOALS))'
+	docker-compose exec -T backstopjs sh -c "cd tests/${backstopjs_type}/backstopjs && backstop reference --filter='$(filter-out $@,$(MAKECMDGOALS))'"
 
 ## backstopjs-test	:	Run BackstopJS tests
 ##		 An optional parameter is available to generate only scenarios matching it.
 ##            If the param is not added all tests will be run.
 ##		 Example: make backstopjs-test "Scenario Label Regex"
+##       There also exists the backstopjs_type paramter which allows selecting the type of test you want run.
+##       Example: make backstopjs_type=functional backstopjs-test
+##       Example: make backstopjs_type=environment/pro backstopjs-test
 .PHONY: backstopjs-test
 backstopjs-test:
-	docker-compose exec backstopjs backstop test --filter='$(filter-out $@,$(MAKECMDGOALS))'
+	docker-compose exec -T backstopjs sh -c "cd tests/${backstopjs_type}/backstopjs && backstop test --filter='$(filter-out $@,$(MAKECMDGOALS))'"
 
 ## setup-init	:	Prepares the site
 .PHONY: setup-init
