@@ -1,0 +1,48 @@
+name: Bash tests
+
+on:
+  push:
+    branches:
+      - feature/add-testing-base
+  pull_request:
+    branches:
+      - feature/add-testing-base
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show debug information
+        run: |
+          php --version
+          echo "composer.json contents:"
+          cat composer.json
+
+      - name: Configure git
+        run: |
+          git config --global user.email "nobody@example.com"
+          git config --global user.name  "GitHub testing bot"
+
+      - name: Run composer
+        run: |
+          composer install --ignore-platform-reqs
+          composer boilerplate:assistant
+
+
+      - name: Run tests
+        run: |
+          pwd
+          .github/workflows/tests/bash/dummyTest.sh
+
