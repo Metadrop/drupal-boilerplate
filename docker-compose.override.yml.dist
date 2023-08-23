@@ -17,7 +17,7 @@ services:
       SSH_AUTH_SOCK: /ssh-agent
     volumes:
       - ./:/var/www/html
-      - $SSH_AUTH_SOCK:/ssh-agent
+#      - $SSH_AUTH_SOCK:/ssh-agent
 
 #  crond:
 #    volumes:
