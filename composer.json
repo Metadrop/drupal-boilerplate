@@ -43,7 +43,8 @@
         "metadrop/drupal-artifact-builder": "^1.4"
     },
     "require-dev": {
-        "metadrop/drupal-dev": "^1.0"
+        "metadrop/drupal-dev": "^1.1.0",
+        "metadrop/drupal-boilerplate-assistant": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -60,7 +61,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "phpro/grumphp": true,
-            "metadrop/scripthor": true,
+            "metadrop/drupal-boilerplate-assistant": true,
             "metadrop/composer-comments": true
         }
     },
