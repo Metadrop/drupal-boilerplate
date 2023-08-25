@@ -39,6 +39,7 @@ jobs:
         run: |
           composer install --ignore-platform-reqs
           composer boilerplate:assistant
+          docker ps
 
 
       - name: Run tests
