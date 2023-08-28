@@ -22,3 +22,24 @@ spec_helper_configure() {
   # Available functions: import, before_each, after_each, before_all, after_all
   : import 'support/custom_matcher'
 }
+
+
+# Custom functions
+##################
+
+# Checks if a given container is running.
+# $1: name of the container.
+container_is_alive() {
+  count=$(docker-compose ps --services --filter "status=running" | grep $1| wc -l)
+  if [ $count  -eq "1" ]
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
+container_count() {
+  docker-compose ps --services --filter "status=running" | wc -l
+}
+
