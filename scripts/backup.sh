@@ -1,0 +1,1 @@
+../vendor/metadrop/scripthor/bin/backup.sh

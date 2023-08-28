@@ -3,6 +3,7 @@
 [Scripthor](https://github.com/Metadrop/scripthor) is our set of scripts for our daily routine, to speed up the development workflow.
 
 Til today, we provide the following scripts:
+
 - **reload-local.sh**: Reload your local environment setting everything up for a new developer, a new branch, or just
   to ensure your changes won't break production during the deployment.
 - **frontend-build.sh**: Compile your sass and js-es6 files inside docker so you don't need to have node or gulp

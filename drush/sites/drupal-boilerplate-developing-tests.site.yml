@@ -1,0 +1,19 @@
+local:
+  uri: 'http://example.docker.localhost:8000'
+  root: '/var/www/html'
+  user: 'wodby'
+
+pro:
+  uri: 'https://example.com'
+  root: ''
+  host: 'example.com'
+  user: ''
+  command:
+    sql:
+      sync:
+        options:
+          structure-tables-list: 'cache*,session,watchdog'
+    dump:
+      sync:
+        options:
+          structure-tables-list: 'cache*,session,watchdog'

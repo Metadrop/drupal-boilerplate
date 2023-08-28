@@ -6,7 +6,7 @@ FRONTEND_BASE_PATH = "/var/www/html/web/themes/custom"
 PROFILE ?= "minimal"
 ENVIRONMENT ?= "stg"
 
-frontend_target ?= "example"
+frontend_target ?= "drupal_boilerplate_developing_tests"
 backstopjs_type ?= "functional"
 
 ## info	:	Show project info

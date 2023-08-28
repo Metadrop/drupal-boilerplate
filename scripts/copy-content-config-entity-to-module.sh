@@ -1,0 +1,1 @@
+../vendor/metadrop/scripthor/bin/copy-content-config-entity-to-module.sh

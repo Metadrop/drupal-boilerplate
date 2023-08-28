@@ -10,6 +10,7 @@ The project uses the following folders:
 
 
   - `backups/`: default folder to export backups (using [Scripthor's backup script](https://github.com/Metadrop/scripthor/blob/fb-backup-script/README.md#backup-sh)).
+  - `docs/`: project documentation using MkDocs.
   - `config/`: folder to store the Drupal configuration files. Configuration export and import is done from/to this folder.
     - `default/`: global configuration (all environments, and all sites if this is a multisite project).
     - `envs/`: per environment configuration. The [Configuration Split module](https://www.drupal.org/project/config_split) needs to be configured to use these folders.
@@ -44,7 +45,7 @@ The project uses the following folders:
 
   - `solr/cores/`: Solr cores can be customized using configuration files. In this folder those configuration can be stored.
 
-  - `tests/`: Project tests.
+  - `tests/`: Project tests. UPDATE! This doesn't match the current structure!
 
     - `behat/`: Behat tests and helper code.
 

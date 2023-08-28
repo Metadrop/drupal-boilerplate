@@ -1,6 +1,6 @@
 [
   {
-    "domain": "example.docker.localhost:8000",
+    "domain": "drupal-boilerplate-developing-tests.docker.localhost:8000",
     "path": "/",
     "name": "CookieName",
     "value": "Cookie value",

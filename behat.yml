@@ -38,8 +38,8 @@ default:
             parameters:
               'report_on_error': true
               'error_reporting_path': "/var/www/html/web/sites/default/files/behat/errors"
-              'error_reporting_url': "http://example.docker.localhost:8000/sites/default/files/behat/errors"
-              'screenshots_url': "http://example.docker.localhost:8000/sites/default/files/behat/screenshots"
+              'error_reporting_url': "http://drupal-boilerplate-developing-tests.docker.localhost:8000/sites/default/files/behat/errors"
+              'screenshots_url': "http://drupal-boilerplate-developing-tests.docker.localhost:8000/sites/default/files/behat/screenshots"
               'screenshots_path':  "/var/www/html/web/sites/default/files/behat/screenshots"
               'page_contents_path': "/var/www/html/web/sites/default/files/behat/pages"
         - Metadrop\Behat\Context\FileContext

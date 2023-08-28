@@ -282,7 +282,7 @@ $settings['config_sync_directory'] = '../config/default/';
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = '8T_xqpqcM7yfJDocaHszZhCeSIOkigZOnTCBAUt5jYNiLhyb0JGMCLt9prYfIEnvqxf2ZmYXLg';
 
 /**
  * Deployment identifier.
@@ -766,3 +766,15 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
 
+$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'mariadb',
+  'port' => '3306',
+  'isolation_level' => 'READ COMMITTED',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);
