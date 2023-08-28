@@ -13,7 +13,14 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {
+            "name": "metadrop/drupal-boilerplate-assistant",
+            "type": "git",
+            "url": "../../dependencies/drupal-boilerplate-assistant/.git",
+            "reference": "main",
+            "version": "1.1.1"
+       }
     ],
     "require": {
         "composer/installers": "^1.7",
@@ -44,7 +51,7 @@
     },
     "require-dev": {
         "metadrop/drupal-dev": "^1.1.0",
-        "metadrop/drupal-boilerplate-assistant": "^1.0"
+        "metadrop/drupal-boilerplate-assistant": "^1.1.1"
     },
     "conflict": {
         "drupal/drupal": "*"
