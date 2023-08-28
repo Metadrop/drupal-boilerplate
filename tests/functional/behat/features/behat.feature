@@ -11,4 +11,4 @@ Feature:
   @behat @javascript
   Scenario: Selenium driver works
     Given I go to "/"
-    Then I should see "Home"
+    Then I should see "Log in"
