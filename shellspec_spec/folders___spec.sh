@@ -1,4 +1,4 @@
-Describe 'Boilerplate folder structure'
+Describe 'Boilerplate folder structure' folders
 
   It 'has main boilerplate folders'
 

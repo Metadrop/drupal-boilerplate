@@ -1,9 +1,7 @@
-
-
 %const CONTAINER_NAMES: "php traefik node hub chrome backstopjs mkdocs mariadb nginx adminer mailhog"
 %const CONTAINER_COUNT: 11
 
-Describe 'Container infrastructure:'
+Describe 'Container infrastructure:' containers
 
   Context 'container'
     Parameters:value $CONTAINER_NAMES
