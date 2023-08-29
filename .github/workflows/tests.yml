@@ -55,7 +55,11 @@ jobs:
           groups
           echo "pwd:"
           pwd
-
+          id
+          "echo id in docker:"
+          docker-compose exec -T php id
+          docker-compose exec -T php whoami
+          docker-compose exec -T php groups
 
           docker-compose exec -T php  "vendor/bin/behat" --colors
 
