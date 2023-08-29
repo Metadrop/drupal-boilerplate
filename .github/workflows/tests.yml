@@ -63,9 +63,10 @@ jobs:
           docker-compose exec -T php whoami
           docker-compose exec -T php groups
 
-          touch reports/behat/junit//default.xml
-
-          docker-compose exec -T php  "vendor/bin/behat" --colors
+          echo "Test x" > reports/behat/junit//default.xml
+          ls -la  reports/behat/junit/
+          docker-compose exec -T php  ls -la  reports/behat/junit/
+          docker-compose exec -T php  vendor/bin/behat --colors
 
 
 
