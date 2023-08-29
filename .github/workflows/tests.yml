@@ -49,11 +49,13 @@ jobs:
         run: |
           docker ps
           docker-compose ps
-          docker-compose exec -T php  "vendor/bin/behat" --colors
+          COMPOSE_INTERACTIVE_NO_CLI=1
+          docker-compose exec php  "vendor/bin/behat" --colors
 
 
 
       - name: Run tests
         run: |
           pwd
+          COMPOSE_INTERACTIVE_NO_CLI=1
           shellspec/shellspec --tag behat
