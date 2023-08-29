@@ -42,6 +42,7 @@ jobs:
 
       - name: Run composer
         run: |
+          chmod a+rwx * -R
           composer install --ignore-platform-reqs
           composer boilerplate:assistant
 
