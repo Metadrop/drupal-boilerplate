@@ -55,20 +55,6 @@ jobs:
           groups
           echo "pwd:"
           pwd
-          echo "ls -la:"
-          ls -la
-          echo "ls -la reports/"
-          ls -la reports/
-          echo "----"
-          echo "ls -la reports/behat"
-          ls -la reports/behat/
-          echo "----"
-          echo "ls -la reports/behat/junit/"
-          ls -la reports/behat/junit/
-          echo "----"
-          echo "ls -la reports/behat/junit//default.xml"
-          ls -la reports/behat/junit//default.xml
-          echo "----"
 
 
           docker-compose exec -T php  "vendor/bin/behat" --colors
