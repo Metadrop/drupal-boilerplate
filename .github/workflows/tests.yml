@@ -49,7 +49,7 @@ jobs:
         run: |
           docker ps
           docker-compose ps
-          docker-compose exec php  "vendor/bin/behat" --colors
+          docker-compose exec -T php  "vendor/bin/behat" --colors
 
 
 
