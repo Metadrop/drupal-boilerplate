@@ -40,18 +40,18 @@ services:
 #      CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
 #    command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
 
-  nginx:
-    image: wodby/nginx:$NGINX_TAG
-    container_name: "${PROJECT_NAME}_nginx"
-    depends_on:
-      - php
-    environment:
-      NGINX_STATIC_OPEN_FILE_CACHE: "off"
-      NGINX_ERROR_LOG_LEVEL: debug
-      NGINX_BACKEND_HOST: php
-      NGINX_SERVER_ROOT: /var/www/html/web
-      NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
-#      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
+#   nginx:
+#     image: wodby/nginx:$NGINX_TAG
+#     container_name: "${PROJECT_NAME}_nginx"
+#     depends_on:
+#       - php
+#     environment:
+#       NGINX_STATIC_OPEN_FILE_CACHE: "off"
+#       NGINX_ERROR_LOG_LEVEL: debug
+#       NGINX_BACKEND_HOST: php
+#       NGINX_SERVER_ROOT: /var/www/html/web
+#       NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
+#       NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
 
 #  postgres:
 #    image: wodby/postgres:$POSTGRES_TAG
@@ -62,16 +62,16 @@ services:
 #      POSTGRES_DB: $DB_NAME
 #      POSTGRES_USER: $DB_USER
 
-#  apache:
-#    image: wodby/apache:$APACHE_TAG
-#    container_name: "${PROJECT_NAME}_apache"
-#    depends_on:
-#      - php
-#    environment:
-#      APACHE_LOG_LEVEL: debug
-#      APACHE_BACKEND_HOST: php
-#      APACHE_VHOST_PRESET: php
-#      APACHE_DOCUMENT_ROOT: /var/www/html/web
+  apache:
+    image: wodby/apache:$APACHE_TAG
+    container_name: "${PROJECT_NAME}_apache"
+    depends_on:
+      - php
+    environment:
+      APACHE_LOG_LEVEL: debug
+      APACHE_BACKEND_HOST: php
+      APACHE_VHOST_PRESET: php
+      APACHE_DOCUMENT_ROOT: /var/www/html/web
 
 #  varnish:
 #    image: wodby/varnish:$VARNISH_TAG
