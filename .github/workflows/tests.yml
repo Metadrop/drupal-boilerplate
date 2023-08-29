@@ -35,7 +35,7 @@ jobs:
           git config --global user.email "nobody@example.com"
           git config --global user.name  "GitHub testing bot"
 
-      - name: Donwload shellspec
+      - name: Download shellspec
         run: |
           wget https://github.com/shellspec/shellspec/releases/download/0.28.1/shellspec-dist.tar.gz
           tar xfvz shellspec-dist.tar.gz
@@ -48,6 +48,7 @@ jobs:
       - name: DEBUG
         run: |
           set -x
+          cat /etc/passwd
           chmod a+rwx * -R
           docker ps
           docker-compose ps
@@ -62,6 +63,7 @@ jobs:
           id
           docker-compose exec -T php whoami
           docker-compose exec -T php groups
+          docker-compose exec -T php cat /etc/passwd
 
           echo "Test x" > reports/behat/junit//default.xml
           ls -la  reports/behat/junit/
