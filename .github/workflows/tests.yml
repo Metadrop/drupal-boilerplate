@@ -49,13 +49,26 @@ jobs:
         run: |
           docker ps
           docker-compose ps
-          COMPOSE_INTERACTIVE_NO_CLI=1
-          docker-compose exec php  "vendor/bin/behat" --colors
+          echo "ls -la reports/"
+          /var/www/html/reports/
+          echo "----"
+          echo "ls -la reports/behat"
+          /var/www/html/reports/behat/
+          echo "----"
+          echo "ls -la reports/behat/junit/"
+          /var/www/html/reports/behat/junit/
+          echo "----"
+          echo "ls -la reports/behat/junit//default.xml"
+          /var/www/html/reports/behat/junit//default.xml
+          echo "----"
+
+
+
+          docker-compose exec -T php  "vendor/bin/behat" --colors
 
 
 
       - name: Run tests
         run: |
           pwd
-          COMPOSE_INTERACTIVE_NO_CLI=1
           shellspec/shellspec --tag behat
