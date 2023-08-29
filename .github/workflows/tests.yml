@@ -49,19 +49,25 @@ jobs:
         run: |
           docker ps
           docker-compose ps
+          echo "whoami:"
           whoami
+          echo "groups:"
           groups
+          echo "pwd:"
+          pwd
+          echo "ls -a:"
+          ls -la
           echo "ls -la reports/"
-          /var/www/html/reports/
+          ls -la /var/www/html/reports/
           echo "----"
           echo "ls -la reports/behat"
-          /var/www/html/reports/behat/
+          ls -la /var/www/html/reports/behat/
           echo "----"
           echo "ls -la reports/behat/junit/"
-          /var/www/html/reports/behat/junit/
+          ls -la /var/www/html/reports/behat/junit/
           echo "----"
           echo "ls -la reports/behat/junit//default.xml"
-          /var/www/html/reports/behat/junit//default.xml
+          ls -la /var/www/html/reports/behat/junit//default.xml
           echo "----"
 
 
