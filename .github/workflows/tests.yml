@@ -48,7 +48,7 @@ jobs:
       - name: DEBUG
         run: |
           set -x
-          chmod a+rwx . -R
+          chmod a+rwx * -R
           docker ps
           docker-compose ps
           echo "whoami:"
