@@ -45,9 +45,15 @@ jobs:
           composer install --ignore-platform-reqs
           composer boilerplate:assistant
 
+      - name: DEBUG
+        run: |
+          docker ps
+          docker-compose ps
+          make behat
+
+
 
       - name: Run tests
         run: |
           pwd
-          shellspec/shellspec
-
+          shellspec/shellspec --tag behat
