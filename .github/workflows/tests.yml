@@ -49,6 +49,8 @@ jobs:
         run: |
           docker ps
           docker-compose ps
+          whoami
+          groups
           echo "ls -la reports/"
           /var/www/html/reports/
           echo "----"
