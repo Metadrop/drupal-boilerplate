@@ -37,7 +37,7 @@ ngrok-stop:
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
 frontend:
-	docker-compose exec -w ${FRONTEND_BASE_PATH}/$(frontend_target) node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose exec -T -w ${FRONTEND_BASE_PATH}/$(frontend_target) node sh ${DOCKER_PROJECT_ROOT}/scripts/frontend-build.sh $(filter-out $@,$(MAKECMDGOALS))
 
 ## backstopjs-reference	:	Generate BackstopJS reference files
 ##		 An optional parameter is available to generate only scenarios matching it.
