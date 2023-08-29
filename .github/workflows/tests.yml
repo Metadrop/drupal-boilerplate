@@ -57,9 +57,10 @@ jobs:
           pwd
           id
           "echo id in docker:"
-          docker-compose exec -T php id
           docker-compose exec -T php whoami
           docker-compose exec -T php groups
+
+          touch reports/behat/junit//default.xml
 
           docker-compose exec -T php  "vendor/bin/behat" --colors
 
