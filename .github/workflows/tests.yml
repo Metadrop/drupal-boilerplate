@@ -44,7 +44,9 @@ jobs:
         run: |
           chmod a+rwx * -R
           composer install --ignore-platform-reqs
+          chmod a+rwx * -R
           composer boilerplate:assistant
+          chmod a+rwx * -R
 
       - name: DEBUG
         run: |
