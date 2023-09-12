@@ -7,12 +7,12 @@ services:
     container_name: "${PROJECT_NAME}_ngrok"
     image: wernight/ngrok
     links:
-      - "nginx"
+      - "apache"
     environment:
       #- NGROK_AUTH=<>
       #- NGROK_SUBDOMAIN=<>
       - NGROK_REGION=eu
-      - NGROK_PORT=nginx:80
+      - NGROK_PORT=apache:80
       - NGROK_DEBUG=1
       #- NGROK_USERNAME=username
       #- NGROK_PASSWORD=pasword
