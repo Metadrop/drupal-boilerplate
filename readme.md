@@ -51,7 +51,7 @@ Depending in the Drupal release you want you should use a different branch.
 | Drupal release	| Boilerplate branch 	| Example command	|
 |---	|---	|---	|
 | 9.x  | 2.x branch | composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:^2 my-project 	|
-| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:3.0.0-beta6  my-project 	|
+| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:3.0.0-beta7  my-project 	|
 
 
 
