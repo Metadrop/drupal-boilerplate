@@ -23,10 +23,10 @@ services:
 #    volumes:
 #      - ./:/var/www/html:cached
 
-  nginx:
-    labels:
-      - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
-    volumes:
+#  nginx:
+#    labels:
+#      - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
+#    volumes:
       - ./:/var/www/html:cached
 #      # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #      - mutagen:/var/www/html
@@ -36,11 +36,11 @@ services:
 #      - ./postgres-init:/docker-entrypoint-initdb.d # Place init file(s) here.
 #      - /path/to/postgres/data/on/host:/var/lib/postgresql/data # Use bind mount
 
-#  apache:
-#    labels:
-#      - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
-#    volumes:
-#      - ./:/var/www/html:cached
+  apache:
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
+    volumes:
+      - ./:/var/www/html:cached
 #      # Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #      - mutagen:/var/www/html
 
@@ -107,7 +107,7 @@ services:
 #    volumes:
 #     - ./:/var/www/html:cached # User-guided caching
 
-  # Additional containers:
+# Additional containers:
 
   traefik:
     image: traefik:$TRAEFIK_TAG
@@ -117,7 +117,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '8000:80'
- #     - '8444:443'
+#     - '8444:443'
 
 #  portainer:
 #    image: portainer/portainer
