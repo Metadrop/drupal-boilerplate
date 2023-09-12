@@ -23,8 +23,8 @@
     {
       "label": "Homepage",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://nginx",
-      "referenceUrl": "http://nginx",
+      "url": "http://apache",
+      "referenceUrl": "http://apache",
       "readyEvent": "",
       "readySelector": "body",
       "delay": 5,
@@ -37,7 +37,7 @@
       "selectors": [],
       "selectorExpansion": true,
       "expect": 0,
-      "misMatchThreshold" : 0.1,
+      "misMatchThreshold": 0.1,
       "requireSameDimensions": true
     }
   ],
@@ -53,8 +53,8 @@
     "CI"
   ],
   "ci": {
-    "format" :  "junit" ,
-    "testSuiteName" :  "backstopJS"
+    "format": "junit",
+    "testSuiteName": "backstopJS"
   },
   "engine": "puppeteer",
   "engineOptions": {
