@@ -35,19 +35,20 @@ jobs:
           git config --global user.email "nobody@example.com"
           git config --global user.name  "GitHub testing bot"
 
-      - name: Donwload shellspec
+      - name: Download shellspec
         run: |
           wget https://github.com/shellspec/shellspec/releases/download/0.28.1/shellspec-dist.tar.gz
           tar xfvz shellspec-dist.tar.gz
 
       - name: Run composer
         run: |
+          chmod a+rwx * -R
           composer install --ignore-platform-reqs
+          chmod a+rwx * -R
           composer boilerplate:assistant
-
+          chmod a+rwx * -R
 
       - name: Run tests
         run: |
           pwd
           shellspec/shellspec
-
