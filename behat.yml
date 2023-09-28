@@ -55,6 +55,7 @@ default:
         - Metadrop\Behat\Context\UrlContext
         - Metadrop\Behat\Context\UsersContext
         - Metadrop\Behat\Context\WaitingContext
+        - Metadrop\Behat\Context\MediaContext
 
   extensions:
     Behat\MinkExtension:
