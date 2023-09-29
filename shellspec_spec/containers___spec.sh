@@ -1,4 +1,4 @@
-%const CONTAINER_NAMES: "php traefik node hub chrome backstopjs mkdocs mariadb nginx adminer mailhog"
+%const CONTAINER_NAMES: "php traefik node hub chrome backstopjs mkdocs mariadb apache adminer mailhog"
 %const CONTAINER_COUNT: 11
 
 Describe 'Container infrastructure:' containers
