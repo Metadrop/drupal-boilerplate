@@ -45,13 +45,25 @@ jobs:
           echo "----- Make docker available for the tester user (dirty trick? How to improve it?) -----"
           docker exec $CONTAINER_ID chown :tester /var/run/docker.sock
 
+          echo "----- Export container id to other steps -----"
+          echo "CONTAINER_ID=$CONTAINER_ID" >> "$GITHUB_OUTPUT"
+          echo "ROOT_PATH=$ROOT_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare shellspec
+        env:
+          CONTAINER_ID: ${{ steps.testing-container-setup.outputs.CONTAINER_ID }}
+          ROOT_PATH: ${{ steps.testing-container-setup.outputs.ROOT_PATH }}
+        run: |
+
           echo "----- Download and uncompress shellspec, the test framework used for testing -----"
           docker exec $CONTAINER_ID  wget https://github.com/shellspec/shellspec/releases/download/0.28.1/shellspec-dist.tar.gz -O /opt/shellspec-dist.tar.gz
           docker exec $CONTAINER_ID tar xfvz /opt/shellspec-dist.tar.gz -C  /opt/
 
-          echo "----- Export container id to other steps -----"
-          echo "CONTAINER_ID=$CONTAINER_ID" >> "$GITHUB_OUTPUT"
-          echo "ROOT_PATH=$ROOT_PATH" >> "$GITHUB_OUTPUT"
+          echo "----- Copy shellspec config file to the root folder -----"
+          ln -s .github/shellspec/shellspec .shellspec
+
+          echo "----- Copy shellspec test files -----"
+          ln -s .github/shellspec/shellspec_spec shellspec_spec
 
       - name: Setup Git cli
         run: |
