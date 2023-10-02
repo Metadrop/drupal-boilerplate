@@ -29,9 +29,6 @@ jobs:
           ROOT_PATH=/boilerplate_tests
           docker_hub_image=metadrop/drupal-boilerplate-dind:v0.3
 
-          echo "----- Set permissions -----"
-          sudo chown 1000 -R .
-
           echo "----- Get image to run the tests -----"
           docker pull $docker_hub_image
 
@@ -69,6 +66,9 @@ jobs:
         run: |
           git config --global user.email "test@example.io"
           git config --global user.name "CI tester"
+
+      - name: Set ownership
+        run: sudo chown 1000 -R .
 
       - name: Run composer install
         env:
