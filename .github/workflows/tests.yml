@@ -1,0 +1,89 @@
+name: Bash tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Add HTTP basic auth credentials
+        run: |
+          echo "auth.json path: $GITHUB_WORKSPACE/auth.json"
+          echo '${{ secrets.auth_json_for_boierpalte_github_ci }}' > $GITHUB_WORKSPACE/auth.json
+          pwd
+
+      - name: Prepare container for testing
+        id: testing-container-setup
+        run: |
+
+          ROOT_PATH=/boilerplate_tests
+          docker_hub_image=metadrop/drupal-boilerplate-dind:v0.3
+
+          echo "----- Get image to run the tests -----"
+          docker pull $docker_hub_image
+
+          echo "----- Create a docker container from the downloaded image -----"
+          CONTAINER_ID=$(docker run -d --privileged --name testrunner --mount type=bind,source=.,target=$ROOT_PATH $docker_hub_image)
+
+          echo "----- Container ID is $CONTAINER_ID -----"
+          sleep 5
+          docker ps
+
+          echo "----- Make docker available for the tester user (dirty trick? How to improve it?) -----"
+          docker exec $CONTAINER_ID chown :tester /var/run/docker.sock
+
+          echo "----- Export container id to other steps -----"
+          echo "CONTAINER_ID=$CONTAINER_ID" >> "$GITHUB_OUTPUT"
+          echo "ROOT_PATH=$ROOT_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare shellspec
+        env:
+          CONTAINER_ID: ${{ steps.testing-container-setup.outputs.CONTAINER_ID }}
+          ROOT_PATH: ${{ steps.testing-container-setup.outputs.ROOT_PATH }}
+        run: |
+
+          echo "----- Download and uncompress shellspec, the test framework used for testing -----"
+          docker exec $CONTAINER_ID  wget https://github.com/shellspec/shellspec/releases/download/0.28.1/shellspec-dist.tar.gz -O /opt/shellspec-dist.tar.gz
+          docker exec $CONTAINER_ID tar xfvz /opt/shellspec-dist.tar.gz -C  /opt/
+
+          echo "----- Copy shellspec config file to the root folder -----"
+          ln -s .github/shellspec/shellspec .shellspec
+
+          echo "----- Copy shellspec test files -----"
+          ln -s .github/shellspec/shellspec_spec shellspec_spec
+
+      - name: Setup Git cli
+        run: |
+          git config --global user.email "test@example.io"
+          git config --global user.name "CI tester"
+
+      - name: Set ownership
+        run: sudo chown 1000 -R .
+
+      - name: Run composer install
+        env:
+          CONTAINER_ID: ${{ steps.testing-container-setup.outputs.CONTAINER_ID }}
+          ROOT_PATH: ${{ steps.testing-container-setup.outputs.ROOT_PATH }}
+        run: |
+
+          docker exec -u tester -w $ROOT_PATH/ $CONTAINER_ID composer install --ignore-platform-reqs
+
+      - name: Run boilerplate assistant
+        env:
+          CONTAINER_ID: ${{ steps.testing-container-setup.outputs.CONTAINER_ID }}
+          ROOT_PATH: ${{ steps.testing-container-setup.outputs.ROOT_PATH }}
+        run: |
+          docker exec -u tester -w $ROOT_PATH/ $CONTAINER_ID composer boilerplate:assistant
+
+      - name: Run tests
+        env:
+          CONTAINER_ID: ${{ steps.testing-container-setup.outputs.CONTAINER_ID }}
+          ROOT_PATH: ${{ steps.testing-container-setup.outputs.ROOT_PATH }}
+        run: |
+          docker exec -u tester -w $ROOT_PATH/ $CONTAINER_ID /opt/shellspec/shellspec

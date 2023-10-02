@@ -1,0 +1,6 @@
+
+--default-path "shellspec_spec"
+
+--helperdir shellspec_spec
+
+--require spec_helper
