@@ -50,14 +50,14 @@ Depending in the Drupal release you want you should use a different branch.
 
 | Drupal release	| Boilerplate branch 	| Example command	|
 |---	|---	|---	|
+| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate  my-project 	|
 | 9.x  | 2.x branch | composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:^2 my-project 	|
-| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:3.0.0-beta7  my-project 	|
 
+
+NOTE: 2.x branch is minimally maintained because Drupal9 support ends Nomvember, 2023.
 
 
 Because this boilerplate uses drupal/core-recommended under the hood you will get an updated release of the chosen core.
-
-
 
 
 Once Composer finalizes the project creation an assistant will be automatically run. It will ask you a few questions:
