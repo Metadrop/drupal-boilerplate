@@ -2,11 +2,7 @@ name: Bash tests
 
 on:
   push:
-    branches:
-      - feature/add-testing-base
   pull_request:
-    branches:
-      - feature/add-testing-base
 
 jobs:
   build:
