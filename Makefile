@@ -24,15 +24,18 @@ test:
 behat:
 	docker-compose exec php  ${BEHAT} --colors
 
-## ngrok	:	Setup a ngrok tunnel to make the site available
-.PHONY: ngrok
-ngrok:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml up -d && docker-compose exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
+## Localtunnel	:	Setup a local tunnel to make the site available
+.PHONY: localtunnel
+localtunnel:
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.localtunnel.yml up -d
+	@echo "Obtaining url..."
+	@sleep 3
+	@docker-compose logs localtunnel | grep -Po --color=never "your(.*)?"
 
-## ngrok-stop	:	Stop the created ngrok tunnel
-.PHONY: ngrok-stop
-ngrok-stop:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml stop ngrok && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml rm -fsv ngrok
+## localtunnel-stop	:	Stop the created local tunnel
+.PHONY: localtunnel-stop
+localtunnel-stop:
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.localtunnel.yml stop localtunnel && docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.localtunnel.yml rm -fsv localtunnel
 
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
