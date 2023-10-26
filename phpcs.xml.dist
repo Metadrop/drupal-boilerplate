@@ -31,7 +31,6 @@
   <file>web/themes/custom</file>
   <file>tests</file>
 
-  <exclude-pattern>*/behat</exclude-pattern>
   <exclude-pattern>*/tests/features</exclude-pattern>
   <exclude-pattern>*/tests/features</exclude-pattern>
   <exclude-pattern>*/node_modules</exclude-pattern>
