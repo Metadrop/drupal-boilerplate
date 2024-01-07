@@ -16,12 +16,12 @@ help :
 .PHONY: up
 up:
 	@echo "Starting up containers for $(PROJECT_NAME)..."
-	docker-compose pull
-	docker-compose up -d --remove-orphans
+	$(DOCKER_COMPOSE_CMD) pull
+	$(DOCKER_COMPOSE_CMD) up -d --remove-orphans
 
 .PHONY: mutagen
 mutagen:
-	docker-compose up -d mutagen
+	$(DOCKER_COMPOSE_CMD) up -d mutagen
 	mutagen project start -f mutagen/config.yml
 
 ## down	:	Stop containers.
@@ -32,13 +32,13 @@ down: stop
 .PHONY: start
 start:
 	@echo "Starting containers for $(PROJECT_NAME) from where you left off..."
-	@docker-compose start
+	@$(DOCKER_COMPOSE_CMD) start
 
 ## stop	:	Stop containers.
 .PHONY: stop
 stop:
 	@echo "Stopping containers for $(PROJECT_NAME)..."
-	@docker-compose stop
+	@$(DOCKER_COMPOSE_CMD) stop
 
 ## prune	:	Remove containers and their volumes.
 ##		You can optionally pass an argument with the service name to prune single container
@@ -47,7 +47,7 @@ stop:
 .PHONY: prune
 prune:
 	@echo "Removing containers for $(PROJECT_NAME)..."
-	@docker-compose down -v $(filter-out $@,$(MAKECMDGOALS))
+	@$(DOCKER_COMPOSE_CMD) down -v $(filter-out $@,$(MAKECMDGOALS))
 
 ## ps	:	List running containers.
 .PHONY: ps
@@ -80,23 +80,23 @@ drush:
 ##		logs nginx php	: View `nginx` and `php` containers logs.
 .PHONY: logs
 logs:
-	@docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
+	@$(DOCKER_COMPOSE_CMD) logs -f $(filter-out $@,$(MAKECMDGOALS))
 
 ## xdebug	:	Enable xdebug.
 .PHONY: xdebug
 xdebug:
 	@echo "Enabling xdebug in $(PROJECT_NAME)."
 	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
-	docker-compose stop php
-	docker-compose pull php
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up -d php
+	$(DOCKER_COMPOSE_CMD) stop php
+	$(DOCKER_COMPOSE_CMD) pull php
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up -d php
 
 ## xdebug-disable	:	Disable xdebug.
 .PHONY: xdebug-stop
 xdebug-stop:
 	@echo "Disabling xdebug in $(PROJECT_NAME)."
-	docker-compose stop php
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d php
+	$(DOCKER_COMPOSE_CMD) stop php
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml up -d php
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
