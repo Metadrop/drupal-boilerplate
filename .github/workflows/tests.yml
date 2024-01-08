@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Add composer
+        uses: php-actions/composer@v6
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.PAT }}"} }'
+
 
       - name: Add HTTP basic auth credentials
         run: |
