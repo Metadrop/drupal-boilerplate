@@ -30,7 +30,7 @@ https://github.com/Metadrop/drupal-boilerplate/assets/776453/2b3d53c6-e2bf-4c48-
 ## Requisites
 
  - [Docker](https://docs.docker.com/get-docker/)
- - [Docker Compose](https://docs.docker.com/compose/install/)
+ - [Docker Compose](https://docs.docker.com/compose/install/) with release 3.0.1 or previous. After 3.0.2 by default Docker Compose V2, [included in Docker](https://www.docker.com/blog/announcing-compose-v2-general-availability/), is used. The variable `DOCKER_COMPOSE_CMD=docker compose` can be used to select Docker Compose V1 if required.
 
  **Optionally**
 
