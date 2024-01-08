@@ -13,16 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Add composer
-        uses: php-actions/composer@v6
-        env:
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.PAT }}"} }'
-
-
       - name: Add HTTP basic auth credentials
         run: |
           echo "auth.json path: $GITHUB_WORKSPACE/auth.json"
-          echo '${{ secrets.auth_json_for_boierpalte_github_ci }}' > $GITHUB_WORKSPACE/auth.json
+          echo '${{ secrets.PAT }}' > $GITHUB_WORKSPACE/auth.json
           pwd
 
       - name: Prepare container for testing
