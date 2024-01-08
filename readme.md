@@ -21,7 +21,7 @@ Tools included out-of-the-box:
 
 It is based on [Docker4Drupal](https://wodby.com/docs/1.0/stacks/drupal/local/), which uses Docker and Docker Compose. To get all the information about available webservers, databases, PHP versions and other containers check their [wodby/docker4drupa repository](https://github.com/wodby/docker4drupal).
 
-Because it uses Docker under the hood, you can customize whatever you want, add new containers or use any standard Docker funcionality to accomodate your project needs.
+Because it uses Docker under the hood, you can customize whatever you want, add new containers or use any standard Docker functionality to accommodate your project needs.
 
 ## Quickview
 
@@ -30,11 +30,11 @@ https://github.com/Metadrop/drupal-boilerplate/assets/776453/2b3d53c6-e2bf-4c48-
 ## Requisites
 
  - [Docker](https://docs.docker.com/get-docker/)
- - [Docker Compose](https://docs.docker.com/compose/install/)
+ - [Docker Compose](https://docs.docker.com/compose/install/) with release 3.0.1 or previous. After 3.0.2 by default Docker Compose V2, [included in Docker](https://www.docker.com/blog/announcing-compose-v2-general-availability/), is used. The variable `DOCKER_COMPOSE_CMD=docker compose` can be used to select Docker Compose V1 if required.
 
  **Optionally**
 
- - Pyhton 3 with PyYAML installed for the `make info` command
+ - Python 3 with PyYAML installed for the `make info` command
 
 ## Usage
 
@@ -50,11 +50,11 @@ Depending in the Drupal release you want you should use a different branch.
 
 | Drupal release	| Boilerplate branch 	| Example command	|
 |---	|---	|---	|
-| 10.x | 3.x branch	| composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate  my-project 	|
+| 10.x | 3.x branch | composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate my-project     	|
 | 9.x  | 2.x branch | composer create-project  --ignore-platform-reqs metadrop/drupal-boilerplate:^2 my-project 	|
 
 
-NOTE: 2.x branch is minimally maintained because Drupal9 support ends Nomvember, 2023.
+NOTE: 2.x branch is minimally maintained because Drupal9 support ends November, 2023.
 
 
 Because this boilerplate uses drupal/core-recommended under the hood you will get an updated release of the chosen core.
