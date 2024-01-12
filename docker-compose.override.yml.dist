@@ -107,6 +107,10 @@ services:
 #    volumes:
 #     - ./:/var/www/html:cached # User-guided caching
 
+  lighthouse:
+    volumes:
+      - ./tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
+
 # Additional containers:
 
   traefik:
