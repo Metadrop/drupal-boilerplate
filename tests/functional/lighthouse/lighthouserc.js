@@ -7,7 +7,7 @@ module.exports = {
         ],
         numberOfRuns: 2,
         settings: {
-          chromeFlags: "--headless --disable-gpu --no-sandbox",
+          chromeFlags: "--headless",
           // Don't run certain audits
           skipAudits: [
             // Best Practices:

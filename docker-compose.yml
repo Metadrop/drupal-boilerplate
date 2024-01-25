@@ -234,4 +234,6 @@ services:
     container_name: "${PROJECT_NAME}_lighthouse"
     image: patrickhulce/lhci-client:latest
     shm_size: ${SHM_SIZE}
+    cap_add:
+      - SYS_ADMIN
     command: tail -F /dev/null
