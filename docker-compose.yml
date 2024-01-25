@@ -134,7 +134,7 @@ services:
   node:
     image: wodby/node:$NODE_TAG
     container_name: "${PROJECT_NAME}_node"
-    entrypoint: []
+    working_dir: ${THEME_PATH}
     command: tail -f /dev/null
 
 #  blackfire:
@@ -178,8 +178,6 @@ services:
   hub:
     image: selenium/hub:$HUB_TAG
     container_name: ${PROJECT_NAME}_hub
-    #ports:
-    #  - "4444:4444"
 
   chrome:
     image: selenium/node-chrome:$CHROME_TAG
@@ -188,8 +186,10 @@ services:
     depends_on:
       - hub
     environment:
-      - HUB_HOST=hub
-#      - HUB_PORT=4444
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
 
   # BUG: Standalone chrome image can't be used until this is resolved:
   # https://bugs.chromium.org/p/chromedriver/issues/detail?id=3857
