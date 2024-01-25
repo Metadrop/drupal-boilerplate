@@ -52,10 +52,8 @@ node_modules/
 .sass-cache
 .cache
 
-# Test related Reports.
-/reports/behat/errors/*
-/reports/behat/junit/*
-/reports/codereview/*
+# Test related reports.
+/reports/*
 
 # BackstopJS
 /tests/*/backstopjs/backstop_data/html_report
