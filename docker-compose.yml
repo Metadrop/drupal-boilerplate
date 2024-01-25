@@ -134,7 +134,7 @@ services:
   node:
     image: wodby/node:$NODE_TAG
     container_name: "${PROJECT_NAME}_node"
-    entrypoint: []
+    working_dir: ${THEME_PATH}
     command: tail -f /dev/null
 
 #  blackfire:
