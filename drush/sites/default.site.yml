@@ -1,0 +1,4 @@
+local:
+  uri: 'http://example.docker.localhost:8000'
+  root: '/var/www/html'
+  user: 'wodby'
