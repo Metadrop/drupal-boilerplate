@@ -10,11 +10,12 @@ module.exports = {
           chromeFlags: "--headless",
           // Don't run certain audits
           skipAudits: [
+            //"redirects-http",
             // Best Practices:
-            // Local boxes usually don't have SSL/TSL certificates so let's
-            // skip these tests.
             "is-on-https",
             "uses-http2",
+            // Performance:
+            //"largest-contentful-paint",
           ],
         },
       },
