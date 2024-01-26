@@ -97,3 +97,15 @@ solr-sync:
 .PHONY: solr-rebuild
 solr-rebuild:
 	$(DOCKER_COMPOSE_CMD) stop solr && $(DOCKER_COMPOSE_CMD) rm -f solr && $(DOCKER_COMPOSE_CMD) up -d solr && make solr-sync
+
+## pa11y: Run pa11y tests
+.PHONY: pa11y
+pa11y:
+	$(DOCKER_COMPOSE_CMD) run --rm -T pa11y $(filter-out $@,$(MAKECMDGOALS))
+
+## lighthouse: Run lighthouse tests
+.PHONY: lighthouse
+lighthouse:
+	$(DOCKER_COMPOSE_CMD) exec -T lighthouse lhci autorun || true
+	$(DOCKER_COMPOSE_CMD) exec -T lighthouse sh -c 'tar -cf - *.json *.html' | tar -xvf - -C reports/lighthouse/
+	ls -l reports/lighthouse/

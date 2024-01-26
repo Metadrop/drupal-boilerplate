@@ -33,6 +33,8 @@ It provides the following tools:
     - [Behat](behat.md): Behavior Driven Development easily!
     - [PHPUnit](phpunit.md): Unit testing framework.
     - [BackstopJS](backstopjs.md): Visual regression testing.
+    - [Pally](pa11y.md): Accessibility testing tool.
+    - [Lighthouse](lighthouse.md): Performance, SEO, PWA tests and more.
   - Documentation:
     - [MkDocs](mkdocs.md): Documentation on Markdown.
   - Helpers:
@@ -96,28 +98,3 @@ Probably, you will need access to remote environments inside PHP container. For 
 ```
 
 This configures Docker to mount your local SSH agent socket into the PHP container, allowing the container to use your SSH keys.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -16,6 +16,8 @@ Tools included out-of-the-box:
   - PHPUnit for unit testing configured and working.
   - [BackstopJS](https://github.com/garris/BackstopJS) for visual regression testing.
   - [Stylelint](https://stylelint.io/) for checking style files.
+  - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) for checking performance, accessibility, PWA, SEO and more.
+  - [Pa11y](https://pa11y.org) for in-depth accessibility checks.
   - [Scripthor](https://github.com/Metadrop/scripthor) toolset with some helper scripts for development.
   - Optionally, a Solr container ready to be used by Drupal.
 
