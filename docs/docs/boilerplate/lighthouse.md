@@ -1,8 +1,8 @@
 # Lighthouse
 
-[Pa11y](https://pa11y.org/) automates accessibility tests.
+[Lighthouse](https://developer.chrome.com/docs/lighthouse) has audits for performance, accessibility, progressive web apps, SEO, and more.
 
-Check the official [repository](https://github.com/pa11y/pa11y).
+Check the official [documentation](https://developer.chrome.com/docs/lighthouse/overview).
 
 
 ## Configuration
