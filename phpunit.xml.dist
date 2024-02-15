@@ -81,4 +81,7 @@
       </exclude>
      </whitelist>
   </filter>
+  <logging>
+    <junit outputFile="reports/phpunit.xml"/>
+  </logging>
 </phpunit>
