@@ -8,7 +8,7 @@ phpqa:
   report: false
   execution: parallel
   output: file
-  tools: phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0
+  tools: phpcs:0,phpmd:0,parallel-lint:0
   # array definition and allowed errors count is supported too
   # tools: [phploc, phpcs:0]
   verbose: false
@@ -31,11 +31,6 @@ phpmd:
   # alternatively you can use an array to define multiple rule sets (https://phpmd.org/documentation/index.html#using-multiple-rule-sets)
   standard: phpmd.xml.dist
 
-phpcpd:
-  minLines: 5
-  minTokens: 70
-  names: "*.php,*.module,*.install,*.theme,*.inc,*.profile"
-
 paralell-lint:
   reports:
     file:
@@ -47,5 +42,4 @@ paralell-lint:
 tool:
   phpcs: Edge\QA\Tools\Analyzer\Phpcs
   phpmd: Edge\QA\Tools\Analyzer\Phpmd
-  phpcpd: Edge\QA\Tools\Analyzer\Phpcpd
   parallel-lint: Edge\QA\Tools\Analyzer\ParallelLint

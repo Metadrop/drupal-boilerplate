@@ -46,20 +46,6 @@ grumphp:
     yamllint: ~
     composer: ~
     jsonlint: ~
-    phpcpd:
-      directory:
-        - ./web/**/custom
-      triggered_by:
-        - php
-        - inc
-        - module
-        - install
-        - profile
-        - theme
-        - feature
-        - info
-        - js
-        - test
     phpmd:
       exclude:
         - tests/

@@ -10,7 +10,7 @@ Tools included out-of-the-box:
   - A boilerplate folder structure that fits all project needs.
   - A working and preconfigured Drush, the Drupal shell.
   - MkDocs to document your project using Markdown files.
-  - Grumphp to enforce [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards). It is configured to use [phplint](https://github.com/overtrue/phplint), yamlint,  [jsonlint](https://github.com/Seldaek/jsonlint), [drupalcheck](https://github.com/mglaman/drupal-check), [phpcpd](https://github.com/sebastianbergmann/phpcpd) and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer).
+  - Grumphp to enforce [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards). It is configured to use [phplint](https://github.com/overtrue/phplint), yamlint,  [jsonlint](https://github.com/Seldaek/jsonlint), [drupalcheck](https://github.com/mglaman/drupal-check) and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer).
   - Phpqa for static analysis.
   - Behat BDD testing configured and working.
   - PHPUnit for unit testing configured and working.
