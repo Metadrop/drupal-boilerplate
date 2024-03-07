@@ -15,6 +15,9 @@
             "url": "https://packages.drupal.org/8"
         }
     ],
+    "replace": {
+        "sebastian/phpcpd": "*"
+    },
     "require": {
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.7",

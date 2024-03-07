@@ -15,7 +15,6 @@ Grumphp is already configured (so you don't need to worry about that) making the
 - composer: Perform `composer.json` and `composer.lock` validation.
 - [jsonlint](https://github.com/Seldaek/jsonlint): Detects JSON files syntax errors.
 - [drupalcheck](https://github.com/mglaman/drupal-check): Check Drupal code for deprecations and discover bugs via static analysis.
-- [phpcpd](https://github.com/sebastianbergmann/phpcpd): Copy/paste detector to avoid duplicated code.
 - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer): Check if your code accomplish the following standards:
     - Drupal: The [Drupal coding standards](https://www.drupal.org/docs/develop/standards/coding-standards).
     - DrupalPractice: Drupal best practices. @TODO: Is this in place?
