@@ -86,17 +86,17 @@ logs:
 .PHONY: xdebug
 xdebug:
 	@echo "Enabling xdebug in $(PROJECT_NAME)."
-	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured docker-compose.xdebug.override.yml file."
+	@echo "¡¡CAUTION!! X-debug will only work if you have correctly configured compose.xdebug.override.yml file."
 	$(DOCKER_COMPOSE_CMD) stop php
 	$(DOCKER_COMPOSE_CMD) pull php
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.xdebug.override.yml up -d php
+	$(DOCKER_COMPOSE_CMD) -f compose.yml -f compose.override.yml -f compose.xdebug.override.yml up -d php
 
 ## xdebug-disable	:	Disable xdebug.
 .PHONY: xdebug-stop
 xdebug-stop:
 	@echo "Disabling xdebug in $(PROJECT_NAME)."
 	$(DOCKER_COMPOSE_CMD) stop php
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml up -d php
+	$(DOCKER_COMPOSE_CMD) -f compose.yml -f compose.override.yml up -d php
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
