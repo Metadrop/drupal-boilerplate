@@ -102,10 +102,6 @@ services:
       - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
       - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 
-#  phantomjs:
-#    volumes:
-#     - ./:/var/www/html:cached # User-guided caching
-
   lighthouse:
     volumes:
       - ./tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
