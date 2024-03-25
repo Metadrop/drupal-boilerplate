@@ -203,16 +203,6 @@ services:
 #      - "--verbose"
 #      - "--whitelisted-ips="
 
-
-#  phantomjs:
-#    image: wernight/phantomjs:${PHANTOMJS_VERSION}
-#    container_name: "${PROJECT_NAME}_phantomjs"
-#    depends_on:
-#      - php
-#      - apache
-#    entrypoint: phantomjs
-#    command: "--ssl-protocol=any --ignore-ssl-errors=true /var/www/html/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768"
-
   mailhog:
     image: mailhog/mailhog
     container_name: "${PROJECT_NAME}_mailhog"
