@@ -27,12 +27,12 @@ behat:
 ## ngrok	:	Setup a ngrok tunnel to make the site available
 .PHONY: ngrok
 ngrok:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml up -d && $(DOCKER_COMPOSE_CMD) exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
+	$(DOCKER_COMPOSE_CMD) -f compose.yml -f compose.override.yml -f compose.ngrok.yml up -d && $(DOCKER_COMPOSE_CMD) exec php curl http://ngrok:4040/api/tunnels | grep -Po "https"://[^\"]+
 
 ## ngrok-stop	:	Stop the created ngrok tunnel
 .PHONY: ngrok-stop
 ngrok-stop:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml stop ngrok && $(DOCKER_COMPOSE_CMD) -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.ngrok.yml rm -fsv ngrok
+	$(DOCKER_COMPOSE_CMD) -f compose.yml -f compose.override.yml -f compose.ngrok.yml stop ngrok && $(DOCKER_COMPOSE_CMD) -f compose.yml -f compose.override.yml -f compose.ngrok.yml rm -fsv ngrok
 
 ## frontend	:	Generate frontend assets like compiling scss
 .PHONY: frontend
@@ -66,7 +66,7 @@ backstopjs-test:
 setup-init:
 	mkdir -p web/sites/default/files/behat/errors
 	chmod u+w web/sites/${SITE} -R
-	cp docker-compose.override.yml.dist docker-compose.override.yml
+	cp compose.override.yml.dist compose.override.yml
 	cp web/sites/${SITE}/example.settings.local.php web/sites/${SITE}/settings.local.php
 	cp web/sites/${SITE}/example.local.drush.yml web/sites/${SITE}/local.drush.yml
 	$(DOCKER_COMPOSE_CMD) up -d
