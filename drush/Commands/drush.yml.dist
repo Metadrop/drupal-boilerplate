@@ -1,0 +1,3 @@
+# This configuration file must be copied to the user's .drush folder in the environment where we want to enable
+# protection for commands that may drop or overwrite the database.
+protected-instance: true
