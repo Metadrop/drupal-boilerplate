@@ -9,6 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clean runner image
+        run: |
+          # Runner image is running out of space (14GB), let's try to remove some unused files.
+          # See https://github.com/actions/runner-images/issues/2840#issuecomment-790492173
+          echo "Before removing files:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          echo "After removing files:"
+          df -h
 
       - name: Checkout repository
         uses: actions/checkout@v2
