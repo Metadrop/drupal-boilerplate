@@ -15,6 +15,13 @@ jobs:
 
       - name: Add HTTP basic auth credentials
         run: |
+          # Using GitHub repository secret to provide a token for GitHub downloads.
+          # The secret should named AUTH_JSON_FOR_BOILERPLATE_GITHUB_CI and be like this:
+          # {
+          #   "github-oauth": {
+          #     "github.com": "<A PERSONAL ACCESS TOKEN>"
+          #   }
+          # }
           echo "auth.json path: $GITHUB_WORKSPACE/auth.json"
           echo '${{ secrets.auth_json_for_boilerplate_github_ci }}' > $GITHUB_WORKSPACE/auth.json
           pwd
