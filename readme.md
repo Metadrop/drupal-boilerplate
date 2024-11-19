@@ -1,5 +1,12 @@
 # Metadrop's Drupal Boilerplate
 
+## Important notice
+
+This project has reached the end of its life and is now obsolete. 
+We are no longer providing updates or support.
+
+Please consider using [DDEV Aljibe](https://github.com/Metadrop/ddev-aljibe/).
+
 ## Introduction
 
 This repository is a boilerplate to create Drupal 8/9/10 projects with many tools already preconfigured with minimal effort. You can have a Drupal site running in your local in less than 3 minutes.
