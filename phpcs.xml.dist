@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
    To override this file, copy it to phpcs.xml and then modify.
-   @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml#the-annotated-sample-file
+   @see https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Annotated-Ruleset#the-annotated-sample-file
 -->
 <ruleset name="drupal">
   <description>PHP_CodeSniffer standards overrides.</description>
